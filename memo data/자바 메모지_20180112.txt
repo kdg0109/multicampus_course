@@ -1,0 +1,520 @@
+\\M140222
+\\M140222\교육자료
+\\70.12.114.112\교육자료
+
+---------1일차---------------
+시스템 변수(S)에서 변경
+- JAVA_HOME 생성
+C:\Program Files\Java\jdk1.8.0_151
+
+- Path 수정
+C:\Program Files\Java\jdk1.8.0_151\bin
+
+- Workspace
+C:\projects\workspace
+
+---------2일차---------------
+- ctrl + shift + f 들여쓰기 해줌
+
+---------3일차---------------
+- ctrl + h, ctrl + f 찾기
+- File Search에서 찾기
+- for문 식(초기식;증감식;조건식)은 필요없으면 생략 가능
+- alt + shift + h 파일 이름 바꾸기
+- F6 디버깅 한 줄씩
+- F5 한 줄씩 함수있음 in
+- F8 다음 break point 까지
+- char는 0~65535 까지 범위
+- break 사용시 반복문 앞에 라벨을 사용하여 한번에 빠져나갈 수 있다.
+
+---------4일차---------------
+- 배열 변수는 타입의 종류 상관없이 무조건 4바이트 잡힘(참조변수라서)
+- 논리적주소 : JVM이 지정하는거 (집주소같은거)
+- 물리적주소 : 운영체제에 있는 주소 메모리상의 주소 (지구 좌표같은거)
+- JVM의 가비지 컬렉터
+메이저 GC -> 프로그램 중단하고 대청소
+마이너 GC -> 잠깐 잠깐 청소
+
+---------5일차---------------
+[Java의정석]ch6_1_객체지향개념1
+- 메서드 호출할 때, 매개변수로 전달하는 값을 아규먼트(인수)라고 한다.
+- 메서드를 호출할 때,
+하나의 메서드를 두번 이상 호출하게 될 경우, 변수에 담아 놓은 다음에 그 변수를 대신 사용하는게 효율적
+
+---------6일차---------------
+가변형 인자 Java5
+int sum(int... su){ }
+--> sum(), sum(1), sum(1,2)
+인 
+인아웃 방법
+- 매서드의 매개변수로 배열을 전달하면 return 없어도 수행 결과를 받을 수 있다.
+(배열을 주소를 가르키기 때문 메서드 속에서 바로 값변환하면 호출했을 때 배열 값도 바뀜) 리터블하다.
+리터블 메서드
+
+- 자바는 소스 단위로 class가 만들어지는 것이 아닌 소스 안에 정의되는 class단위로 bin에 생성
+- 다른 클래스의 메소드들은 대부분 static이 아니기 때문에 객체 생성 후 접근
+- 표준 출력 장치 : 화면
+- 표준 입력 장치 : 키보드
+- sc.next( )는 하나의 단어로 구분 (tap/space 구분가능)
+- sc.next( )는 자기가 필요한 것만 딱 가져감 개행이 읽어들어질 때까지
+- sc.nextLine( )은 한 행을 하나로 구분 (무조건 엔터까지)
+- sc.next( ) 칼 같이 일함 필요한거만 가져가서 뒤에 다른 next가 손해봄
+
+---------7일차---------------
+[Java의정석]ch6_2_객체지향개념1
+- 클래스 안의 모든 멤버가 static이면 클래스 자체가 객체라 접근 가능 
+ex)Math, System
+- new : 객체 생성해라 동적으로 메모리를 할당하라
+- 멤버변수(static, non-static)
+- 메서드(static, non-static)
+- 참조형 기본값은 null
+ex) String
+- String객체를 참조(문자열 데이터)
+- 리터럴(데이터값)
+- class가 여러개여도 class 로딩은 한 번만 일어남 그때 static도 올라옴
+- static은 class 메모리 올라갈때(로딩할 때) 한번 생성 클래스 변수 = static 변수
+인스턴스 변수
+클래스 변수는 로딩될 때, 인스턴스 변수는 클래스 객체가 시작할 때
+- non-static 객체 생성시 마다 계속
+- 한 번만 할당해도 되는건 static으로 공유
+- 각 사람들 id같이 고유의 값은 non-static으로 해야함
+- JVM은 5개의메모리 공간을 만드는데 2공간은 자신이
+나머지 3개는 Method Area, Call Stack, Heap 3가지 영역을 만듬
+처음 메인 클래스를 Method Area에 그리고 인스턴스 객체 생성될 때마다 Heap 정보에 들어감 객체는 모두 heap
+- static은 참조형과 클래스이름으로 접근할 수 있으며 클래스이름으로 곧장 접근하는게 유지보수 좋다.
+- Thread.sleep(3000);
+3초 간 쉬기
+- -verbose:class 클래스정보 확인하기 
+Run configuration
+- Thread는 rt.jar (runtime jar)에서 로드됨. 그말은 JVM이 시작하자마자 로드하는 애들임
+- 생성자 메서드를 정의하지 않으면 컴파일러가 정해진 규격의 생산자를 만들어줌(항상 모든 클래스에)- 디폴트 생성자
+- cmd에서 workspace/bin에서 javap를 사용하면 디폴트 생성자를 볼 수 있음
+ex) javap day7.Member
+- this 메소드 호출은 생성자 안의 첫번째 행에서만 가능하다. 같은 클래스의 생성자에서 다른 생성자 호출
+
+---------8일차---------------
+- System.in : 표준 입력장치를 참조하도록 되있는 Static 임
+class가 로딩될 때 같이 올라가
+- 명령행데이터 = 커멘드라인아규먼트 = 프로그램 아규먼트 : 자바 프로그램이 수행을 시작할 때 전달되는 데이터 == String[] args
+- 메인에서 return 하면 프로그램 종료임
+- Run Configurations에서 Arguments에서 arg[] 내용 넣어줄 수 있음
+- static { } 은 main 호출보다 먼저 호출된다.
+복잡한 초기화를 해결할 때 사용
+- { } 그냥 중괄호만 있는 건 인스턴스 초기화 블럭이고 객체 생성때마다 수행
+- 자바 클래스들은 기본적으로 java.lang.object라는 클래스가 부모클래스
+- 상속은 단 하나의 클래스만 가능( c++은 여러 개 지정)
+- overriding은 메서드 겉보기가 완전 똑같은거
+- overloading은 이름은 같지만 참조 변수가 다른거
+- 모든 생성자 메서드는 this 호출 제외하고 호출되자 마자 조상 메서드를 호출함.
+- 생성자에 this가 있다는 것은 다른 생성자를 호출한다는 것이기 때문에 그 다른 생성자에서 super()를 이용하여 조상 클래스를 호출한다.
+- 기본적으로 모든 클래스에는 super( )를 부름.
+- 변수 자동초기화... 
+
+---------9일차---------------
+==오버라이딩 조건==
+- 선언부 같아야 함.
+- 접근제어자를 좁은 범위로 변경 못함 크게는 가능
+- protected 같은 패키지 또는 상속받은 자손만 접근 가능
+- 조상클래스 메소드보다 더 많은 예외를 선언할 수 없음
+- 조상 예외의 범위 안에 있어야함
+- 생성자가 super 혹은 this를 호출하고 있으면 컴파일러가 자동적으로 super를 생성하지 않는다
+- 패키지명은 소문자, 식별자 규칙 준수
+- 제어자 : 접근제어자/ 활용제어자
+-- 접근제어자 : public, protected, default, private
+--- default(생략) 같은 클래스, 같은 패키지에서만 접근 가능
+-- 활용제어자 : 그 외
+--- abstract 추상적 (클래스, 메서드 앞에 올 수 있음) 미완성 앞에 붙고 얘네 꼭 구현해야함
+--- synchronized 쓰레드 처리
+--- native 자바 이외 언어 메서드 호출
+--- transient 직렬화에 사용
+-  static은 상수지만 선언만 할 수 있고, 대신 생성자에서 꼭 초기화해야 한다.
+- abstract가 붙어 있다면 그 자식 클래스에서 모두 재정의 해줘야함
+- abstract 클래스는 상속은 되지만 객체 생성은 안됨. final은 반대
+- heap에 들어가는 애들은 자동초기화
+- 객체가 생성될 때, 그 조상도 가 생성이 되는 것 그래서 그 조상멤버도 사용 가능
+- private 제어자의 멤버 변수는 get, set으로 만들어야 한다.
+------ 다형성(polymorphism) -------
+하나의 참조변수로 여러 타입의 객체를 참조하는 것
+ex) Object obj = new String("a")
+자식 입장에서  부모는 상관없음
+- 부모가 자식만 가지고 있는 변수 및 메서드를 참조할 땐 ( ) 를 이용하여 형변환 뒤 사용
+--------------abtract 클래스----------
+- 0개 이상의 abtract 메서드
+- abtract 클래스는 객체 생성은 불가능하고 상속만 가능
+- 상속받은 클래스에서 모두 구현해줘야 함 반드시 overiding 해
+하나도 빠짐없이
+- 사용이유 : 어떠한 사양의 메서드들을 갖는 규격화된 객체 정의하게 하는 목적
+======================
+- 클래스가 이텔릭체면 abstract
+글자가 옆으로 좀 누운거
+- <<create>> 생성자를 뜻함
+- abstract 는 클래스를 그룹화 시킬 때도 사용함
+
+---------10일차---------------
+- extends 접근 순서
+가장 자식부터 상위 클래스로 이동하면서 존재하는 변수가 있는지 접근
+- abstract class 라는건 상속으로만 사용하라는 의미
+- 완성된 메서드도 포함 가능
+<< 생성자의 접근자 >>
+- 생성자에 private하는 이유
+특별한 이유로 생성자의 접근제어자를 클래스와 다르게 protected, private로 설정
+1. 모든 멤버가 static이거나 final일 경우 ex) System
+2. 객체 생성을 여러번 수행해도 실제로는 객체가 하나만 생성되게 하고싶을 때 ex) singleton 디자인 패턴
+3. 팩토리 메서드를 통해서 자식클래스의 객체를 대신 리턴하려는 경우
+- 객체 생성을 대신 해주는 일반 메서드를 사용해야 한다. = 팩토리 메서드
+- Runtime == JVM 임
+- InetAddress == ip 찾기
+<< interface >>
+- 구성요소(멤버)는 추상메서드와 상수만 가능
+- 상수는 명시적 초기화
+- 변수 앞에 public static final 이 자동 생성
+- 메서드 앞에 public abstract 가 자동 생성
+- interface는 다중 상속 가능
+- interface도 다형성 가능
+class Fighter implements Fightable일 때,
+Fighter f = new Fighter()
+Fightable f = new Fighter()
+
+String.Format    == printf
+
+과제에서 
+구현 클래스 = 클래스 상세 명세
+
+---------11일차---------------
+- boolean 변수 이름은 flag나 is를 붙여서 어떤 boolean인지 알려주는게 좋음
+- 어떤 객체가 또다른 인터페이스를 상속받고 있다면 그 부모로도 접근이 가능
+((Sales)emps[1]).incentive(100);
+==
+((Bonus)emps[1]).incentive(100);
+
+- 객체의 결합도를 낮춘다는 것은 확장성을 넓히는 것과 같다
+javac 컴파일하는 명령
+java 실행하는 명령
+- << 예외 처리 >>
+1. 컴파일 오류 : 자바 소스  구문상 문제
+2. 실행 오류 : 컴파일은 끝났고 실행파일을 시작했을 때 문제
+2.1 에러 : JVM 영역에서 발생하는 실행 오류, 심각, 대처 불가 ex)stackoverflow
+2.2 예외 :  자바프로그램 영역에서 발생하는 실행오류, 대처 가능
+2.2.1 런타임 예외 : 예외처리 선택, 자동으로 JVM 대신 처리
+2.2.2 일반 예외 : 예외처리 필수, JVM 처리를 요청 가능
+
+- 런타임 예외와 일반 예외 구분하는 방법
+- 예외클래스 체크
+- 예외를 처리하는 메서드 인식하는 방법
+- 예외처리하는 구문 : throws, try-catch-finally
+- 예외를 발생시키는 방법, 예외클래스를 만드는 방법
+- catch로 메모리에서 만든 객체를 전달
+e.getMessage()
+e.toString()
+e.printStackTrace();
+- 결과가 오기 전까지 아무것도 안하는 것을 동기 아무것도 안하는 상태를 블러킹 상태
+- 결과가 오기 전에도 다른 일을 하는 것을 비동기
+- 메서드 헤더에 throws가 있다면 예외처리를 해줘야 한다. 알린다.
+- System.exit(0); : JVM을 강제 죽임
+
+---------12일차---------------
+@Override : 에노테이션 구문
+- 오버라이딩을 한다고 알려줌
+- 스펠링 틀렸을 때 알 수 있음
+  << 자료구조 >>
+- List, Set은 조상이 같다
+- Map은 (unique name, value)
+- List, Set은 (value)만
+- set은 순서대로 저장x 하지만, 중복  데이터를 처리해줌 ex) HashSet
+- 순서와 중복처리가 필요할 때
+ex) LinkedHashSet
+- LinkedList 는 속도가 느리지만 편집에 용이(쓰기)
+- ArrayList 는 데이터를 순서대로 뽑는게 빠르지만, 편집이 비효율(읽기)
+- 해쉬 알고리즘 : 데이터 저장시 나중에 꺼낼때 빠르게 꺼낼 수 있음
+ArrayList < > 안에는 객체만 들어갈 수 있음 
+기본형 데이터를 객체로 포장해준다. Wrapper Class(와퍼 클래스)라고한다.
+Byte, Short, Integer, Long, Float, Double, Character, Boolean
+HashMap<String, Person> map = new HashMap<String, Person>();
+
+부모에서 자식꺼낼때 형변환
+==== class Value3<MY> { }==
+- Value3는 객체 생성시 MY를 통해 생성받은 걸로 사용한다는 뜻
+- 객체를 생성하는 시에 먼저 정해라
+- ArrayList : 기본적으로 10개 방 생성
+- add, 	set, remove
+- 추가, 수정, 제거
+- ArrayList와 LinkedList의 함수는 같다. 하지만, 구조가 다르다.
+- 모든 collection 객체는 iterator을 가지고 있다.
+enhanced for문은 리스트로 부터 iterator 객체가 자동으로 얻어짐
+그래서 그 객체로 값을 가져옴
+
+HashSet은 get이 없다.(인덱스로 값 가져오기)
+-- 데이터를 꺼내는 메서드를 지원하지 않는다.
+1. enhanced for 사용
+2. lterator 객체 사용
+3. toArrays() 메서드가 제공되어 Object[] 객체로 변환해서 추출한다.
+- add(a)의 리턴 값은 boolean
+Hashset은 순서가 없지만 중복이 없는 list
+HashMap은 키와 값을 갖는 테이블
+기본 16개 통 만들어짐
+- put, get, remove
+- 추가, 수정, 제거
+LinkedList는 스택, 큐로도 사용가능
+스택 : addLast(12), getLast()
+offer() : 맨 뒤에 집어 넣음 1, 2, 3
+poll() : 맨 앞에 있는거 빼옴 1, 2, 3
+poll  : 꺼내면서 삭제 pop같음
+peek() : 맨 앞에꺼 복사에서 꺼내옴 체크만 함
+
+Vector은 ArrayList의 옛 버전
+Hashtable은 HashMap의 옛 버전
+- 자바의 LinkedList는 더블리 써큘러 링크드 리스트이다. 이중원형 연결리스트(더블은 앞뒤 링크보고있음)
+: 마지막 링크가 처음 노드를 가르킴
+
+순차적으로 추가/삭제하는건 arrayList
+비순차적으로 추가/삭제하는건 LinkedList
+
+---------13일차---------------
+Iterator vs Enumeration
+hasNext vs hasMoreElements
+next vs nextElement
+remove( ) 읽어오고 그걸 삭제
+Enumeration은 구버전임
+- ListIterator 기능 확장(상속)
+수정도 가능하고 편집도 가능 
+- HashSet의 add는 저장할 객체의 (Object)equals()와 hashCode()를 호출한다.
+HashSet에서는 클래스를 받을 때, 중복된 객체를 중복된 것으로 간주하지 않을 수 있기 때문에 eqauls와 hashCode를 적절히 오버라이딩해야함
+- equals(Object obj)는 add 전에 실행하는데 obj가 앞 전에 동일한 애를 호출.
+- equals 는 두 객체의 내용이 같은지, 동등성(equality) 를 비교하는 연산자
+- hashCode 는 두 객체가 같은 객체인지, 동일성(identity) 를 비교하는 연산자 
+
+equals와 hashCode가 같이 움직임
+둘 중 하나라도 오버라이딩을 하고자 한다면, 반드시 둘 다 오버라이딩을 해야함
+- HashMap 이나 HashSet, HashTable 과 같은 객체들을 사용하는 경우, 객체의 의미상의 동등성 비교를 위해 hashCode() 를 호출
+-add가 되면 true다
+- a.equals(b) 라면 a.hashCode()와 b.hashCod()의 값이 같다고 가정한다.
+- 하지만, hashCode()가 같다고 두 객체가 같다고는 볼 수 없다.
+- Comparable 을 상속받았다는 것은 비교할 수가 있다는 것
+- compareTo(Object o)를 구현하자
+return 값이 양이냐 음이냐에 따라 오름차순, 내림차순을 정할 수 있음
+- TreeSet 집어 넣을 때마다 정렬
+TreeSet에는 비교가 가능한 것들만 집어넣을 수 있다
+
+
+- 이미지는 바이트 스트림
+-- InputStream, OutputStream
+
+- 글자는 문자 스트림
+-- Reader, Writer
+
+-FileXXXX --> 파일 시스템의 파일을 오픈
+
+InputStreamReader -> 바이트 스트림 객체를 문자스트림 객체로 변환하는 역할
+
+try(파일 생성){}catch(){}
+try에 괄호로 객체 파일 생성을 할 경우, try문이 모두 끝나면 자동으로 close해준다.
+-- try 괄호 안에 두개를 넣을 수있음. 그말은 try끝나면 그 두개모두 close해준다는 뜻
+- FileReader는 한번에 한글자씩만 접근하고 뿌려줄수있음
+- BufferedReader는 한글자씩 버퍼에 저장했다가 한번에 보여줄 수 있음
+-- 생성자로 매개변수로 FileReader 넣을 수 있음
+readLine() 한줄 읽어서 String에 담는다
+- FileReader객체는 실제 파일을,
+BufferedReader 객체는 FileReader를 가르킴
+
+DataInputStream 요즘은 Scanner를 사용한다.
+Serializable 를 가지고 있는 애만 직렬화 가능
+ObjectOutputStream을 사용하기 위해 Serializable 사용
+- InputStream (1바이트씩) 바이트 스트림을 
+InputStreamReader(1글자씩) 를 이용하여 한글 깨짐을 다 보이게 해
+URL req = new URL("https://www.daum.net/");
+InputStream is = req.openStream();			//인풋 스트림은 바이트 스트림
+- 여기까지는 1바이트 씩 읽기 때문에 한글이 깨짐
+한글은 2바이트이기 때문
+InputStreamReader isr = new InputStreamReader(is, "UTF-8");
+- 하지만 여기 까지는 한단어씩밖에 못끌어온다.
+BufferedReader br = new BufferedReader(isr);
+BufferedReader 또 한번 감싸서 한 줄씩 읽게 한다/
+
+---------14일차---------------
+FileOutputStream 파일을 쓰는거 
+이미지 URL을 우선 InputStream으로 받고.
+이미지 편집을 위해 BufferedImage로 다시 받는다.
+ImageIO.read(InputStream)
+그리고 이미지파일로 추출하기 위해
+FileOutputStream 을 만들고,
+ImageIO.write(BufferedImage, 이미지 형식, FileOutputStream) 짠
+
++로 문자열을 막 연결하면 자동적으로 Stringbuilder로 변환되서 추가된다.
+String 클래스는 final이라서 다른 클래스의 조상이 될 수 없음
+String str1 = "abc";
+String str2 = "abc";
+문자열 데이터일 경우, 스트링 객체는 무조건하나
+따라서, str1 == str2 가 같고 같은 주소를 가르침
+new String("abc") 형식으로 만든다면,
+서로 다른 String 객체라서 저장된 주소가 다름
+그렇기에 비교할 때, equals로 비교해야 정확함
+
+ASCII 코드 - 1바이트(7비트)
+---> ISO-8859-1 1바이트(8비트)		영문
+
+완성형한글코드(1987년)-표준-KSC5601
+---> 영문(1바이트), 한글(2바이트) ex) 가 0xB0A1
+---> EUC-KR, MS949(CP949)
+나라마다 사용하는 유니코드가 겹쳐서 전세계의 언어를 합한 코드가 유니코드!
+유니코드 - 2바이트 		- UTF-16
+           - 1~4바이트 	- UTF-8 ->우리나라는 3바이트
+
+String.format에서 %02X 뜻은 16진수를 출력하는데 2개의 방으로 표현할 것이고 1자리 수일 때 앞에 0을 붙여라. 그리고 X 대문자 출력하라
+
+문자열을 계속적으로 수정할 때는
+String보다 StringBuffer/StringBuilder 사용
+StringBuffer 멀티 쓰레드에서 유용
+StringBuilder 단일 쓰레드에서 유용
+
+import static 패키지 : static을 하면 코드상에서 바로 함수 사용가능(헷갈려서 사용 잘 안함)
+
+readLine()은 행단위로 읽고 개행을 없앤다.
+
+Scanner에서 new Scanner(스트링).useDelimiter(",")를 사용하면 현재 스트링에서 , 을 기준으로 끊는다.
+
+객체 직렬화
+파일 내용들을 바이트 단위로 변환해주는거
+직렬화/역직렬화 순서 marshaling/unmarshaling
+ObjectOutputStream -> FileOutputStream -> 파일
+파일 -> FileInputStream -> ObjectInputStream
+Serializable 를 가지고 있는 애만 직렬화 가능
+또는 Externalizable
+- 오버라이딩할 애는 없음
+- 직렬화 값 읽을 때도 넣은 순서로 뽑아야함
+직렬화시 직렬화에 제외할 때 사용하는 변수 제어자가 transient!!!!!
+--- transient 직렬화에 사용 직렬화를 하게 될 때 제외할 수 있음
+
+object ...  :  object 0개 이상 넣는거 가변형 인자
+
+---------15일차---------------
+DataInputStream 자바의 기본 자료형 데이터를 바이트 스트림으로 입력 : 기본 자료형을 ByteStream으로 변환하여 파일 입력 가능
+참고 : http://hyeonstorage.tistory.com/239
+ObjectOutputStream 객체를 읽고 씀.
+서버기반 모델-(sever-baced model), p2p
+http://unico2013.dothome.co.kr/resweb/exam1.html
+1. http://unico2013.dothome.co.kr 먼저 접근한 다음에
+2. resweb/exam1.html 를 불러서 달라고 get 보냄
+그러면 서버가 응답 헤더정보(응답 시간, 바이트, 성공여부 등등)와 응답 바디(화면)를 보여줌
+응답 헤더 -> 크롬 개발자 도구에서 headers 보면 있음
+200 : 성공
+302 : 요구한 데이터가 변경된 URL에 있음을 명시 301과 비슷하지만 새 URL은 임시 저장 장소로 해석됨. 
+404 : 실패 문서를 찾을 수 없음. 요청한거 못찾음
+dothome 보면 404 나왔을 때 리다렉션으로 다른 페이지 나오게 할 수 있음 이게 302임
+일반적으로 로그인은 post방식으로..
+단순 openStream은 바디만 부르는 것.
+URLConnection을 이용하여 getContent를 호출하면 헤더, 바디 모두 받을 수 있음
+MIME 은 메이져타입/마이너 타입으로 구성되있음
+ex) text/html, image/jpg 등등
+
+<<       TCP > UDP        >>
+TCP를 많이 사용함. Low 레벨 통신
+전화거는거 처럼 연결기반임. 둘다 연결되야 통신
+Connection-oriented 연결되야 통신되니까 신뢰성있음
+socket은 프로세스간의 통신임. in/outStream을 가지고 있음 (실제 메시지를 주고 받음)
+ServerSocket은 포트하나 열어 두고 통신을 기다리는 소켓. 연결 기다리다가 연결요청이 들어오면 socket 생성해서 통신가능하게 함
+한 포트에 하나의 serversocket만 연결 가능
+
+UDP 
+카톡처럼 받든 안받든 그냥 확 보냄.
+broadCasting 처리.
+DatagramSocket 소켓전달
+DatagramPacket 하나의 객체에 송수신 정보가 들어있음
+
+Socket 은 데이터를 가져올 때
+getInputStream, getOutputStream
+Reader, writer를 추가 생성하여 문자스트림을 받아야함
+
+클라이언트가 소캣을 통해 연결 요청을 하면,
+서버는 자동으로 소캣을 생성한다.
+그 소캣을 이용하여 서로 송,수신
+
+자바는 서버 소캣 생성 시 자동으로 bind
+이미 사용 중인 포트를 접근하면 bindexception 일어남
+
+ServerSocket.accept() 클라이언트가 접속 요청을 해올 때까지 무한 대기
+
+  <<            쓰레드            >>
+프로그램이 수행을 해야 프로세스가 되는 것.
+프로세스 : 현재 실행되고 있는 프로그램.
+
+		자바의 멀티스레드 프로그래밍
+
+1. 몇개의 스레드를 사용할 것인지
+2. 각 스레드의 기능이 무엇 인지
+3. 스레드의 기능의 갯수만큼 스레드 클래스 생성
+4. 기동시키려는 스레드 갯수만큼 스레드 클래스 객체 생성 (객체마다 start() 메서드를 호출)
+ex) 스레드 10개를 기동시키는데 기능이 다 똑같으념 스레드는 하나 스레드 객체는 10개가 됨
+5. 스레드 클래스 구현 방법 (속도 차이 없음)
+ - java.lang.Thread 클래스를 상속하여 run( ) 메서드를 오버라이딩해서 스레드의 기능 구현
+	(MyThread 자체가 쓰레드) 스레드의 run 호출
+	MyThread t = new MyThread();
+	t.start();
+- java.lang.Runnable 인터페이스를 추가 상속하여 run( ) 메서드를 오버라이딩해서 스레드의 기능 구현
+	(런어블 객체 생성한다음에 쓰레드를 객체 생성함.) 런어블에 있는 run을 호출
+	Thread t = new Thread(new MyRunnable())
+	t.start();
+
+start()하게 될 경우, 스레드에서 run이 동작하고 스레드만의 call stack이 생성.
+메인에서 바로 run() 하게 될 경우, main의 call stack에서 이루어짐
+
+스레드에서 Exception 나는 경우, main에 영향을 끼치지 않는다.
+
+멀티스레드를 사용할 때 동기화에 유의한다.
+ex)예전 한방 앱만들 때 옵져버 패턴 만든거 기억
+
+스레드가 여러 개 생성되어도 heap과 Method Area는 기존 사용하는 공간을 사용
+동기화란 작업들 사이의 수행 시기를 맞추는 것
+[컬렉션 객체 동기화]
+Vector, Hashtable, Stack --> 성능
+ArrayList 
+Vector : 쓰레드 하나가 수행하고 있을 때, 키를 가지고 있기에 다른 애들은 접근 못함
+
+List syncList = Collections.synchronizedList(리스트 객체)
+동기화를 시킨다.
+StringBuffer & StringBuilder
+동기화 무조건 실행 & 동기화 기능 x
+
+[코드 동기화]
+호출이 끝날 때까지 잠시 대기하길 원할 때
+메서드 앞에 synchronized라는 제어자를 정의한다.
+JVM이 관리해준다.
+
+http://troy.labs.daum.net/
+폰 화면 테스트 할 수 있음
+
+---------16일차---------------
+Hashmap에 Collections.synchronizedMap(Hashmap)하면 한번에 한번만 접근 가능하게 함
+
+inner class = 익명 클래스
+클래스 이름 $ 붙으면 이너클래스로 약속함
+관례적으로...
+innerClass는 로컬일 때 같은 이름으로 여러번 생성될 수 있음
+인스턴스 클래스 : 외부클래스$내부클래스.class
+스태틱 클래스 : 외부클래스$내부클래스.class
+이름있는 로컬 : 외부클래스$N$내부클래스.class
+이름없는 로컬 : 외부클래스$N.class
+
+인스턴스 클래스 : A a = new A();
+				A.B b = a.new B();
+				b.멤버
+스태틱 클래스 : A.C.멤버 (static이라 멤버변수 생성 안해도 됨)
+
+내부 스태틱 클래스일 때, 멤버 모두 스태틱으로 하자
+
+inner class에서 접근할 수 있는 지역변수는 final만 된다.
+but, Java8 부터는 final을 생략해도 접근 가능(final이다).
+
+inner Class에서는 class 밖의 변수들을 접근할 수 있지만 수정은 불가능. 무조건 final만 접근 가능하다
+inner class는 거울같음
+
+열거 타입(enum) 결국 클래스임
+열거 형은 그 안에 있는 타입만 접근 가능
+컴파일될 때 enum의 이름으로 클래스 파일이 생겨짐.
+그리고 public 상태의 상수도 추가됨
+- values() 열거 형의 내용들을 배열로 추출한다.
+- valueOf() 괄호 안의 상수를 호출
+switch 문에 사용할 경우, case에 열거형이름은 안쓰고 상수명만 써서 비교
+ex) case SPRING: ... case FALL:...
+
+정규식
+p505

@@ -1,0 +1,180 @@
+[ JSP(JavaServer Pages)에서의 학습 내용 ]
+태그 기반으로 동적인 웹페이지를 구현하는 기술
+HTML 문서에,w 서버단에서 수행시킨 결과가 포함되어야 하는 부분에 JSP 태그와 약간의 Java코드로 구현하는 기술
+최초 요청시 Servlet으로 변환된다.
+	- WAS에는 JSP를 Servlet으로 변환하는 프로그램(JSP 컨버터)을 내장하고 있음
+	- 최초 작성 및 수정했을 때 Servlet으로 변환
+
+Servlet은 java가 주인공
+	그 안에 html로 표현
+JSP는 html이 주인공
+	그 안에 java로 표현
+
+※ 서블릿만 Java Resources에 만듬
+
+---------1일차---------------
+
+태그 안에 java 코드 넣고 싶을 때 <%= jsp코드 %>
+
+
+---------2일차---------------
+    <<  스켈레톤 소스 설정  >>
+Preferences-Web-JSP Files-Templates에서 NEW JSP File (html) 를 클릭 new
+Name : HTML5 JSP
+Context : New JSP
+Description : HTML5 기반의 JSP 생성
+Pattern : 
+<%@ page language="java" contentType="text/html; charset=${encoding}"
+    pageEncoding="${encoding}"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="${encoding}">
+<title>JSP 예제</title>
+</head>
+<body>
+${cursor}
+</body>
+</html>
+
+(1) 스크립트태그 - Java 코드를 포함
+	지시자 이용한 것은			하나의 servlet으로 묶어서 나감
+	<%@		%>	:	지시자	converter
+	★<%!		%>	:	선언문 - 멤버/메서드 정의 (멤버 변수가 됨)
+	★<%=		%>	:	표현식 - 주어진 식 수행, 표현 동적인 수행 결과를 웹으로 보임	--> EL(표현언어)
+		서블릿으로 바뀔 때 내용물이 out.print의 아규먼트로 들어감
+	★<%			%>	:	수행문 - 모든 자바코드	(지역 변수가 됨)
+			<h3><%= ++local_v %></h3>	: 수행문 태그보다 좀더 간단하게 접근 가능하다
+			<h3><% out.print(++local_v); %></h3>
+	<%--	   --%>	:	주석(서블릿으로 변환x)
+		자바스크립트 주석은 <!-- -->
+	내장객체(9개)
+(2) 액션태그 - 이미 기능이 전해진 태그
+	액션태그 이용한 것			각자 servlet 만들어지기 때문에 독립적임
+	<jsp:forward	/>, <hjsp:forward	>...</jsp:forward>	forward로 가서 html 가져옴
+	<jsp:include	/>, <hjsp:include	>...</jsp:include>	 긁어오는거
+	<jsp:param		/>										불러온거에 파라미터 넣어주는거
+
+	<jsp:useBean	/>, <hjsp:useBean	>...</jsp:useBean>
+	<jsp:setProperty/>
+	<jsp:getProperty/>
+	
+(3) 커스텀태그 - 직접 만들어서 사용하는 액션태그
+
+=   JSP가 Servlet으로 바뀐거 확인방법
+C:\projects\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\work\Catalina\localhost\edu\org\apache\jsp\jspexam
+
+- out.write는 문자형태만 출력 가능
+- JSP는 Servlet으로 변환될때 모든 영역에 대하여 try catch가 자동으로 추가됨
+
+JSP : 서버에서 실행되어 결과를 사용자에게 보여줌
+Javascript : 클라이언트의 웹 브라우저 화면에서 실행되어짐
+
+get 방식은 쿼리없어도 요청가능. default가 get이야
+
+- Javascript 안에 jsp를 동적으로 넣을 수 있음!
+- jsp는 무조건 httpsession이 만들어짐 default가 true임
+- exception은 항상 사용한다는 보장이 없기 때문에 에러가 나야 발동. 디폴트로는 사용못함 항상 true, false 줘야함
+
+       << MVC >>
+Servlet은 JSP에게 수행된 결과를 넘겨야함. = 객체 공유
+
+
+
+---------3일차--------------- p28에 있음
+request.setCharacterEncoding("utf-8");
+이걸 getParameter 전에 해야함
+
+el?만의 내장 객체임
+${ requestScope.member1.name }
+이건 객체 전달받은거에서 
+requestScope 없어도 돼.
+	${ member1.name }		=	member1.getName과 같음.
+	
+request 객체에서 찾고 없으면,
+session에서도 찾아
+el만의 내장 객체임
+
+${ param.name } 뒤에꺼는 그냥 호출한 이름
+
+
+---------4일차---------------
+C- onnection Pool = DBCP
+- 예전에 디비 접속하는 구문을 context.xml에 미리 넣었던거
+- (Dynamic web project)EDU, MVC든 톰캣에 등록한거니까 둘다 똑같이 접근 활용 가능
+- 톰캣(was)은 EDU, MVC를 Context라고 지칭.
+- Servlet Context 객체는 서버가 기동될 때 각자 생성(각 하나)되고 서버 죽을 때 같이 죽음
+	- 모든 클라이언트가 접근 가능
+	- Servlet Context 객체를 application이라함.
+	- request, sesstion, application 이라는 내장객체를 사용
+	- useBean 같은 액션 객체 사용도 가능
+
+표준액션태그와 스크립팅의 변화
+- <jsp:useBean id="member1" class="model.vo.MemberVO" scope="request"/>
+	= (MemberVO)request.getAttribute("member1");
+- <jsp:getProperty name="member1" property="name" />
+	= vo.getName
+
+★ 액션태그를 많이 안쓰고 EL이나 스크립팅 태그는 많이 사용함
+
+~biz라고 되있는것들
+controller를 도와주는 service Model이구나
+
+				<< 파일 업로드 >>
+클라이언트의 저장장소에 존재하는 파일을 서버로 올리는 작업
+요청 방식을 반드시 POST로 해야 한다.
+1. 업로드하려는 파일을 선택하는 방법
+	- <form> 태그의 서브 태그인 <input> 태그에 type="file" 이라는 속성을 지정하여
+	파일 선택 입력 폼을 제시한다.
+	- <form> 태그에 enctype="multipart/form-data"라는 속성 지정
+			쿼리 문자를 서버로 저장할 때, 다중 파티션으로 나눠서 전송.
+2. HTML5 에서 제공하는 Drag&Drop 기능을 이용하는 방법
+
+(1) 멀티파트에 대한 이해
+(2) 업로드되는 파일의 내용을 읽고 서버의 적당한 디렉토리에 파일로 저장하는 Servlet의 구현 방법
+	= 직접 구현
+	= Apache Open Source IP
+	= Servlet 3.0 부터 추가된 @PartConfig 라는 애노테이션과 API를 사용하는 방법
+
+일반 폼데이터 전달하는 파티션과 업로드되는 파일에 대한 파티션과 차이점
+Content-Type: application/octet-stream
+
+- @MultipartConfig : 파일을 요청받을 수 있게 환경설정해주는 역할-
+	location= : 파일 write할 때, 저장 경로
+	maxFileSize= 추출 파일의 최대 크기
+
+- 폴링 : ajax에서 계속 정보를 끌어오는 기술. ex) sns 계속 바뀌는 광고들...
+	광고 없어도 계속 가져오긴 함
+- 롱폴링 : 광고 없음 계속 줄 때까지 기다림
+
+- localhost에서 내려온 애가 다른 서버에 있는 정보를 ajax가 끌어올수없음.
+그래서 ajax 직접적으로 rss 주소를 입력 처리 불가능
+- 세임오리진 폴리시 : 동일 오리진 정책
+	request.opne('get', '직접주소', true) 안돼!
+		: content 보호하기 위해 직접주소 안되게 만듬
+		: 내가 만든걸 아무나 못사용하게 하기 위해
+Cross Domain 기법
+- 프락시 서버 : rss같은 정보를 가지고오는 jsp를 서버에 둬야함.
+
+http://lusiea.tistory.com/entry/JSP-JSTL-XML-%ED%83%9C%EA%B7%B8
+http://blog.lifeis.gift/335
+JSTL
+
+
+
+---------5일차---------------
+★Same Origin Policy(SOP)
+- 브라우저에서 보안상의 이유로 동일 사이트의 자원(Resource)만 접근해야한다는 제약.
+- AJAX는 이 제약에 영향을 받으므로 Origin 서버가 아니면 AJAX로 요청한 컨텐츠를 수신할 수 없음
+
+(HTML5 표준!)
+★CORS
+컨텐츠를 제공하려는 사이트에서 "이 페이지는 누구라도 허용가능합니다~"라고 정보를 접근하려는 클라이언트에게 제공하는 것.
+	응답헤더에 정의(컨텐츠를 제공하는 곳에서):
+		Response.addHeader("Access-Control-Allow-Origin, "*")	<- *이기에 모두다 가능 범주
+	기상청은 결국 이 응답헤더를 안넣었다는 것을 알 수 있었다.
+
+페이징할 때 활용함.
+테이블의 번호 추출
+1. select rownum rnum, id, writer, title, content, writedate, cnt from news;
+2. select * from (select rownum rnum, id, writer, title, content, writedate, cnt from news);

@@ -1,0 +1,150 @@
+[ 프레임워크 ]
+---------1일차---------------
+
+- 고급 API
+- 반제품(DIY) 형태의 프로그램 모듈
+- 일반적인 API들과 같이 상속, 객체 생성 등의 활용도 하면서 + 처리하고자 하는 기능(원하는 기능)을 XML 문서로 작성해서 적용하도록 한다.
+- 프로그래밍 -> 100% 코딩
+  프레임워크를 이용한 프로그래밍 -> 50% 코딩 + 50% 문서작성(XML) 
+	--> 선언적인 프로그래밍
+결론적으로 개발자의 코딩량을 줄여줌
+- 스프링(모든 프로그램을 아우름... 광범위함) 로드존스가 만듬
+	DI, MVC 위주로 공부 
+- Maven(Java 프로그래밍시 사용하는 개발 도구 중 하나)
+	- 보통 web 프로젝트마다 정보(확장 라이브러리, 추가 확장 API)를 각각 가지고 있어야함. 그런걸 한번에 관리해줌
+	- 이클립스가 시작되면 얘가 실시간으로 업데이트 반영해서 관리해줌
+  추가로 사용하려는 확장 API 관리
+- Log4J(자바를 위한 로그 프레임워크)
+- MyBatis(DB 연동 프레임워크, 의존성이 낮고 유지보수성을 높이는 프레임워크임) 소스를 많이 줄일 수 있음
+
+- sql 파일을 xml에 독립적으로 만들어 둔다
+- select, update 등등 각각의 태그로 만듬.
+- 그 안에 컨텐트로 수행시킬 sql명령어를 줘
+어떤 객체에 담을지 resultType을 해둬야함
+단, DB 테이블의 컬럼 명과 동일하게 해줘야 함
+
+parameterType 은 파라미터로 줄 객체 이름임
+
+resource라는 폴더를 src에 넣어 
+Mybatis는 xml이름을 아무렇게나 지어도 되지만 형식상 mybatis-config.xml이라 함
+※ src 바로 아래에 xml파일 넣고, jar는 WEB-INF의 lib에
+
+
+아래 경로에서 로그를 확인 할 수 있음ㅋ
+C:\projects\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\logs
+
+---------2일차---------------
+[스프링]
+플러그인을 설치해야 댐
+이클립스 window에서 Eclipse Marketplace에서 sts 검색해서 찾음
+
+- 선언적 프로그래밍, 유지보수성(확장성), 패턴기반의 프로그래밍 패턴을 대신 해주는 것이 스프링
+팩토리 패턴(붕어빵 툴), 싱글톤 패턴, 빌더 패턴(융통성)= config 사용 xml그런거
+
+DI, MVC, JDBC, AOP .....
+
+DI(Dependecy Injection) - 의존성 주입 
+	--> IoC(Inversion Of Control) - 제어의 역습 = 필요한 객체를 new로 생성하는게 아니라 요구하면(xml or 애노테이션(스프링 2.5부터 사용)) 스프링이 알아서 해줌 -> DI 컨테이너(객체 관리해줌. 이게 있어서 new 안해도 객체 알아서 해주는거)
+
+- pom.xml을 통해 확장 라이브러리를 관리함 
+- bean.xml (= DI container) : bean 객체 대한 id와 클래스 정보를 가지고 있어서 사용자가 new 선언하지 않아도 사용할 수 있게 접근 도와줌
+
+- new ClassPathXmlApplicationContext를 하게 되면 객체를 생성하기 전에 미리 생성해 둠
+- property name="name" -> setName호출하는거임
+- factory.getBean은 싱글톤이다.
+- bean.xml 뒤에 scope="prototype"해주면 싱글톤 아님
+	- 객체를 요구할 때마다 생성함
+- 상황에 따라 싱글톤으로 할 것인지 각각 새로 만들것인지 개발자 능력
+- getBean의 리턴 값은 object임
+- (DateVo)factory.getBean("hong")
+	= factory.getBean("hong", DateVo.class);
+형변환 방법을 사용하지 않아도 가능.
+- factory-method : 해당 클래스 내에 팩토리 메서드를 내장하고 있을 경우 사용함
+
+상단에 xmls:p="~" 이런 정보를 넣어야함
+처음에 bean xml 만들때 finish말고 next 눌러서 선택가능
+- <property name ="하하"/>
+	= bean 안에 p:name="하하"도 가능
+
+	= c:_0, c:_1, c:_2	아규먼트 순서
+	= c:num, c:name  	변수명
+outputter-ref : 또다른 빈객체를 전달할 것이다.
+= setOutputter(FileOutput fo) 이거
+
+---------3일차---------------
+c는 생성자 매개변수 값
+p는 setter에 들어갈 값
+[autowire]
+찾고자 하는 타입, 변수와
+set변수이름 도 있어야함
+프로퍼티 명이 Bean id
+기준은 Bean id 임!
+autowire를 사용하면 해당 xml 안에 있는 bean id를 보고 필요한 정보를 추출
+
+byName은 변수 이름보고 넣어 set 이름도 같아야함
+byType은 타입형을 보고 넣어
+constructor은 생성자 안에 타입명보고
+
+애노테이션 : 
+@Component("myFood") : 해당 클래스를 bean으로 만드는 것임 -> 클래스 위에 쓰는거임 디폴트는 앞글자 소문자!
+★★중요 이름으로 찾고 타입으로 찾고!
+@Autowired 아래 변수에 값을 알아서 넣어 달라	-> 변수 위에 쓰는거임
+	1. 이름으로 찾아봄
+	2. 타입으로 찾아봄
+	3. 없으면 안해 (required=false)를 줬을 경우에는 false를 호출
+	- 찾고자하는 타입이 인터페이스일 때, 그 인터페이스를 참조하는 자식 값을 가져온다.
+	- 만약 상속하는 자식이 여러개면 에러
+@Qualifier(value= 특정 xml에 있는 이름)를 해주면 다른 속성의 내용을 넣어 줄 수 있음 = 잘 안씀 -> 변수 위에 쓰는거	그리고 이거 쓰려면 바로 위에 @Autowired이것두 있어야 함
+	- 이걸 사용하면 setter가 없어도 됨
+xml에 있는 <contextLcomponent-scan base-package="패키지명"/>  : src를 기준으로 @가 있는 위치를 설정
+@Resource(name="bean id이름"); 적용해 괄호 안에 없으면 이름으로 찾고 타입으로 찾아
+	-> Java 애노테이션
+
+[ @를 사용할 것인가 bean을 사용할 것인가 ] 
+	값 변경이 자주 될 것들은 bean으로 설정해 두는게 좋음 - @보다 세세한 설정을 할 수 있음.
+	값 변경이 거의 없는 것들은 @이거로 간단하게 만들어 두는게 좋음
+
+@Component
+	@Controller	: MVC 패턴에서 컨트롤러 역할의 객체 정의
+	@Service		: 이런저런 기능의 서비스 모델 객체
+		@Scope("prototype")을 하면 각각을 생성한다. 싱글톤 아님
+	@Repositary	: DAO 역할의 객체
+	: 모두 Component와 같지만 빈 역활을 구체적으로 명시함
+
+	
+[ Spring MVC 구성요소 ]
+@RequestMapping("/news.do") : 주소입력하면 실행됨. 클래스, 함수 앞에 붙이기 가능
+	- 괄호 안에 method=RequestMethod.GET하면 get요청받을 때 실행되는 메소드임!
+	- 그리고 이것도 디폴트가 get
+- request.getAttribute("javax.servlet.forward.request_uri) 이거로 실제 클라언트가 요청할 때 사용한 uri를 넣어줌
+
+---------4일차---------------
+- BackAndController에 있는 메서드들을 핸들러 메서드, 컨트롤러 메서드라 한다.
+- 메서드 안에 매개변수가 있을 때, 그 매개변수가 속성이 됨. /inser1.do?pageno=3 ...
+	메서드의 리턴값에서 단지 값하나만 추출해도 될 때, return 값으로 String만 적어서 내보내면 그 String이 곧 View임
+
+- ModelAndView는 결과값들을 안의 문서로 넘김
+- addObject는 jsp로 전달할 데이터를 보관
+- 전달된 형태에 따라 String, int로 변환해서 던짐. string형인데 못받았다면 null
+- int형인데 못받았으면 null을 int로 해야하는데 그럴 수 없으니 에러
+- setViewName() 은 응답에 사용될 jsp로 보냄.
+- 왜 jsp면 springmvc-servlet.xml 설정에 의함
+	prefix는 jsp가 담겨져있는부분
+		suffix는 .jsp 확장자 설정
+- @RequestParam은 query를 던질 때 속성을 지정함
+	value="...",			= 생략하고 값하나만 있으면 value의 속성으로 인식 함 ex) @RequestParam("num"), 기본적으로 매개변수 이름과 같은거로 정해짐
+	required=true/false 기본값은 false,		= 생략해도 상관없다면 false 그래서 쿼리가 없으면 null이 설정됨
+	defaultValue="..."						= 생략될 경우 기본으로 들어가야할 것. 이 때 required는 false
+												value가 지정되어 있다면 false
+
+전달 받는 query가 많을 때는 vo로 한 번에 담아서 처리 할 수 있다.
+
+- filter는 servlet 처리를 도와주는 도구임. 필요하면 구현해서 등록한 후 사용하면되고 필요없음 삭제해
+- 클라이언트로 부터 jsp가 요청되기 전, 요청되고 나서 수행될 수 있음
+- filter는 유지보수하기 좋음
+
+스프링은 기존 자바로 짜뒀던 것을 쉽게 효율적으로 만들어 주는 것임!! 어떤 형식으로 소스가 흐르는가 중점적으로 노력!
+
+웹프로젝트가 각각의 context
+직접 쿼리 추출하는 일은 없음.
+Dispath가 다 만들어서 줘.

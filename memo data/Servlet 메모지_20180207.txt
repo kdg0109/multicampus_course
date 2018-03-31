@@ -1,0 +1,98 @@
+---------1일차---------------
+
+Java Resources - src에서 Create Servlet
+클라이언트에게 소스가 옴
+1. 웹 클라이언트 :  처리되는 위치가 클라이언트
+	- html5 : 도큐먼트에 파싱해서 렌더링
+	- css : 렌더링된걸 스타일화
+	- javascript, jquery, ajax : 
+2. 웹 서버 : 서버에서 수행시키고 결과를 클라이언트에게 전달
+	- 원조 : CGI(Common Gateway Interface)
+			HTTP 서버에서 필수로 지원하는 스펙, 구현언어가 정해지지 않음
+			UNIX, LINUX : C
+			Windows : Visual Basic
+			표준이 없다보니 API 가 지원되지 않음
+			1995년부터 소개된 기술로서 1997년 정도에 위기감을 갖게 된 멀티프로세스 기반으로 클라이언트 요청 처리 : 지금은 쓰레드로 처리
+			--> Fast CGI
+	- Servlet(요청받음) : 자바기반의 웹서버기술
+	- JSP(응답함) : 수행할 때 저절로 Servlet으로 바뀜
+	asp, nodejs, php 등등
+
+console을 보면 이런걸 볼 수 있음.
+ org.apache.catalina : servlet에서는 catalina가 메인이다.
+setContentType에 잘못된 정보를 입력하면 브라우저에서 확인할 때 각 브라우저마다 다른 방법으로 사용자에게 정보를 제공해 준다.
+.
+
+======== Servlet과 Applet ========
+Servlet(Server Side Applet)
+Servlet의 확장자: .class
+		- 실행 파일이 클라이언트로 옮겨져서 실행됨
+		- applet과 .class가 겹쳤기에 --> 매핑 URL 정의하여 .class를 구분함 (jsp는 .jsp로 구분)
+			bServlet("") 여기가 매핑 영역
+		- servlet은 클래스가 아닌 매핑영역으로 구분하는 것임
+		- 매핑 영역을 여러개 두고 싶을 때 배열처럼 { }에 집어넣을 수 있음(매핑 영역은 반드시 \가 앞에 붙어있어야 함)
+Applet : servlet 나오기 전 사용함
+		- 확장자는 .class
+		- 예전에 확장자가 .class면 모두 Applet으로 했었음
+		- 실행 파일이 서버에 있어서 실행됨.
+
+통신 방식 : GET, POST
+	- default가 GET
+	- 로그인 회원가입처럼 개인정보가 중요한 것들은 POST로
+
+- Spring -> servlet/jsp이 기반
+
+- 405 에러 : HTTP method GET is not supported by this URL. get 방식에 맞지 않는다는 오류
+
+- a 태그는 get 방식만 가능
+
+
+---------2일차---------------
+- get은 header만 넘김
+- post는 body 안에 데이터를 요청데이터를 넘겨짐
+	서버에서는 inputStream 객체를 오픈하여 body 내용을 읽음. 그렇기 때문에 setCharacterEncoding("utf-8")로 설정해서 읽음. 안해도 	영어는 안깨져. 한글이 깨져
+
+Javascript에서 함수의 첫번 째 알파벳을 대문자로 하면 생성자라는 관례적인 뜻
+
+    << 상태정보 유지 기술 >>
+Session
+
+Session도 Servlet도 한번 객체를 생성하면 삭제 되기 전까지 싱글톤으로 
+
+- 메모리 밖에서 선언되는 멤버 변수는 메모리영역을 계속 유지하지만, 여러 클라이언트들에 의해 공유 그래서 상수처럼 변하지 않는 것을 이용할 때 사용
+
+- 세션을 객체 상태로 보관해야 각자의 장바구니를 가질 수 있음
+- 지역변수는 각자 장바구니이긴 하지만, 새로고침하면 다 삭제되니까 오직 하나만 담을 수 있는 장바구니임
+
+★세션에 여러 정보를 보관할 때,
+배열, VO(Value Object) 클래스 :값을 보관하는 클래스 (Bean을 만들어서 여러 정보 넣고 필요할 때마다 추출하고)
+
+---------3일차---------------
+요청 재지정 : 클라이언트에서 요청한 페이지 대신 다른 페이지를 클라이언트가 보게 되는 기능
+Forward : 서버단에서 바꿔서 클라이언트에게 보여줌
+			항상 동일한 웹어플리케이션(localuri) 안에 있는 것만 가능. ex) edu 안에 있는거만
+			기본적으로 /edu/ 가 내장되있음
+Redirect : 다른거 보여준다고 클라이언트에게 다시 요청하고 클라이언트는 다시 요청
+			외부에 있는 주소도 요청가능
+
+★★★웹 개발할 때 jdbc를 추가하려면 jdbc 드라이버를 WEB-INF/lib에 넣어야함
+
+- write는 null이 있을 때 nullpoint 나옴
+- println은 null 있어도 댐
+DAO : (Data Access Object) 데이터 접근 오브젝트 ex) insert( ), list( ) 를 작성해둔다
+VO : (Value Object) bean 같은거 
+	== DTO Data Transfer Object
+
+DAL : (Data Access Layer)
+
+Connection Pool 등록하려면 Servers의 context.xml에 내용 넣어야 함
+	- 속도도 빠르다
+	- 적용하면 미리 connection 객체를 만들어둠
+	- 그래서 connectDB가 필요없음
+
+//Connection Pool 을 연결하기 위한 context
+Context context = new InitialContext();
+//네이밍 서버(톰캣 안)에 접속하여 oraDB라는 애가 있는지 데이터 소스 객체를 찾아달라
+//이때도 객체 직렬화를 함
+DataSource ds = (DataSource) context.lookup("java:comp/env/jdbc/oraDB");
+conn = ds.getConnection();

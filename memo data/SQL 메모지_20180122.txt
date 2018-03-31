@@ -1,0 +1,503 @@
+[함수]  : 함수 설명
+
+---------1일차---------------
+RDBMS & SQL
+
+oracle
+오라클 설치와 환경 세팅 : manager
+Port for 'Oracle Database Listener': 1521
+자바에서 오라클로 접속할 때 접근하는거임. 기본이 1521 바꿀 수 있다.
+이 리스너가 서비스로 실행되기에 잘되가가 에러뜨면 서비스 재실행
+
+sqldeveloper 에서 경로 설정해주기
+C:\Program Files\Java\jdk1.8.0_151
+
+cnn system/
+
+alter user hr account unlock;
+alter user hr identified by hr;
+
+create user sqltest identified by sqltest = 패스워드;
+grant connect, resource to sqltest;
+
+create user work identified by work;
+grant connect, resource to work;
+
+create user jdbctest identified by jdbctest;
+grant connect, resource to jdbctest;
+
+select * from all_users;
+
+select * from user_views 는 만들어져있는 테이블을 좀더 상세하게 볼 수 있다. view 도 볼 수 있음
+
+run = ctrl + enter
+
+---------2일차---------------
+- C(Insert) R(select) U(update) D(delete) =  CRUD = (게시판 짤 줄) 아느냐?
+- Query
+Select
+- DDL : 정의 DDL 은 자동커밋
+Create Table
+Drop Table
+Alter Table
+- DML : 수정
+Insert
+Delete
+Update
+- DCL : 제어
+Commit
+Rollback
+Grant
+Revoke
+
+CHAR(4)	: 고정 길이 4바이트
+VARCHAR(100) : 가변 길이 100바이트
+한글을 저장하려면 x3 임. 3바이트니까
+
+- start 일괄수행시키려는 파일명 (확장자 생략 가능)
+ex) start C:\projects\SQ\data1
+- DBMS 데이터베이스 관리 시스템 ex)오라클
+- 우리가 배우는건 RDBMS 관계형 DBMS
+- 키 밸류형 데이터 스토어는 몽고디비
+HashMap과 비슷
+- 클라이언트--서버형 (C/S형)
+서버에서 클라이언트로 요청한 데이터를 DB에서 받아 클라이언트로 보내는 데이터를 "resultSet"이라 한다.
+
+- 트랜젝션 : 하나의 데이터 처리
+- primary key는 default로 not null을 가지고 있음
+- 테이블 정의를 변경한 후에 원래대로 복구할 수 없다.
+- BEGIN TRANSACTION ~ COMMIT;
+~ 사이의 명령어들을 하나의 트랜젝션으로 모아둘 수 있음.(ORACLE, DB2는 이렇게 못함)
+- Select 추출하려는 열명의 리스트 또는 *
+  From 테이블 명
+  [Where 추출 행 데이터]
+  [Group by ]
+  [having ]
+  [order by ]
+
+=  별명 부여
+- select에서 *을 안 쓰고 명시적으로 하나하나 나열하면 가독성과 수행속도면에서 좋다
+- select _id as "아이디" <-- 별명 부여 가능
+또는 select _id as USER_ID
+""를 주면 공백을 포함할 수 있으나 공백이 필요할 시 "_"로 대체하여 사용하는 것이 좋다
+- "" 안써도 되지만 블랭크를 주거나 대소문자 구분해야할 때 ""해줘야함
+
+- 문자열이나 날짜 상수를 적으려면 반드시 '' 작은 인용부호를 넣어야함
+
+- DB에서의 상수= 데이터 값= 자바의 리터럴
+- 자바에서의 상수 = 변경 못하는 상수 값
+
+= 중복제거 Distinct
+ex) Select DISTINCT goods from goods
+- null도 데이터임 중복제거하게 될 경우, null하나만 남겨짐
+- DISTINCT 칼럼명, 칼럼명..
+복수의 열을 중복 제거 할 수 있음
+여러 개 전체에 대해서 같은게 있느냐 비교
+Distinct A, B라면 A와 B가 하나의 데이터가 되어 중복제거
+
+from, where, select 순으로 프로그램이 진행됨
+
+
+select * from tab 오라클이 내장하고 있는 테이블. (현재 디비에 저장되어있는 테이블을 보여줌)
+
+- 항상 from은 생략 할 수 없다!
+
+- dual은 하나의 테이블과 열을 가지고 있는 테이블임 dummy 테이블
+- [함수] sysdate 날짜 정보를 추출 ex) select sysdate from dual;
+- sysdate는 함수인데 괄호를 안쓰는 함수다
+- Null과 연산하면 모든 값은 Null이다.
+무한대 값
+- [함수] nvl(값, 대치 값) 값이 null일 경우, 대치 값으로 대치한다.
+- 비교연산자 <> 과 != 과 같은 의미(비등가)
+- desc 테이블명 : 테이블에 있는 값들의 이름, 유형을 알 수 있음
+- 문자열형 데이터의 대소를 비교할 때는 숫자와 다른 규칙이 적용된다. 대표적인 규칙이 '사전식 순서'다. ex) 가마, 가방 기술  <- 사전순
+- desc 내림차순 점점 내려감 
+- asc 오름차순
+
+- null과 등가연산을 할 수 없다.
+따라서 null있는 것만 꺼내려면 is null로 비교한다. ex) where buy_price IS NULL
+null이 아닌 애만 추출 is not null
+ex) where buy_price IS NOT NULL
+
+- OR 연산자보다 AND 연산자가 우선순위가 높기에 괄호를 이용하여 처리한다.
+
+nvl, nvl2, case 로 조건문 구현
+
+산술 함수
+-    +, -, *, / (% 나머지 연산은 없다.)
+-    ABC(수치) 절대 값
+-    Mod(숫자, 나눌 숫자) = 나머지 값나옴
+sql Server에서 사용 불가능
+-    Round(대상 숫자, 반올림 소숫점 자릿수)
+반올림 자릿수가 2라는 것은 소숫점 자릿수를 두 번째까지 보여준다는 것이니까
+3에서 반올림한다는 뜻
+-    Trunc(대상 숫자, 소숫점 자릿수)
+얘는 반올림없이 그냥 자릿수까지
+-    Round와 Trunc는 날짜를 기준으로도 자를 수 있다(년, 월, 일). 일을 기준으로 오후라면 Round는 +1일 해줌
+
+---------3일차---------------
+round(5678.666, 0) 은 1의 자리 숫자까지 나타나겠다는 것이고 소숫점 첫번째 자리수에서 반올림.
+문자열 함수
+자바와 다르게 인덱스가 1부터 시작
+|| : 파이프라인 기호 --> 문자열 결합 기호
+concat(문자열, 문자열) --> 문자열 결합
+3개 이상의 문자를 결합할 때는 ||을 해야한다. 
+오라클은 기본적으로 UTF-8이기에
+- lengthb('가')를 하면 3(바이트)가 나타난다.
+- length('가')는 1 길이가 나타난다.
+- lower(문자열) 소문자로 바꿈
+- upper(문자열) 대문자로 바꿈
+- replace(대상 문자열, 치환 전, 치환 후)
+대상 문자열에서 치환 전 문자열이 있다면 그 문자열을 치환 후 문자열로 바꿈
+ex) replace('abc철수abc', 'abc', 'ABC') -> ABC철수ABC
+치환될 문자열 없으면 그냥 대상 문자열로 나타남
+- substr(대상 문자열, 잘라내기 위치, 잘라낼 위치에서 부터 몇까지) 첫번 째 인덱스는 1부터
+- substrb는 바이트 기준임
+ 바이트에서 온전한 바이트만 추출
+oracle만 substr임 다른건 substring
+- replace와 ||을 사용할 때 null을 참조한 값이 버전에 따라 다르게 나타날 수가 있다.
+- Instr(문자열, 'a', 2) 문자열의 a 두번째 위치가 어디냐
+- Current_date는 현재 날짜 오라클은 안댐
+Sysdate 사용하는게 좋음
+- extract 날짜 요소 추출
+- next_day(sysdate, 2) 이렇게 숫자도 됨. 월요일 추출
+- coalesce(데이터, 'null입니다')
+데이터가 null일 때, 'null입니다'를 추출
+- coalesce(데이터1, 데이터2, 데이터3)
+데이터1이 null이면 데이터2
+데이터2도 0이면 데이터3
+- nvl2(comm, 'A', 'B');
+comm이 null이 아니면 'A', null이면 'B'
+- DECODE는 자바의 swicth 같은 것.
+- DECODE(표현식, 조건1, 결과1,
+				조건2, 결과2,
+				기본결과n)
+- case 표현식 when 조건1 then 결과1
+			when 조건2 then 결과2
+			else 결과 n
+end
+case는 비교식도 넣을 수있음
+- like % 패턴매칭
+- like 와 _(언더바)를 사용할 수 있음
+like 'abc_'; 임의의 문자 하나만 나오는 것 찾음
+- not in (데이터1, 데이터2) 제외할 데이터들
+
+검색 case와 단순 case 차이
+
+to_number 문자를 숫자로
+date 값 추출할때,  밑에 모두 다 가능
+18/01/11 or
+18-01-11 or
+18@01@11 or
+20180111 or
+180111
+순서만 일치 시키면 된다.
+to_date를 이용하면 순서 일치 안 시켜도 됨.
+to_date('01112018', 'ddmmyyyy');
+대소문사 상관 없음
+날짜에서 01월처럼 앞에 필요없는 0을 지울 경우, fm을 붙이면 01이 1로 바뀜
+fm붙인 그 뒤문자 모두 필요없는 0이 삭제
+
+---------4일차---------------
+order by 2 asc; 2라고 쓰면 select의 두번째 자리를 order by 한다는 뜻
+
+== 상식 ===========
+select to_char(to_date('910109', 'yymmdd'), 'day') as 요일 from dual;
+년도 표현하는 yy, rr
+- 예전에는 yy는 4자리, 2자리를 많이 사용함
+- 1999년까지는 yy만해도 무조건 19xx를 붙여줬다. 아무 이상이 없으니까
+(매카니즘 : 무조건 현재의 세기를 붙인다.)
+- 2000년으로 바뀌면서 그 매카니즘에 의해 1991까지 안 넣고 91까지만 넣으면 2091로 인식.
+- 따라서 새로운 년도 지정 방식을 만듬
+- 그것이 rr (00~49년까지는 현재 세기,
+50~99까지는 이전 세기를 붙임.
+
+결론, 과거의 년도를 두자리로 표현하고 싶으면 rr
+4자리로 표현하게 될 경우 상관 없음.
+오라클은 기본이 rr 그래서 where절에 년도를 두개만 표현해도 가능
+== 상식 끝 ===========
+
+round(date=아규먼트1, 아규먼트2)
+라운드의 첫번째가 date일 경우, 두번째 아규먼트로 year, month, day가 나올 수있음
+
+<< 집합연산 >>
+주의사항 : 1. 연산 대상의 레코드 열과 데이터 형 일치
+--- UNION 합집합
+select 절 union select 절 : union은 합집합을 표현하고 중복을 없앰
+union all : 중복해도 다 보여줌
+
+2. order by 절은 무조건 마지막에 하나
+
+--- INTERSECT 교집합
+
+
+--- EXCEPT 차집합 (앞 select에서 뒤 select를 뺌)
+오라클에서는 except 대신 minus를 사용
+
+<< 조인 >>
+- 오라클조인(오라클 전용), ANSI조인(표준)
+=================
+- DB를 구축할 때 여러개의 테이블로 나눠서 구축한다. 
+- DB 테이블은 실제 하드디스크(HDD)에 내장되있음
+- DB에서 처리할 수 있는 데이터의 크기는 제한이 존재
+- 테이블에 있는 데이터를 메모리에 올려 놓고 작업 (적당히 행단위로 잘라서 올림)
+- 테이블을 어떻게 설계할 것인가 (데이터 모델링)
+- 하둡은 처리할 수 있는 데이터에 제한이 없다. pc를 여러대 분산처리. 하둡 클러스터. 그래서 빅데이터에 활용
+=================
+실제는 각각이지만 테이블이 하나인 것처럼 접근해서 데이터 추출하는 것
+- join하게 되면 join에 사용된 칼럼이 두개로 각각 나타남
+but, select * 일 때, using을 사용하면 칼럼이 하나로만 나타남
+- RDBMS에서 오라클이 큼
+
+- 테이블 명에도 얼라이언스 명(별명) 쓸 수 있음 
+from emp e, dept d 이렇게 
+조인하려는데 where에 조인을 안주면 emp 값 x dept 만큼 처리를 함 구구단처럼 모든 행이랑 짝이 이루어진다.
+
+select e.ename, d.dname, d.dname
+from emp e join dept d 
+using (deptno); //  on e.deptno = d.deptno;
+ANSI조인(표준)은 on 뒤에 동일한 컬럼을 작성할 때, on 대신 using (동일 컬럼)으로 변경가능하다.
+- 그리고 select * 일 때, using을 사용하면 using된 칼럼은 단 하나만 나타난다.
+- 대신 using은 등가 연산이 못되서 활용이 좁음
+- using을 사용할 때, using에 들어갈 부분 앞에 테이블 명이나 별명. 이런거 안써야함
+
+조인 종류
+- inner 조인, outer 조인, 등가조인, 비등가조인, 크로스조인, self 조인
+- 크로스조인 = where이나 join 일치를 안한 것. 모~든 값이 연결된거임
+- 비등가조인 = using
+- 등가조인 = on or 일반 오라클 join
+- inner 조인 = 일치되는 행이 있을 때만 조인
+기본적인 조인이 거의 다 inner 조인(default임)
+- outer 조인 = 없더라도 추가하는 것 inner과 반대. 어디로 조인 기준을 잡을 것인가 left, right, 양쪽다 일치하는 것 없을 땐 full 조인
+left|right|full (outer) join
+- self 조인 = 자기 자신과의 조인 이름에 별명을 붙여서 검색한다. 이 때 using 및 on 사용하지 않는다.
+
+3개 이상의 테이블 join
+from ~ join ~ using() 또는 on 한다음에
+join ~ using() 또는 on 추가하면 된다.
+
+cross join은 성능 테스트할 때 사용함
+
+예전 오라클 outer join 방법
+= D.DEPT_ID(+)  부서가 없는 직원도 포함하라
+D가 부서니까 부서없는 직원보여라
+= E.DEPT_ID(+) 직원이 없는 부서도 포함하라
+E가 임원이니까 임원없는 부서도 보여라
+
++를 사용한 join 방법은 right, left 상관 없이 +가 안붙어 있는 애 기준으로 join한다
+
+- self 조인 = 자기 자신과의 조인 이름에 별명을 붙여서 검색한다. 이 때 using 및 on 사용하지 않는다.
+
+---------5일차---------------
+ERD의 그림처럼 연결이 안되있어도 join은 할 수 있다.
+문제. 호주에서 근무하고 있는 직원
+employee, department, location, country
+데이터를 직접적으로 꺼내기 위해서는 join해야함 
+
+ << 3장 집약과 정렬 p75 >>
+집약 함수
+= 집계 함수
+= 그룹 함수
+= 다중행 함수 다른건 모두 단일행 함수
+count, sum, avg, max, min 등등..
+- 공통점 = 여러 데이터를 하나의 결과로 출력
+n개의 데이터를 1개로 만든다.
+- 집약 함수를 사용할 수 있는 곳은 select, having 그리고 order by 밖에 없다.
+- 전달된 데이터에 null이 포함될 경우, 자동으로 제외
+- 컬럼명 대신 *을 주면 추출된 모든 것을 다 센다.
+	null이 포함된 값들이 있을 경우,
+	count(*)과 count(null포함 칼럼)의 결과값은 다르다.
+- null을 정해진 값으로 바꾸고 처리하고 싶다면, nvl을 이용하여 null일 때 임의값으로 바꾸고 나눗셈 계산이 됨.
+- count(distinct goods_classify)  중복값을 제외한 후, 행 수 계산
+	집약 함수의 인수에 키워드 사용
+
+<< group by >>
+group by <열명1, ... = 집약키 = 그룹화 열명
+group by 구는 테이블을 자르는 칼
+- group by는 정렬을 해주지 않는다.
+- select 구에 필요없는 열을 쓰면 안됨.
+	상수, 집약 함수, group에 쓰인 열 가능
+- group by에 별명 못쓴다. 실행 순서 땜에
+- where 절에 집약 함수 못씀 이것도 실행 순서 땜에
+- 집약(=집계) 함수를 사용할 수 있는 group by 절보다 where 절이 먼저 수행.
+- where 절은 전체 데이터를 group으로 나누기 전에 행들을 미리 제거시킨다.
+====== Query의 순서 =======
+=----- 작성 순서
+1. select			
+2 .from
+3 .where
+4. group by
+5. having
+6. order by
+
+=----- 실제 실행 순서
+1. from
+2. where
+3. group by
+4. having
+5. select
+6. order by
+
+해당 데이터가 있는 곳을 찾아가서                   (FROM)
+조건에 맞는 데이터만 가져와서                       (WHERE)
+원하는 데이터로 가공                                    (GROUP BY)
+가공한 데이터에서 조건에 맞는 것만                (HAVING)
+뽑아내서                                                     (SELECT)
+정렬                                                           (ORDER BY)
+
+실행순서는 문법, 권한 검사 순서이기도 하고,
+Alias 등록 순서 이기도 하다.
+
+
+별칭(Alias)
+FROM 절에서 테이블에 Alias를 사용했다면       (FROM Table1 AS T1)
+SELECT, ORDER BY 절에서 사용할 수 있고      (SELECT T1.Col1, ORDER BY T1.Col1)
+SELECT 절에서 컬럼에 Alias를 사용했다면       (SELECT T1.Col1 AS a)
+ORDER BY 절에서 사용할 수 있다.                   (ORDER BY AS a)
+
+순으로 프로그램이 진행됨
+===== Query의 순서 끝 ======
+
+	<< Having >>
+group by에 대한 조건!
+having 또한 group by에 사용된 select처럼 상수, 집약 함수, group by 절에 지정한 열명을 사용할 수 있다.
+- 집약 키(group by에 사용된 칼럼)에 대한 조건은 having보다 where에 사용하는 것이 더 좋다.
+★ where에 줄수 있는건 최대한 where에 주자.
+	1. 데이터를 집약할 때 sort하는데 데이터가 많을수록 처리가 느려짐.
+	2. 따라서 where에서 먼저 sort전에 행 단위로 자르고 잘린 데이터에서 집약 함수로 sort하는게 더 빠르다.
+
+	<< Order by >>
+- 기본 asc 오름차순임
+- null은 가장 처음 또는 마지막에 표시된다.
+항상 테스트 해봐야한다.
+- 집약 함수도 order by 절에 사용 가능
+- 인덱스도 사용가능하다. 여기서 인덱스의 기준은 selelct 에 있는 속성 순서임
+가급적이면 사용하지 않는게 좋음
+
+jar 는 자바관련된 클래스 파일
+
+---------6일차---------------
+    << Insert >>
+- insert into ~ values ~
+- create 할 때, default 값을 미리 정해주면,
+Insert에 값을 넣지 않으면 default로 들어간다. ex) default 0, default sysdate...
+- 모든 컬럼에 해당하는 데이터를 입력할 경우, 컬럼 명 리스트 생략하고 테이블 뒤에 바로 values 넣을 수 있음.
+- 컬럼 명 리스트와 값 리스트의 갯수를 일치시켜야 한다. 
+- Insert 순서는 상관없고 매칭만 잘 시켜주면 된다.
+- SQL이 실패할 경우 테이블 내 데이터에는 변동 없다.
+- 복수행 Insert는 에러날 시 확인이 어렵기 때문에 데이터 하나당 한 번씩 Insert하는게 좋다.
+- 테이블 복사하는 방법
+Insert into 복사받는 테이블 (칼럼리스트) select 복사할 칼럼리스트
+from 복사테이블;
+- 테이블 복사할 때, values로 다른 테이블에서 여러 함수로 정제한 데이터를 가지고 복사 넣을 수 있음.
+
+    << Delete >>
+- delete from 테이블 where 조건
+- truncate 테이블 : 모든 테이블을 다 삭제
+- delete는 삭제하고 commit을 해야 삭제.
+- truncate는 실제 HDD 하드 디스크에서 바로 삭제를 하기 때문에 되돌리기가 없음
+
+    << Update >>
+- 테이블 자체를 수정 : Alter
+- 테이블 내용 수정 : update
+- update 테이블 set 열명=값 where 조건 order by;
+- 복수 열 갱신
+1. update 테이블 set 수정될 값1 = 수정값1, 수정될값 = 수정값2 where 조건
+2. update 테이블 set(수정될값1, ...) = (수정값1, 2..) where 조건;
+오라클은 2번 방법은 안됨.
+ 
+- blob 사진, 파일 들을 바이너리로 저장할 수 있음 	binary large object 타입으로서 최대 4G
+- 그것이 rr (00~49년까지는 현재 세기,
+50~99까지는 이전 세기를 붙임.
+- yy는 항상 현재 세기
+- rr일 때 50~90은 과거
+- rr일 때 0~49 현재 세기
+- rr일 때 50~90은 과거
+
+	<< 트랜잭션 >>
+DDL 은 자동커밋
+- 데이터베이스에서 이루어지는 하나 이상의 갱신 처리를 모아서 부르는 명칭
+- 세트로 실행해야 할 하나 이상의 갱신 처리 집합
+
+- 오라클은 트랜잭션 묶음이 따로 있진 않고 update를 진행하고 commit를 해주면 된다.
+- 오라클을 접속하면 그 때부터 트랜잭션이 동작한다.
+- 세션 : 통신하기 위해 열어 놓은 계정
+- 두개의 세션이 하나의 테이블 내용에 접근할 때 트랜잭션이 끝나지 않은 상태라면 불일치 상황이 나타남
+- 오라클은 트랜잭션이 완료된 결과만 또다른 세션에게 보여준다. (대두분 DB가 이렇게 동작함)
+- 하나의 데이터에 대해 두 명 이상의 클라이언트가 변경하려고 할 때, 한명의 변경이 끝날 때까지 계속 대기한다.
+- commit을 해야 다른사람들도 내가 변경한 결과를 볼 수 있는것 commit 전에는 변경전 값만 봄
+- 먼저 요청한 클라이언트가 변경 정보를 완료하기 전까지 나머지 클라이언트는 대기상태
+
+
+테스트방법 : conn sqltest/sqltest
+프롬프트에서는 ; 꼭 붙여야함
+		<< ACID 특성 >>
+DBMS 트랜잭션의 지켜야할 4가지 약속
+- 원자성(Atomicity)
+- 일관성(Consistency)
+- 독립성(Isolation)
+- 지속성(Durability)
+
+	<<		뷰		>>
+- 뷰는 select 명령어를 저장해 둔 것
+- 테이블의 접근 제한을 둘 수 있다.
+- 또다른 테이블을 만드는 영역 소모를 덜 수 있다.
+- 컬럼 단위로 접근 제어 가능
+- 실제 저장소를 사용하지 않는다.
+- order by, having 절을 사용할 수 없음.
+순수한 하나일 경우만 가능하다. select from where 이런거
+뷰 만들기 권한 주기
+grant create view to sqltest, work, jdbctest;
+뷰 삭제
+drop view 뷰이름
+
+	<<		서브쿼리		>>
+- 일회용 뷰(select 문)이다.
+- 뷰와 달리 select 문 실행 종료 후에 제거된다.
+- 테이블 안에 있기 때문에 inner query라고도 함. 밖에 있는건 main query
+- 수행 순서는 sub query 부터임.
+- from에서 사용하는걸 inline view
+- 다양한 곳에서 다 사용할 수 있는 서브쿼리
+
+	<<		스칼라 서브쿼리		>>
+- 반환 값이 단일 값이 되는 서브쿼리
+where 에서는 집약=집계 함수를 사용할 수 없기에 where에 집약함수를 사용한 select 쿼리로 넣을 수 있다.
+- 스칼라 서브쿼리는 항상 오른쪽에 있어야 한다.
+- 스칼라 서브쿼리를 괄호로 묶어서 사용해야 한다.
+
+- 다중행 서브쿼리
+=    ---> in(=ANY)
+>    ---> >ALL, >ANY
+<    ---> <ALL, <ANY
+<>  ---> not in
+
+commit delete 
+
+---------7일차---------------
+- select 절에 뽑아야할 컬럼들이 각자의 테이블에 접근해야할 경우, 조인
+- select 절에 뽑아야할 칼럼들이 다 하나의 테이블에 존재할 때 서브쿼리로 접근
+
+- 상관 서브쿼리
+- 작은 그룹 내에서 비교가 필요할 때 사용
+각각의 분류 별로 구분하여 뽑기
+ex) 상품분류 별로 평균단가를 구하기
+- 서브 쿼리가 수행되는 동안에 메인 쿼리의 칼럼이 실행된다.
+- 메인의 테이블을 서브쿼리에서도 사용
+- 메인되고 서브 수행이 반복으로 수행이 된다.
+
+from S1 먼저 하고
+where에서 서브 쿼리 실행
+( S1.goods_classify와 S2와 같은지 확인)
+S1이 가지고 있는 행의 갯수만큼 반복
+p180-182 보고 이해
+- 서브쿼리 내 상관명의 생존 범위.
+유효 범위는 서브쿼리 내 (이중 for 비슷)
+
+	<< exists 술어 >>
+- 조건의 결과가 true, false냐 확인
+- in/ not in으로도 처리 가능
+where exists (조건 = 상관 서브쿼리) : 조건에 맞는 select 추출
+- exists의 인수는 항상 상관 서브쿼리를 지정한다.
+- exists의 인수는 항상 'Select *'를 지정한다.
+
+varchar 와 varchar은 같다.
