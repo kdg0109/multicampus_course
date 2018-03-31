@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // 5초 후에 코드를 실행합니다.
+            setTimeout(function () {
+                var value = $('select > option:selected').val();
+                //var value = $('#valtest').val();
+                alert(value);
+               // $('#valtest').val('ㅋㅋㅋㅋㅋ');
+                $('#valtest').val(function(p1, p2) {
+                	return p2+"hahaha";
+                });
+            }, 5000);
+        });
+    </script>
+</head>
+<body>
+    <select>
+        <option>Apple</option>
+        <option>Bag</option>
+        <option>Cat</option>
+        <option>Dog</option>
+        <option>Elephant</option>
+    </select>
+    <input id="valtest" type="text">
+</body>
+</html>
+
+
+

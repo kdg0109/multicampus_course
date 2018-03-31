@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+/* 	#headerbox{
+	  width: 900px;  
+	  margin: 10px; 
+	}
+	#dropbox{
+	  float: left;
+	  width: 450px;
+	  height: 500px;
+	  margin: 10px;
+	  border: 1px solid #999999;
+	}
+	#picturesbox{
+	  float: left;
+	  width: 450px;
+	  margin: 10px;
+	  border: 1px solid #999999;  
+	  text-align:center;
+	} */
+	img {
+		border: 1px solid #999999;
+		box-shadow:4px 4px 2px grey;
+		margin: 20px;
+	}
+</style>
+</head>
+<body>
+<body>
+	<h1>원하는 상품을 클릭해주세요!! 마구마구^^</h1>
+	<hr>
+	<section id="picturesbox">
+		<img id="image1" width="120" height="120" src="g1.png">
+		<img id="image2" width="120" height="120" src="g2.png"> 
+		<img id="image3" width="120" height="120" src="g3.png"> 
+		<img id="image4" width="120" height="120" src="g4.png"> 
+		<img id="image5" width="120" height="120" src="g5.png"> 
+		<img id="image6" width="120" height="120" src="g6.png">
+		<img id="image7" width="120" height="120" src="g7.png">
+		<img id="image8" width="120" height="120" src="g8.png"> 
+		<img id="image9" width="120" height="120" src="g9.png"> 
+		<img id="image10" width="120" height="120" src="g10.png"> 
+	</section>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		var numA = window.prompt("첫 번째 숫자를 입력해주세요.");
+		var numB = window.prompt("두 번째 숫자를 입력해주세요.");
+		var oper = window.prompt("한 개의 연산자를 입력해주세요.", "+, -, *, /, % 중 하나");
+		var result;
+		var check = true;
+		
+		if(isNaN(numA) || isNaN(numB)) {		//둘다 숫자가 아니냐? 그럼 true
+			alert("숫자를 입력하세요");
+		}else{
+		
+			switch(oper)
+			{
+				case '+' : 	
+								result = parseInt(numA)+parseInt(numB);
+								break;
+				case '-' : 	
+								result = numA - numB;
+								break;
+				case '*' : 	
+								result = numA * numB;
+								break;
+				case '/' : 	
+								result = numA / numB;
+								break;
+				case '%' : 	
+								result = numA % numB;
+								break;
+				default :
+								alert("+, -, *, /, % 만 입력 가능");
+								check = false;
+			}
+			if(check)
+				document.write("<h2>"+ numA+" 와 "+numB+" 의 "+oper+" 연산 결과는 "+result+" 입니다.</h2>");
+		}
+		
+		
+	</script>
+</body>
+</html>

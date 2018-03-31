@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+        $(document).ready(function () {           
+            $('h1').css('background', 'Orange')
+            	.filter(':even').css('color', 'White')
+            		.filter(':odd').css('color', 'Red')
+            			.end().css('border', '2px solid green');
+        });
+    </script>
+</head>
+<body>
+    <h1>Header-0</h1>
+    <h1>Header-1</h1>
+    <h1>Header-2</h1>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<body>
+	<h1>원하는 상품을 클릭해주세요!! 마구마구^^</h1>
+	<hr>
+	<section id="picturesbox">
+		<img id="image1" width="100" height="80" src="g1.png">
+		<img id="image2" width="100" height="80" src="g2.png"> 
+		<img id="image3" width="100" height="80" src="g3.png"> 
+		<img id="image4" width="100" height="80" src="g4.png"> 
+		<img id="image5" width="100" height="80" src="g5.png"> 
+		<img id="image6" width="100" height="80" src="g6.png">
+		<img id="image8" width="100" height="80" src="g8.png"> 
+		<img id="image9" width="100" height="80" src="g9.png"> 
+		<img id="image10" width="100" height="80" src="g10.png"> 
+		<img id="image11" width="100" height="80" src="g11.png"> 
+		<img id="image12" width="100" height="80" src="g12.png"> 
+		<img id="image13" width="100" height="80" src="g13.png">  
+		<img id="image15" width="100" height="80" src="g15.png"> 
+		<img id="image16" width="100" height="80" src="g16.png"> 
+		<img id="image17" width="100" height="80" src="g17.png"> 
+		<img id="image18" width="100" height="80" src="g18.png"> 
+		<img id="image19" width="100" height="80" src="g19.png">  
+		<img id="image21" width="100" height="80" src="g21.png"> 
+		<img id="image22" width="100" height="80" src="g22.png"> 
+		<img id="image23" width="100" height="80" src="g23.png"> 
+		<img id="image24" width="100" height="80" src="g24.png"> 
+		<img id="image25" width="100" height="80" src="g25.png">
+		<img id="image26" width="100" height="80" src="g26.png"> 
+		<img id="image27" width="100" height="80" src="g27.png">
+	</section>
+</body>
+</html>

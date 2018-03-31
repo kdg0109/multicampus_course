@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="model.vo.ProductVO" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSP 예제</title>
+<style>
+	h1 {
+		font-size : 3em;
+	}
+</style>
+</head>
+<body>
+	<h1>선택된 정보는 다음과 같습니다.</h1>
+	<hr>
+<%
+	ProductVO vo = (ProductVO)request.getAttribute("ProductVO");
+%>
+	<ul>
+	<li>회원 이름 : <%= vo.getCntApple() %></li>
+	<li>회원 계정 : <%= vo.getCntBanana()%></li>
+	<li>회원 암호 : <%= vo.getCntHalabong()%></li>
+	</ul>
+</body>
+</html>

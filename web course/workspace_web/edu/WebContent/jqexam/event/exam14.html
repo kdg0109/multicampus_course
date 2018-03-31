@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+    // 변수를 선언합니다.
+    var smartPhones = [
+        'iphone', 'ipod',
+        'windows ce',
+        'android', 'blackberry',
+        'nokia', 'webos',
+        'opera mini', 'sonyerricsson',
+        'opera mobi', 'iemobile'
+    ];
+    var deviceType;
+    for (var i in smartPhones) {
+        // 스마트폰 확인
+        if (navigator.userAgent.toLowerCase().match(new RegExp(smartPhones[i]))) {
+           deviceType = "mobile";
+        }
+    }
+        $(document).ready(function () {
+        	if( deviceType == "mobile") {
+            	$(document).on('touchstart', function (e) {
+                	var event = e.originalEvent;
+                	$('#output').html('<h2>start : ' + event.touches[0].screenX+','+ event.touches[0].screenY + '</h2>');
+                	e.preventDefault();
+            	});
+
+            	$(document).on('touchmove', function (e) {
+                	var event = e.originalEvent;
+                	$('#output').html('<h2>move : ' + event.touches[0].screenX+','+ event.touches[0].screenY + '</h2>');
+                	e.preventDefault();
+            	});
+
+            	$(document).on('touchend', function (e) {
+               		 var event = e.originalEvent;
+                	$('#output').html('<h2>end : ' + event.touches[0].screenX +','+ event.touches[0].screenY +'</h2>');
+                	e.preventDefault();
+            	});
+        	} else {
+        		alert("모바일 디바이스가 아닙니다.");
+        	}
+        });
+    </script>
+</head>
+<body>
+<h1>터치 이벤트 테스트</h1>
+<hr>
+<div id="output"></div>
+</body>
+</html>

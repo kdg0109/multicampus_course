@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Ajax테스트</title>
+      <script src="http://openapi.map.naver.com/openapi/v3/maps.js?clientId=Ue8pb96ysZYG6fgZvYzN"></script>  
+      <script>
+      function navermap() {
+         var lat_p = lat;
+         var long_p = lng;		
+         var mapOptions = {
+            center: new naver.maps.LatLng(lat_p, long_p),
+            zoom: 10,
+            minZoom: 1, 
+            zoomControl: true, 
+            zoomControlOptions: { 
+               position: naver.maps.Position.TOP_RIGHT
+            }
+         };
+         //맵을 그리겠다!! id로 map을 가진 위치와 mapOptions 설정으로!
+         var map = new naver.maps.Map('map', mapOptions);
+         //지도 위에 마커 설정
+         new naver.maps.Marker({
+            position: new naver.maps.LatLng(lat_p, long_p),
+            map: map
+         })
+      }
+      var lat, lng, addr;
+      function inputaddress() {
+         addr = window.prompt("주소를 입력하세요");
+         var xhr = new XMLHttpRequest();
+         xhr.onload = function(event) {			
+            if (xhr.status == 200) {
+               var str = xhr.responseText;
+               var data = JSON.parse(str);
+               lat = data.results[0].geometry.location.lat;
+               lng = data.results[0].geometry.location.lng;
+               document.getElementById('map').innerHTML="";
+               navermap();
+            }
+         };
+         var addr = 'http://maps.googleapis.com/maps/api/geocode/json?address='
+     	                           + encodeURIComponent(addr)
+         xhr.open('GET', addr, true);
+         xhr.send();
+      }
+      function clickme() {
+         document.getElementById('btn').onclick = inputaddress;
+      }
+      window.onload = clickme;
+      </script>
+   </head>
+   <body>
+      <h2>주소를 입력받아 지도를 출력하는 프로그램</h2>
+      <button id="btn">주소 입력</button>
+      <br>
+      <br>
+      <div id="map" style="width:700px; height:450px;"></div>
+   </body>
+</html> 

@@ -1,0 +1,45 @@
+package core;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/*	이름과 의견을 전달받아 다음과 같은 형식으로 브라우저에 출력하는
+서블릿을 구현한다.
+
+	XXX 님이 XXXX년 XX월 XX일에 남긴 글입니다.
+      ----------------------------------------
+      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+서블릿 클래스명 : core.VisitorServlet1
+URL 매핑명 : /visitor1
+요청 방식 : POST*/
+XXX 님이 XXXX년 XX월 XX일에 남긴 글입니다.
+
+@WebServlet("/visitor1")
+public class VisitorServlet1 extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String userName = request.getParameter("name");
+		String userText = request.getParameter("text");
+		
+		Date inDate = null;
+		
+		out.print("<h1>" 
+		+ userName + " 님이 "
+		+ userName + "년  "
+		+ userName + "월  "
+		+ userName + "일에 남긴 글입니다.</h1>");
+		
+		out.print("<h1>----------------------------------------</h1>");
+		out.print("<h1>" + userText + "</h1>");
+		out.close();
+	}
+}

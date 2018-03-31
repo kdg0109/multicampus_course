@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>비 ajax 통신과 ajax 통신 비교</title>
+</head>
+<body>
+	<h1>AJAX 통신 테스트</h1>
+	<a href="content/sample.txt">하이퍼링크로요청</a>
+	<br><br>
+	<a href="content/sample.txt"><img src="../images/duke1.png" width="100"></a>
+	<br><br>
+	<button onclick="location.href='content/sample.txt';">버튼을클릭하여요청</button>
+	<br><br>
+	<button onclick="requestAjax();">버튼을클릭하여요청(AJAX사용)</button>
+	<output id="result"></output>
+	<script>
+	function requestAjax() {
+		var req = new XMLHttpRequest();
+		req.onreadystatechange = function() {		
+			/* alert("req.readyState : "+req.readyState); */
+			var result = document.getElementById("result");
+			if(req.status == 200 && req.readyState == 4)
+				result.innerHTML = req.responseText; 
+		}	
+		/* alert("0"); */
+		req.open("GET", "http://www.youtube.com", true);	
+		/* alert("ㅎ1"); */
+		req.send();	
+	}
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

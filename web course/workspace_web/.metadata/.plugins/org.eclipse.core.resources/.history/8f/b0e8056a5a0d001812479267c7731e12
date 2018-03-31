@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>성적 결과</title>
+<style>
+	p color {
+		color : orange;
+	}
+</style>
+</head>
+<body>
+	<h1>요청을 처리하는 동안 오류가 발생했어요..</h1>
+	<hr>
+<p>결과 : <color><%= request.getParameter("result")%></color></p>
+<a	href="/mvc/calcForm.html">입력 화면</a>
+</body>
+</html>

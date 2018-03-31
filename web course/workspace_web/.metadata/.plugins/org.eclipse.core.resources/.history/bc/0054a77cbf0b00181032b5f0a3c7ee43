@@ -1,0 +1,7 @@
+package model;
+
+public class VisitorVO {
+	private String name;
+	private String writeDate;
+	private String memo;
+}

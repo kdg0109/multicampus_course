@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavsScript 맛보기</title>
+</head>
+<body>
+	<script>
+		document.write("<h1>구구단표</h>");
+		document.write("<table border=2 width=50%>")
+		for (var i = 1; i <= 9; i++) {
+			document.write("<tr>");
+			document.write("<td>" + i + "</td>");
+
+			for (var j = 2; j <= 9; j++) {
+				document.write("<td>" + i * j + "</td>");
+			}
+
+			document.write("</tr>");
+		}
+
+		document.write("</table>");
+	</script>
+</body>
+</html>

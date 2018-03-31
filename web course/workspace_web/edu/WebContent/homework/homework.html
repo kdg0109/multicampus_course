@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8">
+<title>HTML 학습</title>
+<style>
+
+header {
+ 	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 40px;
+	background: linear-gradient(135deg, rgba(241, 231, 103, 1) 0%,
+		rgba(241, 231, 103, 1) 9%, rgba(254, 182, 69, 1) 44%,
+		rgba(255, 137, 82, 1) 76%, rgba(255, 137, 82, 1) 100%);
+ 	padding: 30px; /*테두리로 부터 안쪽까지 거리*/
+ 	font-family: "HY견고딕", serif;
+}
+h2{
+	margin: 0px
+}
+header h1 {
+	text-align: center;
+	color: black;
+	font-size: 3em;
+	text-shadow: 3px 3px 5px #ffffff;
+}
+ 
+header nav {
+	padding: 20px;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+	margin: 33px;
+}
+
+a:hover {
+	font-weight: bold;
+}
+
+article {
+	border: 2px dotted #ff8951;
+	border-radius: 10px 10px 10px 10px;
+	padding: 20px;
+	width: 60%;
+	margin: 20px auto;
+}
+
+#pet1 {
+	padding-top: 20px;
+}
+
+table {
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+table, th, td {
+	border: 1px solid orange;
+}
+
+th {
+	color: black;
+	background-color: #ffe680;
+	text-shadow: 0 0 4px orange;
+}
+
+img {
+	width: 90%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+img:hover {
+	opacity: 0.5;
+}
+
+aside {
+	padding-bottom: 20px;
+	width: 60%;
+	margin: 10px auto;
+}
+
+video {
+	width: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+figcaption {
+	font-size: 1em;
+	text-align: center;
+}
+
+footer {
+	background-color: #333333;
+	width: 100%;
+	margin-left: auto; /*박스 위치*/
+	margin-right: auto; /*박스 위치*/
+	text-align: center; /*테두리 안의 글자 위치*/
+	padding: 30px; /*테두리로 부터 안쪽까지 거리*/
+	color: white;
+}
+
+footer p {
+	font-style: italic;
+	font-weight: bold;
+	font-size: 1.3em;
+}
+
+</style>
+</head>
+<body>
+	<header>
+		<h1>HTML 학습</h1>
+		<nav>
+			<a href="http://www.w3.org/">W3C</a> 
+			<a	href="http://www.w3schools.com/">W3CSCHOOLS</a>
+			<a	href="https://jquery.com/">jQuery</a>
+		</nav>
+	</header>
+	<section>
+		<article id="pet1">
+			<h2>나의 소개</h2>
+			<ul>
+				<li>이름 : 김 동건</li>
+				<li>직업 : 학생</li>
+				<li>관심기술 : 빅데이터</li>
+				<li>취미 : 검도</li>
+			</ul>
+
+		</article>
+		<article id="pet2">
+			<h2>올해 재미있게 읽은 책</h2>
+			<table border="1">
+				<tr>
+					<th>제목</th>
+					<th>장르</th>
+				</tr>
+				<tr>
+					<td>안드로이드 프로그래밍 정복</td>
+					<td>컴퓨터</td>
+				</tr>
+				<tr>
+					<td>웹프로그래밍 기초</td>
+					<td>컴퓨터</td>
+				</tr>
+				<tr>
+					<td>SQL 더 쉽게, 더 깊게</td>
+					<td>컴퓨터</td>
+				</tr>
+			</table>
+		</article>
+		<article id="pet3">
+			<h2>자랑하고 싶은 우리동네의 아름다운 곳</h2>
+			<p>21세기 수도권 항공운송의 수요를 분담하고 동북아시아의 허브(Hub) 공항으로서의 역할을 담당하기 위하여
+				건설되었다.</p>
+			<figure>
+				<img src="/edu/공항.jpg">
+				<figcaption>인천 앞바다에 있는 공항</figcaption>
+			</figure>
+		</article>
+	</section>
+	<aside>
+		<video src="kumdo.mp4" controls poster="image.png">
+		</video>
+	</aside>
+	<footer>
+		<p>이 문서는 김 동건에 의해 HTML5와 CSS3 기술을 사용하여 2018년 1월 29일에 작성하였습니다.(ver
+			1.0)</p>
+	</footer>
+</body>
+</html>

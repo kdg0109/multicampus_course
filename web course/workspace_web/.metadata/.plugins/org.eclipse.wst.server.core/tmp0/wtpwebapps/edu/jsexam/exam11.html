@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="util.js"></script>
+</head>
+<body>
+	<h2>자바스크립트함수(1)</h2>
+	<hr>
+ 	<script>
+		/* print(add(), "h2");
+		print(add(10), "h3");
+		print(add(10, 20), "h4"); */
+	</script>
+	<script>
+ 		print(add(), "h2");
+		print(add(10), "h3");
+		print(add(10, 20), "h4");
+		var add = function (num1, num2) {
+			var result = 0;
+			if(num1 == undefined || num2 == undefined) {
+				result = 0;
+			}else {
+				result = num1 + num2;
+			}
+			return result;
+		}
+
+		print(add(100, 200), "h4");
+	</script>
+	
+	<script>
+		print(add(), "h2");
+		print(add(10), "h3");
+		print(add(10, 20), "h4");
+	</script>
+</body>
+</html>

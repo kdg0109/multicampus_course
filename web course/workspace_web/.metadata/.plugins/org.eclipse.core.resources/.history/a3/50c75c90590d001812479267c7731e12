@@ -1,0 +1,37 @@
+package controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import model.vo.MemberVO;
+
+@WebServlet("/ms")
+public class MemberServlet extends HttpServlet {
+	protected void toGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int firstNum = Integer.parseInt(request.getParameter("firstNum"));
+		String cal = request.getParameter("favorite_star");
+		int lastNum = Integer.parseInt(request.getParameter("lastNum"));
+		
+		if(cal.equals("+")){
+			
+		}else if(cal.equals("-")){
+			
+		}else if(cal.equals("*")){
+			
+		}else{
+			if(lastNum == 0){
+				
+			}else{
+				
+			}
+		}
+		
+		request.setAttribute("member1", vo);
+		request.getRequestDispatcher("/jspexam/memberView.jsp").forward(request, response);
+	}
+}

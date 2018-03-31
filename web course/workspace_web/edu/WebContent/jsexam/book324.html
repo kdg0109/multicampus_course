@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavsScript 맛보기</title>
+</head>
+<body>
+	<h1 id="test">This is a heading.</h1>
+	<script>
+		function func(flag) {
+			if(flag)
+				document.write("페이지가 적재된 후에 write()를 사용하면 다시 씌어집니다.");
+			else
+				document.getElementById("target").innerHTML = 
+					"페이지가 적재된 후에 write()를 사용하면 다시 씌어집니다.<br>";	//textContent은 태그도 그냥 문자열임
+		}
+		document.write("<h2>ㅋㅋㅋㅋ</h2>");
+	</script>
+	<output id="target"></output>
+	<button onclick="func(true)">눌러보세요!</button>
+	<button onclick="func(false)">눌러보세요!</button>
+</body>
+</html>

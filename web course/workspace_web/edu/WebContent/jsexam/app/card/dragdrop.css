@@ -1,0 +1,21 @@
+#headerbox{
+  width: 900px;  
+  margin: 10px; 
+}
+#dropbox{
+  float: left;
+  width: 450px;
+  height: 500px;
+  margin: 10px;
+  border: 1px solid #999999;
+}
+#picturesbox{
+  float: left;
+  width: 450px;
+  margin: 10px;
+  border: 1px solid #999999;  
+  text-align:center;
+}
+div {
+	padding : 5px;	
+}

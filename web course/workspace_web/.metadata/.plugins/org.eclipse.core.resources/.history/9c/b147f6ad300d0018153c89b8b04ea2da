@@ -1,0 +1,4 @@
+<%@  page pageEncoding="UTF-8"  %>
+<div>
+include 지시자에 의해 포함된 내용입니다.
+</div>

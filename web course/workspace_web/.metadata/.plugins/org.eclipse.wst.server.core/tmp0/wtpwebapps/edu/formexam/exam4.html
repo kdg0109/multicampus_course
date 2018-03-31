@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <title> 텍스트 라벨 예제 </title> 
+    <meta charset="utf-8">  
+  </head>
+  <body>
+    <h2>텍스트 라벨을 클릭해도 됩니다.</h2>
+    <form id="formtest" method="get" action="form_app.js"> 
+      성별: &nbsp;
+      <label>남성
+      <input type="radio" name="gender" id="male" value="male">
+      </label> 
+      <label for="female">여성</label>
+      <input type="radio" name="gender" id="female" value="female">
+      <br>
+      <hr>
+      <input type="submit" />
+      <input type="reset" />
+      <input type="button" value="그냥버튼" onclick="alert('ㅋㅋㅋ');"/>
+    </form>
+    <label for="male" form="formtest">남성입니다...</label>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

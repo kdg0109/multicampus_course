@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="model.vo.ProductVO" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSP 예제</title>
+<style>
+	h1 {
+		font-size : 3em;
+	}
+</style>
+</head>
+<body>
+	<h1>선택된 정보는 다음과 같습니다.</h1>
+	<hr>
+<%
+	ProductVO vo = (ProductVO)request.getAttribute("ProductVO");
+%>
+	<p>선택된 사과의 개수 : <%= vo.getCntApple() %></p>
+	<p>선택된 바나나의 개수 : <%= vo.getCntBanana()%></p>
+	<p>선택된 한라봉의 개수 : <%= vo.getCntHalabong()%></p>
+	<hr>
+</body>
+</html>

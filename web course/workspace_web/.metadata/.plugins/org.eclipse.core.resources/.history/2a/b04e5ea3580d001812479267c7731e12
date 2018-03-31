@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>연산할 두 개의 숫자를 입력하고 연산자를 선택하시오.</h1>
+	<hr>
+	<input type="text" name = "name" placeholder="이름을 입력하세요" class="input" required>
+	<input id=favorite_star name=favorite_star type=text list=favorite_star_list search>
+	<input type="text" name = "name" placeholder="이름을 입력하세요" class="input" required>
+			
+	<datalist id=favorite_star_list>
+		<option value=윤아>
+		<option value=태연>
+		<option value=유리>
+		<option value=제시카>			
+	</datalist>
+</body>
+</html>

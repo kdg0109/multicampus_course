@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .first { color:Red; }
+        .second { color:Pink; }
+        .third { color:Orange; }
+    </style>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+           /* 	$('h1').each(function(index,data) {
+        		var color = $(data).css('color');
+        		 alert(color); 
+        	});      */       
+       		var color = $('.frist').css('color');
+        	alert(color);  
+        });
+    </script>
+</head>
+<body>
+    <h1 class="first">Header-0</h1>
+    <h1 class="second">Header-1</h1>
+    <h1 class="third">Header-2</h1>
+</body>
+</html>

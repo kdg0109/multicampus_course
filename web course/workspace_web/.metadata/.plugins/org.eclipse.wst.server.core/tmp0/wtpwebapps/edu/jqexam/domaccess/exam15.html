@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+           /*  $('h3').css('backgroundColor', 'pink');          
+            $('.group').css('color', 'cyan'); 
+            $('#target').css('color', 'yellow');   */
+            $('h3').css('backgroundColor', 'pink')
+                            .filter('.group').css('color', 'cyan')
+                                         .end().filter('#target').css('color', 'yellow');
+          /*   $('h3').css('backgroundColor', 'pink').filter('.group').css('color', 'cyan').end().filter('#target').css('color', 'yellow'); */
+        });
+    </script>
+</head>
+<body>
+    <h3>Header-0</h3>
+    <h3 id='target'>Header-1</h3>
+    <h3>Header-2</h3>
+    <h3 class='group'>Header-3</h3>
+    <h3 class='group'>Header-4</h3>
+    <h3 class='group'>Header-5</h3>
+</body>
+</html>
+
+
+

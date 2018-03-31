@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="util.js"></script>
+</head>
+<body>
+	<h2>자바스크립트 객체(리터럴방식)</h2>
+	<hr>
+	<script>
+	<!-- 객체 리터럴 방식으로 eat 속성과 name이라는 속성이 있다. eat은 할당된 것이 function이라 eat은 메서드라 한다.
+	//		하나의 객체 안에 있는 멤버라 하더라도, 다른 멤버를 접근한다고 할 때, this.name이런식으로 명시적 참고한다.
+	//-->
+		var obj = {
+						name : "듀크",
+						eat : function (food) {
+									print(this.name + "가 "  + food + "(을)를 먹어요!", "h3");
+								}
+					};
+
+		obj.eat("피자")
+		obj.eat("치킨");
+		obj.name = "턱시";
+		obj.eat("바나나");
+		obj.subject = "자바스크립트";
+		obj.study = function () {
+							print(this.name+ "가 " + 
+									this.subject + "를 학습합니다.", "h3");
+						};
+		obj.study();
+		delete obj.subject;
+		obj.study();
+		print(obj, "h1");
+		obj["name"] = "안드로보이";
+		obj.eat("사과");
+		hr();
+		for(var key in obj)
+			print(key + " === " + obj[key], "h4");
+	</script>
+</body>
+</html>

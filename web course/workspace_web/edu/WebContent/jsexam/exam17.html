@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="util.js"></script>
+</head>
+<body>
+<script>
+var student = {
+		name : '둘리',
+		kor : 90, eng : 80, math : 95,
+		getSum : function () {
+			return this.kor+this.eng+this.math;
+		},
+		getAvg : function () {
+			return this.getSum()/3;
+		},
+		toString : function () {
+			return this.name +"학생의 총점은 "+ this.getSum()+"입니다.";
+		}
+}
+var student1 = {
+		name : '또치',
+		kor : 70, eng : 100, math : 90,
+		getSum : function () {
+			return this.kor+this.eng+this.math;
+		},
+		getAvg : function () {
+			return this.getSum()/3;
+		},
+		toString : function () {
+			return this.name +"학생의 총점은 "+ this.getSum()+"입니다.";
+		}
+}
+var student2 = {
+		name : '도우너',
+		kor : 100, eng : 80, math : 80,
+		getSum : function () {
+			return this.kor+this.eng+this.math;
+		},
+		getAvg : function () {
+			return this.getSum()/3;
+		},
+		toString : function () {
+			return this.name +"학생의 총점은 "+ this.getSum()+"입니다.";
+		}
+}
+print("결과1 : " + student, "h2");
+print("결과2 : " + student1, "h2");
+print("결과3 : " + student2, "h2");
+</script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Opacity</title>
+<style>
+.mybox {
+	position:relative;
+	width:300px;
+	height:150px;
+	background-image:url("bg1.jpg");
+	background-repeat:no-repeat;
+	background-position:left top;
+}
+.noopa {
+	position:relative;
+	top:20px;
+	background-color:#fff;	
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:60px;
+	font-weight:800;
+	color:#000;
+	text-align:center;
+	vertical-align:middle;
+}
+
+.opa1 {
+	position:relative;
+	top:20px;
+	background-color:rgba(255,255,255,0.5);	
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:60px;
+	font-weight:800;
+	color:#000;
+	text-align:center;
+	vertical-align:middle;
+}
+
+.opa2 {
+	position:relative;
+	top:20px;
+	background-color:#fff;	
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:60px;
+	font-weight:800;
+	color:rgba(0,0,0,0.5);
+	text-align:center;
+	vertical-align:middle;
+}
+
+</style>
+</head>
+
+<body>
+<div class="mybox">
+<h1 class="noopa">CSS3</h1>
+</div>
+<div class="mybox">
+<h1 class="opa1">CSS3</h1>
+</div>
+<div class="mybox">
+<h1 class="opa2">CSS3</h1>
+</div>
+</body>
+</html>

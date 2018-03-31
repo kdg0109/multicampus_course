@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="util.js"></script>
+</head>
+<body>
+	<h2>자바스크립트 객체(리터럴방식)</h2>
+	<hr>
+	<script>
+		var student = {
+				name : '둘리',
+				kor : 90, eng : 80, math : 95,
+				getSum : function () {
+					return this.kor + this.eng + this.math;
+				},
+				getAvg : function () {
+					return this.getSum()/3;
+				},
+				toString : function () {
+					return this.name + "학생의 총점은 " +
+												this.getSum() + "입니다.";
+				}
+		};
+		print("총점 : " + student.getSum(), "h3");
+		print("평균 : " + student.getAvg().toFixed(2), "h3");
+		print(student, "h3");
+		print("결과 : " + student, "h3");
+	</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>exam5</title>
+
+<script type="text/javascript">
+
+function time(){
+		setInterval(function(){
+			var dat = new Date();
+			document.getElementById('result').innerHTML = dat.toLocaleTimeString();	
+		},1000);
+		
+	};
+</script>
+</head>
+<body>
+<input type="button" value="시간출력" onclick="time()"/>
+<div id="result"></div>
+</body>
+</html>

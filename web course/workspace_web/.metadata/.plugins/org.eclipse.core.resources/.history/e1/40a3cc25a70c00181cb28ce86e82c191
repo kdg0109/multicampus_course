@@ -1,0 +1,9 @@
+package core;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet("/ShareObjectServlet1")
+public class ShareObjectServlet1 extends HttpServlet {
+
+}

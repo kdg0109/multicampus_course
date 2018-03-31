@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	function showImg() {
+		document.getElementById("imgDiv").innerHTML = 
+			"<img src='sundie.png'/>"
+	}
+	function hideImg() {
+		document.getElementById("imgDiv").innerHTML = ""
+	}
+</script>
+</head>
+<body>
+<input type="button" value="이미지 보이기" onclick="showImg();"/>
+<input type="button" value="이미지 숨기기" onclick="hideImg();"/>
+<div id="imgDiv"></div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+package model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
+
+/**
+ * (Data Access Object) 데이터 접근 오브젝트 ex) insert( ), list( ) 를 작성해둔다
+ */
+public class VisitorDAO {
+	public boolean insert(VisitorVO vo){
+		ConnectDB obj = new ConnectDB();
+		Connection conn = obj.getConnect();
+		PreparedStatement pstmt = null;
+		pstmt = conn.prepareStatement("insert into visitor values (?, sysdate, ?)");
+		return false;
+	}
+	
+	public ArrayList<VisitorVO> list(){
+		
+		return null;
+	}
+}

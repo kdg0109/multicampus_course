@@ -1,0 +1,19 @@
+﻿<%@ page contentType="text/html; charset=utf-8"   %>
+<!DOCTYPE html>
+<html>
+<HEAD>
+<meta charset="UTF-8">
+<TITLE>JSP 예제</TITLE>
+</HEAD>
+<BODY>
+<%
+	LocalDate id = LocalDate.now();
+%>
+</BODY>
+</HTML>
+
+
+
+
+
+

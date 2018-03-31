@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+var img = document.createElement('img');
+img.src='sundie.png';
+img.width=300;
+img.height=300;
+function show(){
+			document.body.appendChild(
+			document.createElement("br"));
+	document.body.appendChild(img);
+}
+function hide(){
+	document.body.removeChild(img);
+}
+</script>
+</head>
+<body>
+<input type="button" value="이미지 보이기" onclick="show()">
+<input type="button" value="이미지 숨기기" onclick="hide()">
+</body>
+</html>

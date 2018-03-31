@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FORM 입력 예제</title>
+<meta charset="utf-8">
+</head>
+<body>
+	<h3>다양한 입력 폼</h3>
+	<fieldset>
+	<legend>HTML4 의 폼 태그</legend>
+	<form method="get" action="/sedu/queryget">
+	<!-- <form method="post" action="/sedu/querypost"> -->
+		<input type="number" name="number" required="required"/> <br> 
+		<input type="date" name="date" /> <br> 
+		<input type="time" name="time" /> <br> 
+		<input type="week" name="week" /> <br> 
+		<input type="month" name="month" /> <br> 
+		<input type="color" name="color" /> <br> 
+		<input type="url" name="url" /> <br> 
+		<input type="phone" name="phone" /> <br> 
+		성명 <input type="text" name="person" /> <br> 
+		암호 <input type="password" name="pwd" /> <br> 
+		성별 <input type="radio" name="gender" value="male" />남성 
+		     <input type="radio" name="gender" value="female" />여성<br> 
+		직업 <select name="job" size="1">
+			 <option>학생</option>
+			 <option>회사원</option>
+			 <option>공무원</option>
+			 <option>기타</option>
+		     </select>
+		<p>
+		구입희망분야(복수선택 가능)<br> - 분야 
+		<input type="checkbox" name="books" value="computer" />컴퓨터 
+		<input type="checkbox" name="books" value="economy" />경제 
+		<input type="checkbox" name="books" value="common" />상식<br> 
+		건의 사항 <br>
+		<textarea name="comments" rows="10" cols="40" /></textarea>
+		</p>
+		<input type="hidden" name="test" value="noinputdata"/>
+		<input type="file" name="uploadfile" multiple="multiple"/>
+		<hr>
+		<input type="submit" value="ㅋㅋㅋ" /> 
+		<input type="reset" value="ㅠㅠㅠ" />
+	</form>
+	</fieldset>	
+</body>
+</html>

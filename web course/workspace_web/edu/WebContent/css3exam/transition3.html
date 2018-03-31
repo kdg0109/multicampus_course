@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS3 : transition</title>
+    <style type="text/css">
+       div {
+            width: 100px;
+            height: 100px;
+            margin: 30px;
+        }
+
+        .over-square {
+            background: #0076ff; 
+            transition: background-color 4s;
+        }
+        .over-square:hover {
+            background: #ffb100;
+        }
+
+        .move-square {
+            background: #0076ff;
+            /* 여러가지 transition을 한번에 지정 */      
+            transition: width 5s, background 3s ; 
+        }
+        .move-square:hover {          
+            width: 200px;
+            background: #ffb100;
+        }
+    </style>
+</head>
+<body>
+<div class="over-square"></div>
+<div class="move-square"></div>
+</body>
+</html>

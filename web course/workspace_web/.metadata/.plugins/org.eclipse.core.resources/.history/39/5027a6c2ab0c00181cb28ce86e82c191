@@ -1,0 +1,14 @@
+package core;
+
+import java.io.IOException;
+
+@WebServlet("/share2")
+public class ShareObjectServlet2 extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		CountVO vo = new CountVO();
+		vo.setNumber(1000);
+		request.setAttribute("count1", vo);
+		request.getRequestDispatcher("/jspexam/countView1.jsp").forward(request, response);
+	}
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	img {
+		border: 1px solid #999999;
+		box-shadow:4px 4px 2px grey;
+		margin: 20px;
+		width: 140px;
+		height: 120px;
+	}
+</style>
+</head>
+<body>
+	<h1>원하는 상품을 클릭해주세요!! 마구마구^^</h1>
+	<hr>
+	<a id="p001" href="/mvc/cart?pid=p001">
+	<a id="p002" href="/mvc/cart?pid=p002">
+	<a id="p003" href="/mvc/cart?pid=p003">
+</body>
+</html>

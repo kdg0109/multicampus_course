@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div 
+        {
+            margin:10px;
+            border:3px Solid Black;
+            border-radius:10px;
+            float:left;
+            width:120px; height:120px;
+            text-align:center;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+        // 변수를 선언합니다.
+        var xml = '';
+        xml += '<friends>';
+        xml += '    <friend>';
+        xml += '        <name>웹 표현</name>';
+        xml += '        <language>CSS</language>';
+        xml += '    </friend>';
+        xml += '    <friend>';
+        xml += '        <name>웹 앱</name>';
+        xml += '        <language>JavaScript</language>';
+        xml += '    </friend>';
+        xml += '    <friend>';
+        xml += '        <name>웹 문서</name>';
+        xml += '        <language>HTML</language>';
+        xml += '    </friend>';
+        xml += '</friends>';
+
+        $(document).ready(function () {
+            // 변수를 선언합니다.
+            var xmlDoc = $.parseXML(xml);
+            $(xmlDoc).find('friend').each(function (index, data) {
+                // 변수를 선언합니다.
+                var output = '';
+                output += '<div>';
+                output += '    <h1>' + $(data).find('name').text() + '</h1>';
+                output += '    <p>' + $(this).find('language').text() + '</p>';
+                output += '</div>';
+
+                // 출력합니다.
+                document.body.innerHTML += output;
+            });
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

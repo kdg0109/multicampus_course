@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSP&Servler과제</title>
+</head>
+<body>
+	<h1>글을 남겨 주세요</h1>
+	<hr>
+	이름 : <input type="text"></input>
+</body>
+</html>

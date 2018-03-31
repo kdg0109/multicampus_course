@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Test</title>
+    <style type="text/css">
+        div.resize {
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+            resize: both;
+            overflow: auto;
+            margin-bottom: 30px;
+        }
+
+        div.horizontal {
+            resize: horizontal;
+            max-width: 600px;
+            min-width: 100px;
+        }
+
+        div.vertical {
+            resize: vertical;
+            max-height: 300px;
+            min-height: 100px;
+        }
+
+        /* Column */
+        div.multi-column {
+            -moz-column-count: 4;
+            -moz-column-gap: 1em;
+            -moz-column-rule: 1px solid black;
+            -webkit-column-count: 4;
+            -webkit-column-gap: 1em;
+            -webkit-column-rule: 1px solid black
+        }
+
+        div.backsize {
+            background: url(astro-127531.png);
+            -webkit-background-size: 200px 50px;
+            -khtml-background-size: 200px 50px;
+            -o-background-size: 200px 50px;
+
+            background-repeat: no-repeat;
+            width: 300px;
+            padding: 60px 5px 5px 5px;
+            border: 1px solid #900;
+            color: #83D13E "
+        }
+    </style>
+</head>
+<body>
+<div class="resize">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+<div class="resize horizontal">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+<div class="resize vertical">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+
+
+<div class="multi-column" id="multi-column-2">
+    <p>Cras urna metus, aliquam sed, condimentum eget, pellentesque scelerisque, massa. Nullam et est id augue blandit tincidunt. Ut consectetuer, justo eleifend varius facilisis, tortor lorem pharetra nunc, ac sodales purus nunc semper tortor. Integer nec urna. Praesent scelerisque, ipsum nec aliquet volutpat, sem ante sagittis risus, sed condimentum magna libero luctus elit. Donec pede purus, hendrerit non, laoreet vel, porta ut, neque. Cras eu lacus. Pellentesque tempus mattis magna. Nullam id nisl. Quisque dolor lorem, commodo ac, pharetra sed, nonummy nec, nulla. Mauris purus. Suspendisse eget mauris nec justo eleifend vestibulum. Nunc ut eros sed pede pretium congue. Etiam in elit ut nisi ultrices hendrerit. Cras vulputate ultrices quam. Curabitur venenatis. Cras sed nisi.</p>
+</div>
+
+
+<div class="backsize"></div>
+원본:
+<img src="astro-127531.png"/>
+
+
+</body>
+</html>

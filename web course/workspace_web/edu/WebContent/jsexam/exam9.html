@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>자바스크립트의 배열(sort)</h2>
+	<script>
+	var v1 = [10, 3, 21, 9, 51];
+	document.write(v1.toString() + "<br>");
+	var v2 = v1.sort();
+	document.write(v2.toString() + "<br>");
+	var v3 = v1.sort(function(a, b){ return a-b;});			//function(a, b)가 무명함수임. 이름이 없으니까
+	document.write(v3.toString() + "<br>");
+	var v4 = v1.sort(function(a, b){ return b-a;});
+	document.write(v4.toString() + "<br>");
+	</script>
+</body>
+</html>

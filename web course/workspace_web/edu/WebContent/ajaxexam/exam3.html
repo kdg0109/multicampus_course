@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset='utf-8'>
+    <title>New Web Project</title>
+    <script>
+    	//핸들러 함수
+        window.onload = function () {
+           var request = new XMLHttpRequest();
+           //onreadystatechange 통신 상태가 변화될 때마다 호출하는 함수. 정확성을 높일 수가 있다.
+           request.onreadystatechange = function () {
+              if (request.readyState == 4) {
+                 if (request.status == 200) {
+                    var str = request.responseText; 
+                    alert(str);
+                    var result = JSON.parse(str);     
+                    var output = "";
+                    for(var i in result)
+                       output += "<h1>" + result[i] +'</h1>';
+                    document.body.innerHTML += output;                            
+                 }
+              }
+           };
+           //서버에 요청을 보낸다.
+           request.open('GET', 'content/testjson.txt', true);
+           request.send();
+        };
+    </script>
+   </head>
+    <body>
+        <h1>JavaScript 로 구현하는 AJAX 프로그램  - JSON</h1>
+    </body>
+</html>
+
+
+

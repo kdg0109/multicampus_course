@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSP&Servler과제</title>
+</head>
+<body>
+	<h1>글을 남겨 주세요</h1>
+	<hr>
+	<form method="get" action="#">
+		이름 : <input type="text" name = "name" required><br/>
+		남기고자 하는 의견 : <br><textarea  name="text" rows="10" cols="50"></textarea><br>
+      <input type="submit" name="ok" value="등록">
+      <input type="reset" name="clear" value="재작성"><br>
+	</form>
+</body>
+</html>
+
+이름과 의견을 전달받아 다음과 같은 형식으로 브라우저에 출력하는
+서블릿을 구현한다.
+
+	XXX 님이 XXXX년 XX월 XX일에 남긴 글입니다.
+      ----------------------------------------
+      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+서블릿 클래스명 : core.VisitorServlet1
+URL 매핑명 : /visitor1
+요청 방식 : POST

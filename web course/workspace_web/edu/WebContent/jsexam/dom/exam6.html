@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>디폴트 이벤트 핸들러</h1>
+<hr>
+<a href="http://www.w3schools.com/" onclick="test1(); return false;">HTML5 학습하기(인라인)</a><hr>
+<a id="t1" href="http://www.w3schools.com/">HTML5 학습하기(고전)</a><hr>
+<a id="t2" href="http://www.w3schools.com/">HTML5 학습하기(표준)</a>
+<script>
+function test1() {
+	alert("인라인이벤트모델 버튼 클릭");
+}
+function test2() {
+	alert("고전이벤트모델 버튼 클릭");	
+	return false;
+}
+function test3(e) {
+	alert("표준이벤트모델 버튼 클릭");
+	e.preventDefault();
+}
+var link1 = document.querySelector("#t1");
+var link2 = document.getElementById("t2");
+link1.onclick = test2;  // 고전
+link2.addEventListener("click", test3);
+
+
+
+</script>
+</body>
+</html>

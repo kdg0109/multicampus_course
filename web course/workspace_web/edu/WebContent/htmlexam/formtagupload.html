@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FileUpload 실습</title>
+<style>
+	input {
+		margin : 5px;
+	}
+</style>
+</head>
+<body>
+<h1>file 타입의 input 태그 테스트</h1>
+<form  method="post"  action="/edu/upload" 
+               enctype="multipart/form-data" >
+  작성자<input type="text" name="theAuthor"><br>
+  나이<input type="text" name="theAge"><br>
+  파일<input type="file" name="theFile" ><br>
+  <input type="submit" value="업로드">
+</form>
+<hr>
+<h1>file 타입의 input 태그 테스트(multiple)</h1>
+<form  method="post" enctype="multipart/form-data" 
+                action="/edu/upload">
+  작성자<input type="text" name="theAuthor"><br>
+  나이<input type="text" name="theAge"><br>
+  파일<input type="file" name="theFile"  multiple><br>
+  <input type="submit" value="업로드">
+ </form> 
+</body>
+</html>
+

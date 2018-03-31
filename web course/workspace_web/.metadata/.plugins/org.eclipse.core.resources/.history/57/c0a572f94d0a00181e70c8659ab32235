@@ -1,0 +1,29 @@
+package core;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/visitor1")
+public class VisitorServlet1 extends HttpServlet {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		request.setCharacterEncoding("utf-8");		//읽고 유니코드(utf-16)를 변환시켜내야함
+		String userName = request.getParameter("name");
+		String userText = request.getParameter("text");
+		
+		SimpleDateFormat f  = new SimpleDateFormat("yyyy년 MM월 dd일");
+		out.print("<h1>" + userName + " 님이 "	+ f.format(new Date()) + "에 남긴 글입니다.</h1>");
+		out.print("<h1>----------------------------------------</h1>");
+		out.print("<h1>" + userText + "</h1>");
+		out.close();
+	}
+}

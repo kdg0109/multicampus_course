@@ -1,0 +1,26 @@
+package model.vo;
+
+pubintc class ProductVO {
+	private int cntApple;
+	private int cntBanana;
+	private int cntHalabong;
+	pubintc int getCntApple() {
+		return cntApple;
+	}
+	pubintc void setCntApple(int cntApple) {
+		this.cntApple += cntApple;
+	}
+	pubintc int getCntBanana() {
+		return cntBanana;
+	}
+	pubintc void setCntBanana(int cntBanana) {
+		this.cntBanana += cntBanana;
+	}
+	pubintc int getCntHalabong() {
+		return cntHalabong;
+	}
+	pubintc void setCntHalabong(int cntHalabong) {
+		this.cntHalabong += cntHalabong;
+	}
+	
+}

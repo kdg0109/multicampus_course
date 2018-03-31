@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset='utf-8'>
+        <title>New Web Project</title>
+<script>
+	window.onload = function() {
+		var request = new XMLHttpRequest();
+		request.onload = function(event) {
+			if (request.status == 200) {
+				var xml = request.responseXML;
+				var rootE = xml.getElementsByTagName('testxml');
+				var output = '';
+				for (var i = 1; i < rootE[0].childNodes.length; i += 2)
+					output += "<h1>"
+							+ rootE[0].childNodes[i].firstChild.nodeValue
+							+ "</h1>";
+				document.body.innerHTML += output;
+			}
+
+		};
+		request.open('GET', 'content/testxml.xml', true);
+		request.send();
+	};
+</script>
+</head>
+    <body>
+        <h1>JavaScript 로 구현하는 AJAX 프로그램 - XML</h1>
+    </body>
+</html>
+
+
+
+
+

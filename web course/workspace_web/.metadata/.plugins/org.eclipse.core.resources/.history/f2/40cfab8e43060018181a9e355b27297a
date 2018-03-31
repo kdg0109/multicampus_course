@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="util.js"></script>
+</head>
+<body>
+<script>
+	function Student(p1, p2, p3, p4) {
+		this.name = p1;
+		this.kor = p2;
+		this.eng = p3;
+		this.math = p4;
+	}
+	Student.prototype.getSum = function () {
+		return this.kor+this.eng+this.math;
+	};
+	Student.prototype.getAvg = function () {
+		return this.getSum()/3;
+	};
+	Student.prototype.toString = function () {
+		return this.name +"학생의 총점은 "+ this.getSum()+"입니다.";
+	};
+	
+	<!-- 정적멤버 = 함수를 넣었기에 정적메서드임. 아니면 정적속성이겠고 -->
+	Student.printSchoolName = function () {
+		print("자바초등학교", "h1");	
+	}
+	var student = new Student('둘리', 90, 80, 95);
+	var student1 = new Student('또치', 70, 100, 90);
+	var student2 = new Student('도우너', 100, 80, 80);
+	print("결과1 : " + student, "h2");
+	print("결과2 : " + student1, "h2");
+	print("결과3 : " + student2, "h2");
+	Student.printSchoolName();
+	student2.printSchoolName(); <!-- 정적 메서드이기 때문에 접근 못함 -->
+</script>
+</body>
+</html>
+
+
+
+
+

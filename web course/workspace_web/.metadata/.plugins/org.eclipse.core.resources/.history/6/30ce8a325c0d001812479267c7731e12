@@ -1,0 +1,37 @@
+package controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/calc")
+public class CalcServlet extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int firstNum = Integer.parseInt(request.getParameter("firstNum"));
+		String cal = request.getParameter("favorite_calc");
+		int lastNum = Integer.parseInt(request.getParameter("lastNum"));
+		int result = 0;
+		String forwoardJSP = "calcResult.jsp";
+		if(cal.equals("+")){
+			result = firstNum + lastNum;
+		}else if(cal.equals("-")){
+			result = firstNum - lastNum;
+		}else if(cal.equals("*")){
+			result = firstNum * lastNum;
+		}else{
+			if(lastNum == 0){
+				forwoardJSP = "errorResult.jsp";
+			}else{
+				result = firstNum / lastNum;
+			}
+		}
+		
+		request.setAttribute("result", result);
+		request.getRequestDispatcher("/jspexam/" + forwoardJSP).forward(request, response);
+	}
+}

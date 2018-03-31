@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="model.vo.MemberVO" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSP 예제</title>
+<style>
+	h1 {
+		font-size : 3em;
+	}
+</style>
+</head>
+<body>
+	<h1>회원정보를 입력하십시오.</h1>
+	<hr>
+<%
+	MemberVO vo = (MemberVO)request.getAttribute("member1");
+%>
+	<h2>회원 이름 : <%= vo.getName() %></h2>
+	<h2>회원 계정 : <%= vo.getUserId() %></h2>
+	<h2>회원 암호 : <%= vo.getUserPass() %></h2>
+	<h2>회원 전화번호 : <%= vo.getTel() %></h2>
+</body>
+</html>

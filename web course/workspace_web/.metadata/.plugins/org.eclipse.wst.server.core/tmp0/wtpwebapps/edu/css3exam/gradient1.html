@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>CSS3 : gradient</title>
+    <style type="text/css">
+        body {
+            background: #dddddd;
+        }
+        div {
+            font: bold 1em verdana "Malgun Gothic", "맑은 고딕", sans-serif;
+            padding: 20px;
+            margin: 50px;
+            width: 300px;
+            height: 300px;
+        }
+
+        div.first {
+     
+            background: -webkit-linear-gradient(top left, #0076ff, #ffb100);
+            background: -o-linear-gradient(top left, #0076ff, #ffb100);
+            background: -moz-linear-gradient(top left, #0076ff, #ffb100);  
+            background: linear-gradient(top left, #0076ff, #ffb100);
+        }
+
+    </style>
+</head>
+<body>
+<div class="first"></div>
+<div class="second"></div>
+</body>
+</html>

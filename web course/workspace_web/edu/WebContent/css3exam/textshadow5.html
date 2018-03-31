@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>CSS3 : text-shadow</title>
+    <style type="text/css">
+        h1 {
+            text-shadow: 5px 5px 5px #FF0000;
+        }
+        div {
+            /* 5em : 16px * 5 = 80px */
+            font: bold 5em verdana "Malgun Gothic", "맑은 고딕", sans-serif;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        div.first {
+            color: #ffb100;
+            /* 우 3px, 하 4px, blur 5px */
+            text-shadow: 3px 4px 5px #0076ff;
+            /*text-shadow: -3px -4px 5px red;*/
+        }
+        div.second {
+            background: #ccc;
+            color: #aaa;
+            /* multi text-shadow */
+            text-shadow: 1px 1px #000, -1px -1px #fff;
+        }
+        div.third {
+            background: #000;
+            color: #fff;
+            text-shadow: #fff 0px 0px 4px,
+            rgb(255,255,51) 0px -5px 4px,
+            rgb(255,221,51) 2px -10px 6px,
+            rgb(255,136,0) -2px -15px 11px,
+            rgb(255,34,0) 2px -25px 18px;
+        }
+    </style>
+</head>
+<body>
+<h1>Text-shadow 처리!</h1>
+<div class="first">CSS3 text-shadow</div>
+<div class="second">멀티 새도우</div>
+<div class="third">복합효과</div>
+</body>
+</html>

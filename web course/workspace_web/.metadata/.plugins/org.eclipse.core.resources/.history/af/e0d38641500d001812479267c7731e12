@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	h1 {
+		font-size : 3em;
+		text-shadow: 6px 6px 5px gray;
+	}
+	input {
+		font-size : 1.2em;
+		padding : 5px;
+		border : solid 1px #D5D5D5;
+		border-radius: 10px 10px 10px 10px;
+	}
+	.input {
+		box-shadow: -2px -2px gray;
+	}
+	.output {
+	 box-shadow: 2px 2px gray;
+	}
+	#click1, #click2 {
+		background: gray;
+	}
+	#article1 {
+		padding: 20px;
+	}
+</style>
+</head>
+<body>
+	<article id="article1">
+		<h1>회원정보를 입력하십시오.</h1>
+		<hr>
+		<form method="post" action="/mvc/ms" >
+			<input type="text" name = "name" placeholder="이름을 입력하세요" class="input" required><br/>
+			<input type="tel" name = "tel" placeholder="전화번호를 입력하세요" class="input" required><br/>
+			<input type="text" name = "userId" placeholder="계정을 입력하세요" class="input" required><br/>
+			<input type="password" name = "userPass" placeholder="패스워드를 입력하세요" class="input" required><br/><br>
+	      <input type="submit" name="ok" class="output" value="등록">
+	      <input type="reset" name="clear" class="output" value="재작성"><br>
+		</form>
+	</article>
+</body>
+</html>

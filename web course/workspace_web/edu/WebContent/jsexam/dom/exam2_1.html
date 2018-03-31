@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>동적인 웹페이지 - 1</h1>
+<hr>
+<button onclick="displayTime();">시간을 알려주라옹...</button>
+<output id="result"></output>
+<script>
+    var target = document.getElementById("result");
+    var cnt = 1;
+    var check = true;
+    var color = ["red", "orange", "yellow", "green", "blue", "aqua", "grey", "black"];
+	function displayTime() {			
+			var d = new Date();
+			if(cnt -1 == 0){
+				check = true;
+			}else if(cnt+1> 6){
+				check = false;
+			}
+			if(check){
+				cnt++;
+			}else{
+				cnt--;
+			}
+			target.innerHTML = "<h"+cnt+" style = \"color : " +color[cnt] + "\";>"+d.toLocaleString()+"</h"+cnt+">";
+			target.innerHTML += "<h"+cnt+" style = \"color : " +color[cnt+1] + "\";>"+d.toLocaleString()+"</h"+cnt+">";
+			target.innerHTML += "<h"+cnt+" style = \"color : " +color[cnt] + "\";>"+d.toLocaleString()+"</h"+cnt+">";
+			/* target.textContent = "<h3>"+d.toLocaleString()+"</h3>"; */
+			window.setTimeout(displayTime, 1000);
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Transition</title>
+<!--[if lt IE 9]>
+<script src="html5shiv.js"></scirpt>
+<![endif]-->
+<style>
+#ex div{
+	width:100px;
+	height:100px;
+    border-radius:0px;
+    border:2px solid black;
+    background:url(f1.png) no-repeat center center padding-box;
+    transition: all ease-in 5s;   
+}
+#ex div:hover{
+	border-radius:50px;
+    border:2px solid blue;
+    background:url(f2.png) no-repeat center center padding-box;
+}
+</style>
+</head>
+
+<body>
+<p> 도형 위로 마우스 포인터를 올려보세요</p>
+<div id="ex">
+	<div></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>CSS3 : opacity</title>
+    <style type="text/css">
+        div {
+            font: bold 1em verdana "Malgun Gothic", "맑은 고딕", sans-serif;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        div.first {
+            width: 600px;
+            height: 380px;
+            background: url(background01.jpg) no-repeat;
+        }
+
+        /* 백그라운드, 글자 : 반투명 */
+        div.second {
+            width: 350px;
+            background: rgb(240,240,240);
+            border-radius: 1em;
+            /* opacity 적용 */
+            opacity: .4;
+        }
+
+        /* 백그라운드 : 반투명, 글자 : 불투명 */
+        div.third {
+            width: 350px;
+            background: rgba(240,240,240,.5);
+            padding: 20px;
+            border-radius: 1em;
+        }
+    </style>
+</head>
+<body>
+<div class="first">
+    <div class="second">CSS3 opacity CSS3 opacity CSS3 opacity</div>
+</div>
+
+<div class="first">
+    <div class="third">CSS3 opacity CSS3 opacity CSS3 opacity</div>
+</div>
+</body>
+</html>

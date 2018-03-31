@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>연산할 두 개의 숫자를 입력하고 연산자를 선택하시오.</h1>
+	<hr>
+	
+	<form method="post" action="/mvc/ms" >
+		<input type="number" name = "firstNum" required>
+		<input id=favorite_calc name="favorite_star" type=text list=favorite_calc_list search>			
+		<datalist id=favorite_calc_list>
+			<option value="+">
+			<option value="-">
+			<option value="*">
+			<option value="/">			
+		</datalist>
+		<input type="number" name = "LastNum"  required>
+		<input type="submit" name="ok" value="계산하기">
+	</form>
+</body>
+</html>

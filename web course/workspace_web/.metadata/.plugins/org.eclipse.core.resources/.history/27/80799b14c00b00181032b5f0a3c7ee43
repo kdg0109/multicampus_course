@@ -1,0 +1,7 @@
+package model;
+/**
+ * (Data Access Object) 데이터 접근 오브젝 ex) insert( ), list( ) 를 작성해둔다
+ */
+public class VisitorDAO {
+
+}

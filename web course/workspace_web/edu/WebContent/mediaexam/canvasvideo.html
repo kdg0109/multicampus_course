@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Video on Canvas</title>
+  <style>
+    .boxes{
+      display: inline-block;
+      margin: 10px;
+      padding: 5px;
+      border: 1px solid #999999;
+    }
+  </style>
+  <script src="canvasvideo.js"></script>
+</head>
+<body>
+  <section class="boxes">
+    <video id="media" width="483" height="272"> 
+      <source src="trailer.mp4">
+      <source src="trailer.ogg">
+    </video> 
+  </section>
+  <section class="boxes">
+    <canvas id="canvas" width="483" height="272">
+      Your browser doesn't support the canvas element
+    </canvas>
+  </section>
+</body>
+</html>

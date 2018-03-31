@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>첫 번째 HTML</title>
+<style>
+/* a {
+	text-decoration: none;
+	<!--
+	하이퍼링크
+	언더라인
+	삭제
+	-->
+} */
+
+/* img:hover {
+	opacity: 0.5;
+	<!--
+	마우스
+	올려두면
+	투명도
+	흐릿해짐
+	-->
+} */
+
+#target:hover {
+	opacity: 0.5;
+	<!--
+	마우스
+	올려두면
+	투명도
+	흐릿해짐
+	-->
+}
+/*  #list1, #list2 {
+	color : #6D6AB7;
+} */
+ .colortest, .colortest1 {
+	color : #6D6AB7;
+	background-color: #CEF279;
+}
+.box {
+	border : 1px dotted red;
+}
+.bold{
+	font-weight : bold
+}
+#b {
+	color : orange;
+}
+
+</style>
+</head>
+<body>
+	<h1>HTML 테스트</h1>
+	<h2>HTML 테스트</h2>
+	<h3>HTML 테스트</h3>
+	<h4>HTML 테스트</h4>
+	<img src="/edu/images/picture2018.jpg">
+	<img id = "target" src="images/picture2018.jpg" width="200">
+	<img src="http://localhost:8000/edu/images/picture2018.jpg" width="300"
+		height="400">
+	<hr>
+	<span>
+		<a class= colortest href="http://java.sun.com/">자바의 홈페이지</a>
+		<a href="http://www.w3.org/">웹의 홈페이지</a>
+	</span>
+	<a href="http://www.w3schools.com/" target="_blank">웹기술 학습페이지</a>
+
+	<h2 class="colortest">ordered list</h2>
+	<ol>
+		<!--  ordered list -->
+		<li>스시</li>
+		<li>햄버거</li>
+		<li>스테이크</li>
+		<li>양고기</li>
+	</ol>
+	<h2 class="colortest1">unordered list</h2>
+	<ul>
+		<!--  ordered list -->
+		<li><span id="b" class="bold">스</span>시</li>
+		<li><span id="b" class="bold">햄</span>버거</li>
+		<li><div id="b" class="bold box">스</div>테이크</li>
+		<li><span id="b" class="bold">양</span>고기</li>
+	</ul>
+	<h2 class="colortest">이번 학기 시간표</h2>
+	<table border="1">
+		<tr>
+			<th colspan="4">시간표</th>
+		</tr>
+		<tr>
+			<th></th>
+			<th>월요일</th>
+			<th>화요일</th>
+			<th>수요일</th>
+		</tr>
+		<tr>
+			<td>1교시</td>
+			<td>C언어</td>
+			<td>JAVA언어</td>
+			<td>JAVA언어</td>
+		</tr>
+		<tr>
+			<td>2교시</td>
+			<td>C언어</td>
+			<td>JAVA언어</td>
+			<td>JAVA언어</td>
+		</tr>
+	</table>
+</body>
+</html>

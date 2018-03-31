@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>lotto</title>
+<style>
+	body {
+		border: 2px solid black;
+		padding : 10px;
+	}
+	hr {
+		border: 1px solid black;
+	}
+	
+	 #nameid {
+		border: 1px solid black;
+		height: 30px;
+	} 
+	h1 {
+		color : red;
+		margin: 0px;
+		padding: 0px;
+	}
+	form {
+		padding : 10px;
+		font-size: 30px;
+	}
+	#imageid {
+		vertical-align : center;
+		margin: 0px;
+		width : 40px;
+		
+	}
+	
+</style>
+</head>
+<body>
+	<h1>로또 번호를 맞춰보세요!!!</h1>
+	<hr>
+	<form method="get" action="#">
+	<p>
+		1부터 10까지의 숫자를 입력 하세요 : <input type="text" name = "name" id = "nameid" required>
+     </center><input type="image" id = "imageid" src= "images/happy.JPG">
+     </p>
+	</form>
+</body>
+</html>

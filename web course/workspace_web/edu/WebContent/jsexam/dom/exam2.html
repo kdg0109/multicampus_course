@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>동적인 웹페이지 - 1</h1>
+<hr>
+<button onclick="displayTime();">시간을 알려주라옹...</button>
+<button onclick="stopTime();">시간 출력 멈춰라</button>
+<output id="result"></output>
+<script>
+    var target = document.getElementById("result");
+    var setId;
+    function displayTime() {			
+		var d = new Date();
+		target.innerHTML = "<h3>"+d.toLocaleString()+"</h3>";
+		setId = window.setTimeout(displayTime, 1000);
+	}
+    
+    function stopTime() {			
+		window.clearTimeout(setId);
+	}
+	
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

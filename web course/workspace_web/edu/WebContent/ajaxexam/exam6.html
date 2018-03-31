@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>XMLHttpRequest Level 2</title>
+</head>
+<body>
+<h1 onclick="getImage();">클릭해보세요... AJAX로 이미지를 요청하고 출력해요....</h1>
+<script>
+function getImage() {
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', 'duke_luau.png', true);
+	//응답받을 타입 설정
+	xhr.responseType = 'blob';
+	// exam2.html에는 이런게 있음 request.onreadystatechange = function () {
+	// 저건 옛날부터 구현한 Ajax 구현 방법임.
+	//근데 이건 그냥 onload로 구현하는데 html5에서 추가된 기본임. 간단하게 구현할 수 있게 바뀜
+	//서버에게 요청하고 모두 응답 완전 받았을 때! 그때 시작됨.
+	//onreadystatechange 이거는 0,1,2,3,4 이런 순서로 쭉 됨
+	//이거는 그런 과정이 생략되어 있음
+	xhr.onload = function(e) {
+  		if (this.status == 200) {
+  			//응답받을 타입 설정된 거로 응답받는다.
+    		var blob = this.response; // e.target.response
+
+    		//이미지 세팅
+    		var img = document.createElement('img');
+    		img.width=300;
+    		img.height=300;
+    		//이미지가 다 읽히면 이미지를 끌어와서 가상 url 만들고. 이미지가 사이즈가 있다보니까
+    		//렌더링이 모두 삭제되면 그때 해라~!
+    		//이벤트 핸들러
+    		img.addEventListener("onload", function(e) {
+    			console.log("3");
+     	 		URL.revokeObjectURL(img.src); 		//모두 사용한 후에(즉, 모두 로드가 되었을 때), BLOB을 해제
+    		});
+    		/* img.onload = function(e) {
+    			console.log("3");
+     	 		URL.revokeObjectURL(img.src); 		//모두 사용한 후에(즉, 모두 로드가 되었을 때), BLOB을 해제
+    		};   */
+    		//url 연결 src는 이미지파일에 대한 URL만 지정할 수 있음
+    		//createObjectURL는 이미지 파일에 대해 각자 URL을 만들어 줄 수 있는 애다 컨텐츠로 URL만든거
+    		//개발자도구보면 blob:http://localhost~~어쩌구 이미지 url 모양이 나타남(가짜 url)
+    		img.src = URL.createObjectURL(blob);
+			console.log("1");
+    		document.body.appendChild(img);   
+			console.log("2");
+  		}
+	};
+
+	xhr.send();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>html 5 drag and drop</title>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+
+<script>
+	var internalDNDType = 'Text'; // set this to something specific to your site
+	var dragged; //used for item in basket styling
+
+	function dragStartHandler(event) {
+
+		if (event.target instanceof HTMLLIElement) {
+			dragged = event.target;
+			var valStr = event.target.getAttribute('data-value');
+
+			event.dataTransfer.setData(internalDNDType, valStr);
+			event.effectAllowed = 'move'; // only allow moves
+		} else {
+			event.preventDefault(); // don't allow selection to be dragged
+		}
+	}
+
+	function dragEnterHandler(event) {
+		// cancel the event if the drag contains data of our type
+		if (event.dataTransfer.types.contains(internalDNDType)) {
+			event.preventDefault();
+		}
+	}
+
+	function dragOverHandler(event) {
+		event.dataTransfer.dropEffect = 'move';
+		event.preventDefault();
+
+	}
+
+	function dropHandler(event) {
+		// drop the data
+		event.preventDefault();
+		var dataV = event.dataTransfer.getData(internalDNDType);
+		//split the delimited string into an array
+		var det = dataV.split('||');
+		// separate values into variables
+		var dataValue = det[1];
+		var textValue = det[0];
+
+		// check the DOM to see if the element already exsists
+		if (document.getElementById(dataValue + "-value")) {
+
+			// if it exists then get its current value and add to it
+			var num = document.getElementById(dataValue + "-value").textContent;
+			var newVal = parseInt(num) + 1;
+			document.getElementById(dataValue + "-value").textContent = newVal;
+
+		} else {
+
+			// if it does not exists create it using the values sent in the drag and drop
+			var dt = document.createElement('dt');
+			var dd = document.createElement('dd');
+
+			dt.id = dataValue + "-title";
+			dd.id = dataValue + "-value";
+			dt.textContent = textValue;
+			dd.textContent = '1';
+
+			// add elements to the DOM
+			document.getElementById('dropzone').appendChild(dt);
+			document.getElementById('dropzone').appendChild(dd);
+
+			//add the class to the item dragged in to give user feedback
+			dragged.className = 'in';
+
+		}
+
+	}
+
+	//window.onload = init;
+</script>
+
+</head>
+<body>
+
+	<header class="floatfix">
+		<!-- <h1><a href="/"><img src="img/logo.gif" alt="Get Shirty" /></a></h1>
+		<img id="phone" src="img/phone.gif" alt="Order by Phone - 0800 000 000" /> -->
+
+		<nav class="floatfix">
+			<ul>
+				<li><a href="#">홈으로</a></li>
+				<li><a href="#">특별 주문</a></li>
+				<li><a href="#">로그인</a></li>
+				<li><a href="#">회원가입</a></li>
+				<li><a href="#">장바구니</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<section id="content">
+		<ul id="items" ondragstart="dragStartHandler(event)">
+			<li id="white" draggable="true" data-value="웹프로그래밍기초||book1">aaa</li>
+			<li id="pink" draggable="true" data-value="HTML5웹프로그래밍||book4"></li>
+			<li id="blue" draggable="true" data-value="HTML5+CSS3입문||book3"></li>
+			<li id="green" draggable="true" data-value="웹표준의정석||book2">bbb</li>
+			<li id="grey" draggable="true" data-value="HTML5,CSS3정석||book5"></li>
+			<li id="yellow" draggable="true" data-value="JavaScript정복||book6"></li>
+		</ul>
+	</section>
+
+	<aside>
+		<h2>Shopping Cart</h2>
+		<dl id="dropzone" class="dropzone floatfix"
+			ondragenter="dragEnterHandler(event)"
+			ondragover="dragOverHandler(event)" ondrop="dropHandler(event)">
+		</dl>
+		<p>구매하고자 하는 상품의 이미지를 드랙하여 장바구니 영역에서 드롭하십시오.</p>
+		<a id="checkout" href="#">주문</a>
+	</aside>
+
+	<footer>
+		<p>드레그 앤 드롭 쇼핑몰</p>
+	</footer>
+
+
+
+</body>
+</html>

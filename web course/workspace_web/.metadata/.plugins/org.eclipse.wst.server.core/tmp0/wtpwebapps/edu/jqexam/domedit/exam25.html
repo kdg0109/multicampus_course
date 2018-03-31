@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <ul id="a">
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+        </ul>
+        <ol id="b"></ol>
+        <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script>
+            $('#a li').click( function(){
+            			console.log('List Item Clicked');
+            			console.log($('li').index(this));
+            });
+           $('#a li') .each(function(index, data) {
+       	          $(data).clone().appendTo('#b');           
+           });
+        </script> 
+    </body>
+</html>
+
+
+

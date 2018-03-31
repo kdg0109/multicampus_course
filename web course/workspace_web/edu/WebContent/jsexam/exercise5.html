@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+	input {
+		width : 200px;
+		margin : 10px;
+	}
+</style>
+<body>
+	<script>
+		function go(){	
+			location.href = arguments[0];	
+
+/* 			location.href = document.getElementsByTagName("button")[n].value;	//[n] 은 모든 button 중에서 순서 위치
+ */		}
+	</script>
+	
+	<input type="image" src="네이버.png" onclick="go('http://www.naver.com')" alt="네이버">
+	<input type="image" src="구글.png" onclick="go('http://www.google.com')" alt="구글">
+	<input type="image" src="유튜브.png" onclick="go('http://www.youtube.com')" alt="유튜브">
+	<input type="image" src="다음.png" onclick="go('http://www.daum.net')"  alt="다음">
+</body>
+</html>

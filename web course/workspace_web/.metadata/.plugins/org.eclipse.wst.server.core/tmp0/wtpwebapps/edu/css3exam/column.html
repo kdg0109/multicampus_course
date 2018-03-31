@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>CSS3 : column</title>
+    <style type='text/css'>
+        div {
+            font: 1em verdana "Malgun Gothic", "맑은 고딕", sans-serif;
+        }
+
+        p {
+            margin: 0 0 20px;
+        }
+
+        .cols3 { 
+
+            -webkit-column-count: 4;
+            -webkit-column-gap: 20px;
+            -webkit-column-rule: 2px solid #e5e5e5;
+
+            /*-moz-column-count: 3;*/
+            /*-moz-column-gap: 20px;*/
+            /*-moz-column-rule: 2px solid #e5e5e5;*/
+        }
+
+        .cols3 h1 {
+            -webkit-column-span: all;
+            -moz-column-span: all;
+            column-span: all;
+        }
+
+    </style>
+</head>
+<body>
+<div class='cols3'>
+    <h1>CSS 버전의 변화</h1>
+
+    <p>CSS는 지속적으로 새로운 버전이 나오고 있다. 1996년에 도입된 CSS 1은 CSS의 바탕이 되었다. CSS의 표준으로는 CSS 2.1이 있으며 이전 버전에 비하여 새로운 기능과 도구가 추가되었다. 대다수의 웹브라우저는 CSS 2.1를 잘 지원한다.(인터넷 익스플로러의 경우, 버전 7이 되면서 CSS2.1을 지원한다.) 현재 W3C에서는 CSS3을 표준으로 만들고 있다.</p>
+
+    <p>CSS는 여러 수준과 프로파일을 가지고 있다. 각 수준의 CSS는 일반적으로 새로운 기능을 담고 있으며 CSS1, CSS2, CSS3로 나뉜다. 프로파일들은 일반적으로 특정한 장치나 사용자 인터페이스를 위해 만들어진 하나 이상 수준의 CSS의 하부 집합이다. 현재 휴대용 장치, 프린터, 텔레비전 수상기를 위한 프로파일들이 있다.</p>
+
+</div>
+</body>
+</html>

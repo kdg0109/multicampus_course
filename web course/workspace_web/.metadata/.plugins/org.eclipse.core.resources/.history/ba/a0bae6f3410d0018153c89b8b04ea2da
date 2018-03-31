@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	h1 {
+		text-shadow: 3px 3px 5px #ffffff;
+	}
+	hr {
+		border : solid 1px white;
+	}
+	#article1 {
+		width : 60%;
+		margin: auto;
+		background: radial-gradient(circle, red 2%, green, yellow);
+		padding: 20px;
+		border-radius: 10px 10px 10px 10px;
+		border : solid 1px gray;
+	}
+</style>
+</head>
+<body>
+	<article id="article1">
+		<h1>회원정보를 입력하시오.</h1>
+		<hr>
+		<form method="post" action="/mvc/grade" >
+			이름 : <input type="text" name = "name" required><br/>
+			평균점수 : <input type="number" name = "number" required><br/><br>
+	      <input type="submit" name="ok" value="전송">
+	      <input type="reset" name="clear" value="재작성"><br>
+		</form>
+	</article>
+</body>
+</html>

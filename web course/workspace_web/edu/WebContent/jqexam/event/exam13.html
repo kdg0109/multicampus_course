@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#all_check').change(function () {
+                if (this.checked) {
+                    $('div>input[type=checkbox]').prop('checked', true);
+                   
+                } else {
+                    $('div>input[type=checkbox]').prop('checked', false);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<body>
+    <input type="checkbox" id="all_check"/>
+    <label>All</label>
+    <div id="check_item">
+        <input type="checkbox"/>
+        <label>A Option</label>
+        <input type="checkbox"/>
+        <label>B Option</label>
+        <input type="checkbox"/>
+        <label>C Option</label>
+    </div>
+</body>
+</html>

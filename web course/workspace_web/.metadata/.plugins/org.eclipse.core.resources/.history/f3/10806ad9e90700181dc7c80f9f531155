@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSP&Servler과제</title>
+</head>
+<body>
+	<h1>글을 남겨 주세요</h1>
+	<hr>
+	<form method=" get" action="#">
+		이름 : <input type="text" name = "name"></input><br/>
+		남기고자 하는 의견 : <br><textarea  name="text" rows="10" cols="100"></textarea>
+      <input type="submit" name="ok" value="등록">
+      <input type="reset" name="clear" value="재작성"><br>
+	</form>
+</body>
+</html>

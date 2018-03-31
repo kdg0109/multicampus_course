@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="model.vo.VisitorVO" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSP 예제</title>
+</head>
+<body>
+	<h2>session scope 객체 공유</h2>
+	<hr>
+<%
+	VisitorVO vo = (VisitorVO)session.getAttribute("arrayList");
+%>
+<%
+boolean result = (boolean)session.getAttribute("result");
+%>
+</body>
+</html>

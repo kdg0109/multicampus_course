@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<body>
+	<h1>원하는 상품을 클릭해주세요!! 마구마구^^</h1>
+	<hr>
+	<section id="picturesbox">
+		<img id="image1" width="100" src="g1.png">
+		<img id="image2" width="100" src="g2.png"> 
+		<img id="image3" width="100" src="g3.png"> 
+		<img id="image4" width="100" src="g4.png"> 
+		<img id="image5" width="100" src="g5.png"> 
+		<img id="image6" width="100" src="g6.png">
+		<img id="image7" width="100" src="g7.png">
+		<img id="image8" width="100" src="g8.png"> 
+		<img id="image9" width="100" src="g9.png"> 
+		<img id="image10" width="100" src="g10.png"> 
+	</section>
+</body>
+</html>

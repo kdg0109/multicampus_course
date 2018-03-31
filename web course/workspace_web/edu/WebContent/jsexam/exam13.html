@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="util.js"></script>
+</head>
+<body>
+	<h1>아규먼트로 함수 전달하기-고차(고계)함수</h1>
+	<hr>
+	<script>
+		function outputAll(param) {
+			if(typeof param == "function") {
+				param("함수를 전달했네요!!"); // == function ("함수를 전달했네요!!") (str) {window.alert("함수를 전달했네요!!");});
+			} else {
+				document.write("param 변수에 전달된 데이터 : " + param + "<br>");
+			}
+		}
+
+		outputAll("듀크");
+		outputAll(true);
+		outputAll(100);
+		outputAll(function (str) {window.alert(str);});
+		function kkk (str) {
+			console.log("로그 : " + str);
+		}
+		outputAll(kkk);
+		</script>
+</body>
+</html>

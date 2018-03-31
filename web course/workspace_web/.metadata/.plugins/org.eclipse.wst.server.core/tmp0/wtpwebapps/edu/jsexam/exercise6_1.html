@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>	
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+
+	body {
+		border: 3px solid blue;
+		height : 100%;
+	}
+	h1 {
+		text-align : center;
+	}
+	nav {
+		padding : 20px;
+		text-align : center;
+	}
+	a{
+		color : black;
+		padding : 10px 30px;
+		border: 1px solid blue;
+		text-decoration:none;	
+		font-size : 15px;
+		margin : 10px;
+		border-radius: 10px 10px 10px 10px;
+	} 
+	section {
+		text-align : center;
+	}
+</style>
+<script>
+	function gugudan(v) {
+		var target = document.getElementById("result");
+		target.innerHTML = "";
+		for (var j = 1; j <= 9; j++) {
+			target.innerHTML +="<h2>" + v + " X " + j + " = " + v * j + "</h2>";
+		}
+	}
+
+	
+	
+</script>
+<body>
+	<header>
+		<h1>구구단</h1>
+		<nav>
+			<a href="#" onclick="gugudan(1);">1단</a>
+			<a href="#" onclick="gugudan(2);">2단</a>
+			<a href="#" onclick="gugudan(3);">3단</a>
+			<a href="#" onclick="gugudan(4);">4단</a>
+			<a href="#" onclick="gugudan(5);">5단</a>
+			<a href="#" onclick="gugudan(6);">6단</a>
+			<a href="#" onclick="gugudan(7);">7단</a>
+			<a href="#" onclick="gugudan(8);">8단</a>
+			<a href="#" onclick="gugudan(9);">9단</a>
+	  </nav>
+  </header>
+  <section id="result"></section>
+</body>
+</html>

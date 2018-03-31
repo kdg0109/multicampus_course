@@ -1,0 +1,40 @@
+body{
+  text-align: center;
+}
+header, section, footer, aside, nav, article, figure, figcaption, hgroup{
+  display : block;
+}
+#player{
+  width: 720px;
+  margin: 20px auto;
+  padding: 5px;
+  background: #999999;
+  border: 1px solid #666666;
+
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+nav{
+  margin: 5px 0px;
+}
+#buttons{
+  float: left;
+  width: 85px;
+  height: 20px;
+}
+#bar{
+  position: relative;
+  float: left;
+  width: 600px;
+  height: 16px;
+  padding: 2px;
+  border: 1px solid #CCCCCC;
+  background: #EEEEEE;
+}
+#progress{
+  position: absolute;
+  width: 0px;
+  height: 16px;
+  background: rgba(0,0,150,.2);
+}

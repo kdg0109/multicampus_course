@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	img {
+		border: 1px solid #999999;
+		box-shadow:4px 4px 2px grey;
+		margin: 20px;
+		width: 140px;
+		height: 120px;
+	}
+</style>
+</head>
+<body>
+	<h1>원하는 상품을 클릭해주세요!! 마구마구^^</h1>
+	<hr>
+		<img id="p001" src="images/apple.gif">
+		<img id="p002" src="images/banana.jpg"> 
+		<img id="p003" src="images/halabong.jpg"> 
+	
+	<script>
+		function clickHandler() {
+			var img = document.getElementsByTagName("img");
+			for(var i = 0; i < img.length; i++){
+				img[i].addEventListener("click", getId);	
+			}
+		}
+		
+		function getId(e) {
+			location.href = "/mvc/cart?pid="+e.target.id;
+		}
+		
+		window.addEventListener("load", clickHandler);
+	</script>
+</body>
+</html>

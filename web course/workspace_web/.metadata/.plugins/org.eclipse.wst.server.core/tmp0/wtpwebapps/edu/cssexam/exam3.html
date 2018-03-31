@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>가운데 출력하기</title>
+<style>
+div {
+	width : 60%;
+	height : 200px;
+	margin : 20px auto;				/*상하  좌우, 4개면 시계방향 위 오른 아래 왼, 3개면 위, 아래, 좌우*/
+	padding : 10px;
+	text-align : center;
+}
+div:nth-child(1) {
+	background : yellow;
+	border : 2px solid red;
+	border-radius : 100px  10px  100px  10px;
+	box-shadow : 10px 10px 10px gray;			/*x축, y축, 그림자 너비*/
+}
+div:nth-child(2) {
+	background : lightgreen;
+	border : 2px dotted magenta;
+	color : magenta;
+}
+div:nth-child(3) {
+	background : #000000;
+	border : 5px dashed #ffffff;
+	color : #ffffff;
+}
+div:nth-child(4) {
+	background : silver;
+	border : 5px inset #ffffff;
+	color : brown;
+}
+div:nth-child(5) {
+	background : gold;
+	border : 5px outset #ffffff;
+	color : orange;
+}
+</style>
+</head>
+<body>
+<div>텍스트를 출력합니다.</div>
+<div>텍스트를 출력합니다.</div>
+<div>텍스트를 출력합니다.</div>
+<div>텍스트를 출력합니다.</div>
+<div>텍스트를 출력합니다.</div>
+</body>
+</html>

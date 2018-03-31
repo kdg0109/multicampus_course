@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>lotto</title>
+<style>
+	body {
+		border: 2px solid black;
+		padding : 10px;
+	}
+	hr {
+		border: 1px solid black;
+	}
+	
+	 #nameid {
+		vertical-align:middle;
+		border: 1px solid black;
+		height: 30px;
+	} 
+	h1 {
+		color : red;
+		margin: 0px;
+		padding: 0px;
+	}
+	form {
+		font-size: 30px;
+		padding: 10px;
+	}
+	#imageid {
+		vertical-align:middle;
+		margin: 0px;
+		width : 50px;
+		
+	}
+	<!--
+	
+	숫자를 입력하고 클로버이미지 버튼을 클릭하면 core.LottoServlet1 을 요청한다.
+LottoServlet1 의 매핑명은 /lotto1 이다. 요청 방식은 GET 으로 한다.
+
+- core.LottoServlet1 의 기능
+1 부터 10사이의 랜덤값을 추출한다.
+톰캣콘솔창에 
+“전달된 값 : X, 추출된 값 : X”
+를 출력한다.
+클라이언트에서 전달된 숫자와 동일하면
+“추카추카”를 브라우저에 출력하고 다르면 “다음 기회를…” 이라는 메시지를
+출력한다.
+그리고 두 경우 모두 아래에는 lotto.html 을 요청하는 링크를 제공한다.
+링크 텍스트는 “로또 응모” 이다.
+	
+	
+	-->
+	
+</style>
+</head>
+<body>
+	<h1>로또 번호를 맞춰보세요!!!</h1>
+	<hr>
+	<form method="get" action="/lotto1">
+		1부터 10까지의 숫자를 입력 하세요 : <input type="text" name = "lottoNum" id = "lottoId" required>
+     	<input type="image" id = "imageid" src= "images/happy.JPG">
+	</form>
+</body>
+</html>

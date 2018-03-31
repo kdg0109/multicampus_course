@@ -1,0 +1,33 @@
+package model.vo;
+
+public class MemberVO {
+	private String name;
+	private String tel;
+	private String userId;
+	private String userPass;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public String getUserPass() {
+		return userPass;
+	}
+	public void setUserPass(String userPass) {
+		this.userPass = userPass;
+	}
+	
+}

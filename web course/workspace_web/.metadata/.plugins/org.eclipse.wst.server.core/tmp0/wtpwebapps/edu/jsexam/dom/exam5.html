@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>자바스크립트의 이벤트 모델</h1>
+<hr>
+<button onmouseover="test1();">인라인이벤트모델</button>
+<button id="b1">고전이벤트모델</button>
+<button id="b2">표준이벤트모델</button>
+<script>
+function test1() {
+	alert("인라인이벤트모델 버튼 클릭");
+}
+function test2() {
+	alert("고전이벤트모델 버튼 클릭");
+	btn1.onmouseover = null;
+}
+function test3() {
+	alert("표준이벤트모델 버튼 클릭");
+	btn2.removeEventListener("mouseover", test3);
+}
+var btn1 = document.querySelector("#b1");
+var btn2 = document.getElementById("b2");
+btn1.onmouseover = test2;  // 고전
+btn2.addEventListener("mouseover", test3);
+</script>
+</body>
+</html>
+
+
+

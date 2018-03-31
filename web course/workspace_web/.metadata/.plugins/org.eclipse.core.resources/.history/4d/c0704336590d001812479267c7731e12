@@ -1,0 +1,24 @@
+package controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import model.vo.MemberVO;
+
+@WebServlet("/ms")
+public class MemberServlet extends HttpServlet {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		request.getParameter("firstNum");
+		request.getParameter("favorite_star");
+		request.getParameter("LastNum");
+		
+		request.setAttribute("member1", vo);
+		request.getRequestDispatcher("/jspexam/memberView.jsp").forward(request, response);
+	}
+}

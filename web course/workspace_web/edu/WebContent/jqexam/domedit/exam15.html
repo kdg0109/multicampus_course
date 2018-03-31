@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+     /*    $(document).ready(function () {
+            $('h1').html(function (index, html) {
+                return '★' + html + '★';   // 결합연산자..
+            });
+        }); */
+        $(document).ready(function () {
+        	/* $('h1').on("click", function () {
+            	$(this).html(function (index, html) {
+                	return '★' + html + '★';   // 결합연산자..
+            	});
+        	}); */
+        	$('h1').click(function () {
+            	$(this).html(function (index, html) {
+            		alert(html);
+                	return '★' + html + '★';   // 결합연산자..
+            	});
+        	});
+        });
+    </script>
+</head>
+<body>
+    <h1>Header-0</h1>
+    <h1>Header-1</h1>
+    <h1>Header-2</h1>
+</body>
+</html>
+
+
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>링크로 서블릿 요청하기</h1>
+	<a href="/edu/queryget?guestName=둘리&num=11">둘리</a>
+	<br>
+	<a href="/edu/queryget?guestName=또치&num=22">또치</a>
+	<br>
+	<a href="/edu/queryget?guestName=맨유&num=33">
+	<img src="/edu/htmlexam/images/맨유.jpg"></a>
+	<hr>
+	<h1>이름과 좋아하는 숫자 전달하기(GET)</h1>
+	<form method="get" action="/edu/queryget">
+		<input type="text" name="guestName"
+			placeholder="이름을 입력하세요" required><br>
+		<input type="number" name="num"
+			placeholder="좋아하는 숫자를 입력하세요" required><br>
+		<input type="submit" value="요~~청">
+	</form>
+	<hr>
+	
+	<a href="/edu/queryget?guestName=둘리&num=11">둘리</a>
+	<hr>
+	<img src="/edu/htmlexam/images/맨유.jpg"></a>
+	<h1>이름과 좋아하는 숫자 전달하기(Post)</h1>
+	<form method="get" action="/edu/queryget">
+		<input type="text" name="guestName"
+			placeholder="이름을 입력하세요" required><br>
+		<input type="number" name="num"
+			placeholder="좋아하는 숫자를 입력하세요" required><br>
+		<input type="submit" value="요~~청">
+	</form>
+</body>
+</html>

@@ -1,0 +1,61 @@
+package model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+/**
+ * (Data Access Object) 데이터 접근 오브젝트 ex) insert( ), list( ) 를 작성해둔다
+ */
+public class VisitorDAO {
+	public boolean insert(VisitorVO vo){
+		boolean result = true;
+		ConnectDB obj = new ConnectDB();
+		Connection conn = obj.getConnect();
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement("insert into visitor values (?, sysdate, ?)");
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getMemo());
+			pstmt.executeUpdate();
+		} catch (SQLException e){
+			e.printStackTrace();
+			result = false;
+		} finally {
+			try{
+				if(pstmt != null)
+					pstmt.close();
+				
+				obj.close();
+			} catch(SQLException e) {
+				System.out.println("close 오류 발생");
+			}
+		}
+		return result;
+	}
+	
+	public ArrayList<VisitorVO> list(){
+		ArrayList<VisitorVO> list = new ArrayList<>();
+		ConnectDB obj = new ConnectDB();
+		Connection conn = obj.getConnect();
+		Statement stmt = null;
+		try {
+			stmt = conn.createStatement();
+			stmt.executeQuery("select name, writedate, memo from visitor");
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally {
+			try{
+				if(stmt != null)
+					stmt.close();
+				
+				obj.close();
+			} catch(SQLException e) {
+				System.out.println("close 오류 발생");
+			}
+		}
+		return list;
+	}
+}

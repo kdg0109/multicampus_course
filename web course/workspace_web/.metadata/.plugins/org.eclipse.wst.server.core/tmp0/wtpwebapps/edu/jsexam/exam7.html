@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>배열의 원소 출력</h2>
+	<pre>
+		<script>
+			var ary = [ 10, 20, 30, 40, 50 ];
+			for (var i = 0; i < ary.length; i++){
+				document.write(ary[i]);
+				document.writeln();
+			}
+			for(var data in ary)
+				document.writeln("인덱스 : " + data + " / " + "값 : " + ary[data]);
+		</script>
+	</pre>
+</body>
+</html>

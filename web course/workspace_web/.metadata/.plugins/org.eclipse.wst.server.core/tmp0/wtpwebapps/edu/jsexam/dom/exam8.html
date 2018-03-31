@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div {
+		border : 1px solid blue;	
+		width : 80%;
+		padding :10%;
+		margin : 0px auto;	
+	}
+	h1 {
+		border : 1px solid green;	
+		background : #b3ffb3;
+		width : 80%;
+		padding :10%;
+		margin : 0px auto;		
+	}
+</style>
+</head>
+<body>
+<div>
+<h1>테스트</h1>
+</div>
+<script>
+	function clickHandler() {
+		var h1Tag = document.getElementsByTagName("h1")[0];
+		h1Tag.addEventListener("click", displayAlert);
+	}
+	function displayAlert(e) {	
+		window.alert("클릭 : " + e.pageX + ", " + e.pageY);
+		window.alert("클릭 : " + e.screenX + ", " + e.screenY);
+	}
+	window.addEventListener("load", clickHandler);
+</script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,26 @@
+package model.vo;
+
+public class ProductVO {
+	private String cntApple;
+	private String cntBanana;
+	private String cntHalabong;
+	public String getCntApple() {
+		return cntApple;
+	}
+	public void setCntApple(String cntApple) {
+		this.cntApple += cntApple;
+	}
+	public String getCntBanana() {
+		return cntBanana;
+	}
+	public void setCntBanana(String cntBanana) {
+		this.cntBanana += cntBanana;
+	}
+	public String getCntHalabong() {
+		return cntHalabong;
+	}
+	public void setCntHalabong(String cntHalabong) {
+		this.cntHalabong += cntHalabong;
+	}
+	
+}

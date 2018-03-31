@@ -1,0 +1,43 @@
+package controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import model.vo.MemberVO;
+
+@WebServlet("/visitor")
+public class MemberServlet extends HttpServlet {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");		//읽고 유니코드(utf-16)를 변환시켜내야함		
+		MemberVO vo = new MemberVO();
+		vo.setName(request.getParameter("name"));
+		vo.setName(request.getParameter("tel"));
+		vo.setName(request.getParameter("userId"));
+		vo.setName(request.getParameter("userPass"));
+		
+
+		request.setAttribute("result", result);
+		/**				JSP에서 작동
+		//html로 부터 post 받은 것
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		if(result) {
+			out.println("<h2>" + name + "님의 글이 저장되었습니다. </h2>");
+		}else{
+			out.println("<h2>" + name + "님!! 오류가 발생했어요... </h2>");
+		}
+		out.print("<a href='/edu/visitor3'>방명록 리스트 보기</a><br>"); //servlet에서 href사용하면 get방식임
+     	
+		out.write("<form method=\"get\" action='/edu/visitor3'>");
+		out.write("<input type='search'  id = \"searchId\" name = \"searchText\" >");
+		out.write("<input type='submit' name=\"ok\" value=\"검색\">");
+		out.write("</form>");
+		out.close();
+		**/
+	}
+}

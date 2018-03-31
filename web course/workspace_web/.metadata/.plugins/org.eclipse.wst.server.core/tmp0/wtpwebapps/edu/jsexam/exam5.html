@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>Javascript의 논리 연산자 특성</h2>
+	<script>
+	/* var num = 10; */
+	var num = window.prompt("숫자를 입력하세요.", 10);
+		//if(num % 2 == 0)
+			/* num % 2 == 0 && document.write("<h3>" + num + "은 짝수입니다.</h3>");
+			!(num % 2) && document.write("<h3>" + num + "은 짝수입니다.</h3>"); */
+/* 			num % 2 && document.write("<h3>" + num + "은 짝수입니다.</h3>"); //(둘 다 같으냐)의 반대는 (하나라도 같으냐) */
+ 			num % 2 == 0 && document.write("<h3>" + num + "은 짝수입니2다.</h3>"); //(둘 다 같으냐)의 반대는 (하나라도 같으냐)
+		//if(num % 2 == 1)
+			num % 2 == 1 && document.write("<h3>" + num + "은 홀수입니다.</h3>");
+			!(num % 2) || document.write("<h3>" + num + "은 홀수입니1다.</h3>");
+			num % 2 && document.write("<h3>" + num + "은 홀수입니2다.</h3>");
+			document.write(typeof(num*100) + "<br>");
+			document.write(typeof(num+100) + "<br>");
+			document.write(parseInt(num)+100 + "<br>");
+	</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>Video Player2</title>  
+  <style>
+  	section, h1 {
+  		text-align : center;
+  	} 
+  	h1 {
+  		background-image : linear-gradient(to right, red, 
+      					#f06d06, 
+      					rgb(255, 255, 0), 
+      					green);  
+      	border-radius : 6px;	
+      	text-shadow : 4px 4px 4px #ffffff;
+      	width : 80%;
+      	height : 80px;
+      	margin : auto;
+      	padding-top : 20px;
+      	font-size : 2.2em;
+  	}
+  	header {
+  		margin-top : 10px;
+  	}
+  </style>
+</head>
+<body>
+  <header>
+  <h1>HTML5 비디오 태그 테스트</h1>
+  </header>
+  <section id="player">
+    <video id="media" width="600" height="400" 
+           preload controls loop poster="poster.jpg">
+      <source src="trailer.mp4">
+      <source src="trailer.ogg">
+    </video> 
+  </section>
+</body>
+</html>
+

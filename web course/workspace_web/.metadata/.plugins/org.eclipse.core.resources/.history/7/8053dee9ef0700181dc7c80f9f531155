@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	img {
+		border: 1px solid #999999;
+		box-shadow:4px 4px 2px grey;
+		margin: 20px;
+	}
+</style>
+</head>
+<script>
+	function clickHandler() {
+		var img = document.getElementsByTagName("img");
+		for(var i = 0; i < img.length; i++){
+			img[i].addEventListener("click", getId);	
+		}
+	}
+	
+	function getId() {
+		alert(e.target.id);
+	}
+	
+	window.addEventListener("load", clickHandler);
+</script>
+<body>
+	<h1>원하는 상품을 클릭해주세요!! 마구마구^^</h1>
+	<hr>
+	<section id="picturesbox">
+		<img id="p001" width="120" height="120" src="images/맨시티.jpg">
+		<img id="p002" width="120" height="120" src="images/맨유.jpg"> 
+		<img id="p003" width="120" height="120" src="images/첼시.jpg"> 
+		<img id="p004" width="120" height="120" src="images/리버풀.jpg"> 
+		<img id="p005" width="120" height="120" src="images/토트넘.jpg"> 
+		<img id="p006" width="120" height="120" src="images/아스널.jpg">
+		<img id="p007" width="120" height="120" src="images/레스터.jpg">
+		<img id="p008" width="120" height="120" src="images/번리.jpg"> 
+		<img id="p009" width="120" height="120" src="images/에버튼.jpg"> 
+		<img id="p010" width="120" height="120" src="images/본머스.jpg"> 
+	</section>
+</body>
+</html>

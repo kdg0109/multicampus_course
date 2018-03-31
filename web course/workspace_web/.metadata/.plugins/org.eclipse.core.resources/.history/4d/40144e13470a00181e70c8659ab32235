@@ -1,0 +1,36 @@
+package core;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/lotto1")
+public class LottoServlet1 extends HttpServlet {
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		System.out.println("init() 호출!");
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		int num = Integer.parseInt(request.getParameter("lottoNum"));
+		int resultNum = (int)(Math.random()*10)+1;
+		System.out.println("전달된 값 : " + num + ", 추출된 값 : " + resultNum);
+		
+		if(num == resultNum){
+			out.print("<h1>추카추카</h1>");
+		}else{
+			out.print("<h1>다음 기회를…</h1>");
+		}
+		
+		out.print("<a href='/edu/htmlexam/lotto.html'>로또 응모</a>");
+		out.close();
+	}
+}

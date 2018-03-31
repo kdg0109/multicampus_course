@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>함수에서 데이터의 타입채크</h2>
+	<hr>
+	<button onclick="clickProcess(100);">숫자</button>
+	<button onclick="clickProcess('100');">문자열</button>
+	<button onclick="clickProcess(true);">논리값</button>
+	<button onclick="clickProcess(function(){});">함수</button>
+	<button onclick="clickProcess([ ]);">배열</button>
+	<button onclick="clickProcess({ });">객체</button>
+	<button onclick="clickProcess();">????</button>
+	<script>
+		function clickProcess(p) {
+			if(typeof p == "number") {
+				alert("숫자 전달!!");
+			}else if (typeof p == "string") {
+				alert("문자열 전달!!");
+			}else if (typeof p == "boolean") {
+				alert("논리값 전달!!");
+			}else if (typeof p == "function") {
+				alert("함수 전달!!");
+			}else if (typeof p == "object") {
+				if(Array.isArray(p))
+					alert("배열객체 전달!!");
+				else
+						alert("객체 전달!!");
+			}else if (typeof p == "undefined") {	// p == undefined
+				alert("전달된 아규먼트 없음!!")
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트 모델 테스트 예제</title>
+</head>
+<body>
+<h1>3가지 이벤트 모델</h1>
+<hr>
+<h1 id="t1" onclick="func1();">인라인 이벤트 모델</h1>
+<hr>
+<h1 id="t2">고전 이벤트 모델</h1>
+<hr>
+<h1 id="t3">표준 이벤트 모델</h1>
+<hr>
+<script>
+	function func1() {
+		alert(document.querySelector("#t1").textContent);
+	}
+	function func2() {
+		alert(document.querySelector("#t2").textContent);
+	}
+	function func3() {
+		alert(document.querySelector("#t3").textContent);
+	}
+	var target1 = document.querySelector("#t2");
+	target1.onclick = func2;
+	var target2 = document.querySelector("#t3");
+	target2.addEventListener("click", func3);
+</script>
+</body>
+</html>
+
+
+
+

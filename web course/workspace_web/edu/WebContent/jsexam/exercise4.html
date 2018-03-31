@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function showColor(day) {
+			var week = new Array('일', '월', '화', '수', '목', '금', '토');
+			var color = ["red", "blue", "grey", "orange", "black", "aqua", "yellow"];
+			document.write('<h1 style="color : '+ color[day] + '"> 오늘은 ' + week[day] + '요일입니다.<h1>');
+		}
+		var days = new Date();
+		showColor(days.getDay());
+	</script>
+</body>
+</html>

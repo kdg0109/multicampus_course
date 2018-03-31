@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+table {
+	height: 100px;
+	width: 600px;
+	text-align: center;
+}
+</style>
+<script>
+window.onload = function() {
+	setInterval(function() {
+		var request = new XMLHttpRequest();
+		request.onload = function(event) {
+			if (request.status == 200) {
+				var str = request.responseText;
+				var obj = JSON.parse(str);
+				var target = document.getElementById('news');
+				target.innerHTML = obj.news;
+			}
+		};
+		request.open('GET', 'content/newsjson.jsp', true);
+		request.send();
+	}, 2000);
+};	
+</script>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<th>뉴스 내용</th>
+		</tr>
+		<tr>
+			<td id="news">...........................................</td>
+		</tr>
+	</table>
+</body>
+</html>

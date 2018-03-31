@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>HTML5 Drag and Drop Albums</title>
+        <link href="css/main.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/jejugothic.css">
+    	<style>
+      	* {
+        	font-family: 'Jeju Gothic', serif;
+        	font-size: 20px;
+      	}
+      	</style>
+    </head>
+    <body>
+        <header tabindex="0">
+            <h2>Drag and Drop API 로 구현된 앨범 </h2>
+        </header>
+
+        <div class="albums">
+            <div class="album" id="drop_1" droppable="true"><h2>앨범 1</h2></div>
+            <div class="album" id="drop_2" droppable="true"><h2>앨범 2</h2></div>
+           <!--  <div class="album" id="drop_3" droppable="true"><h2>앨범 3</h2></div> -->
+        </div>
+        <div style="clear:both"></div>
+        <div class="gallery">
+            <a id="1" draggable="true"><img src="images/1.jpg"></a>
+            <a id="2" draggable="true"><img src="images/2.jpg"></a>
+            <a id="3" draggable="true"><img src="images/3.jpg"></a>
+            <a id="4" draggable="true"><img src="images/4.jpg"></a>
+            <a id="5" draggable="true"><img src="images/5.jpg"></a>
+            <a id="6" draggable="true"><img src="images/6.jpg"></a>
+            <a id="7" draggable="true"><img src="images/7.jpg"></a>
+            <a id="8" draggable="true"><img src="images/8.jpg"></a>
+            <a id="9" draggable="true"><img src="images/9.jpg"></a>
+            <a id="10" draggable="true"><img src="images/10.jpg"></a>
+            <a id="11" draggable="true"><img src="images/11.jpg"></a>
+            <a id="12" draggable="true"><img src="images/12.jpg"></a>
+        </div>
+        <script src="js/main.js"></script>
+    </body>
+</html>

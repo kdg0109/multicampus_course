@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	
+	function runTimer() {
+		window.setInterval(function() {
+			var	dat = new Date();
+			document.getElementById('result').innerHTML = dat
+					.toLocaleTimeString()
+		}, 1000);
+	}
+</script>
+</head>
+<body>
+<input type="button" value="시간 출력" onclick="runTimer();" />
+<div id="result"></div>
+</body>
+</html>

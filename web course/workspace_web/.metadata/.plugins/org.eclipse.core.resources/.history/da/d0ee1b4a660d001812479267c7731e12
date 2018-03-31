@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연산 결과</title>
+<style>
+	p em {
+		color : orange;
+		font-weight: bold;
+	}
+</style>
+</head>
+<body>
+	<h1>연산 요청 결과</h1>
+	<hr>
+<p>결과 : <em><%= request.getAttribute("result")%></em></p>
+<a	href="/mvc/calcForm.html">입력 화면</a>
+</body>
+</html>

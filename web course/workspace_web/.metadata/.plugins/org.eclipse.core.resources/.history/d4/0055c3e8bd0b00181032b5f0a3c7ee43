@@ -1,0 +1,17 @@
+package model;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+public class ConnectDB {
+	private Connection connect;
+
+	//DB 접근
+	public ConnectDB() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			connect = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "jdbctest", "jdbctest");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,204 @@
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+
+img {
+	border: none;
+}
+
+
+body{
+	@ import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+	font-family: "Nanum gothic coding", Arial, Verdana, sans-serif;
+	color: black;
+	width: 940px;
+	margin: auto;
+}
+
+header{
+	margin: 10px auto;
+}
+
+nav{
+	clear: both;
+	display: block;
+	background: #D9D9D9;
+	padding: 10px;
+	margin-bottom: 15px;
+	border-radius: 10px; 
+	font-size: 20px;
+	font-weight: bolder;
+	box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.60); 
+	
+}
+
+#checkout{
+	background: #D9D9D9;
+	padding: 10px;
+	color: black;
+	text-decoration: none;
+	font-size: 80%;
+	display: block;
+	text-align: center;
+	-moz-border-radius: 5px; /* firefox rounded corner top left */
+	-webkit-border-radius: 5px; /* Safari 3 rounded corner top left */
+}
+
+#checkout:hover{
+	background: #333333;
+	color: white;
+}
+
+nav li{
+	float: left;
+	list-style: none;
+	padding: 0 30px;
+	
+}
+
+nav li a{
+	color: black;
+	text-decoration: none;
+}
+
+
+h1{
+	float: left;
+}
+
+#phone{
+	float: right;
+	margin-top: 40px;
+}
+
+#content{
+	width: 715px;
+	float: left;
+}
+
+aside{
+	width: 200px;
+	float: right;
+	border: 1px solid #D9D9D9;
+	padding: 10px;
+	-moz-border-radius: 10px; /* firefox rounded corner top left */
+	-webkit-border-radius: 10px; /* Safari 3 rounded corner top left */
+}
+
+aside h2{
+	font-size: 100%;
+	text-align: center;
+	font-weight: normal;
+	margin-bottom: 10px;
+}
+aside p{
+	margin: 15px 0 20px;
+	font-size: 80%;
+	font-style:italic;
+}
+
+.dropzone{
+	min-height: 120px;
+	border: 1px dashed #D9D9D9;
+	padding: 10px;
+	font-size: 80%;
+}
+
+.dropzone dt{
+	float: left;
+	width: 150px;
+	clear: left;
+}
+
+.dropzone dd{
+	float: right;
+}
+
+
+
+#items li{
+	border: 1px solid #D9D9D9;
+	padding: 10px;
+	list-style: none;
+	width: 200px;
+	float: left;
+	margin-right: 15px;
+	margin-bottom: 15px;
+	text-align: center;
+	-moz-border-radius: 10px; /* firefox rounded corner top left */
+	-webkit-border-radius: 10px; /* Safari 3 rounded corner top left */
+	min-height: 220px;
+}
+
+#items li:hover, #items li.in:hover{
+	border: 1px solid black;
+}
+
+#items li.in{
+	border: 1px solid #2FC600;
+}
+
+
+#items li#white{
+	background: white url("../img/1.jpg") 50% 10px no-repeat;
+	min-height: 220px;
+}
+
+#items li#pink{
+	background: white url("../img/2.jpg") 50% 10px no-repeat;
+	min-height: 220px;
+}
+
+#items li#blue{
+	background: white url("../img/3.jpg") 50% 10px no-repeat;
+	min-height: 220px;
+}
+
+#items li#green{
+	background: white url("../img/4.jpg") 50% 10px no-repeat;
+	min-height: 220px;
+}
+
+#items li#grey{
+	background: white url("../img/5.jpg") 50% 10px no-repeat;
+	min-height: 220px;
+}
+
+#items li#yellow{
+	background: white url("../img/6.jpg") 50% 10px no-repeat;
+	min-height: 220px;
+}
+
+
+footer{
+	clear: both;
+	display: block;
+	font-size: 80%;
+	padding-top: 20px;
+}
+
+a{
+	text-decoration: none;
+		color: black;
+}
+
+/* =float clearing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.floatfix {
+   display: block;
+   height: 1%;
+}
+.floatfix:after  {
+   content: ".";
+   display: block;
+   height: 0;
+   clear: both;
+   visibility: hidden;
+}
+
+
+/* =Start your CSS3 here
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

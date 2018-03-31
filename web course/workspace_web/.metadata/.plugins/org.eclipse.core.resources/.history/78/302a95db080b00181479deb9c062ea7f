@@ -1,0 +1,56 @@
+package core;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+/*[ 실습 3 ]
+
+클래스명 : core.BasketServlet2
+URL 매핑명 : /basket2
+상품을 선택할 때마다 이전에 선택한 상품 정보도 다음과 같이 함께 응답한다.
+(선택된 상품만 리스트를 출력한다.)
+
+   선택한 상품 리스트
+   ------------------------------------------   
+	xxxx 상품 x 개!!
+	xxxx 상품 x 개!!
+     :
+		
+   상품선택화면   상품비우기
+
+
+(힌트, 10개의 원소를 가지는 int 타입의 배열을 생성하여 session 객체에 보관하고 선택된 상품의 개수를 보관한다.)
+*/
+@WebServlet("/basket2")
+public class BasketServlet2 extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession();
+		String productID = request.getParameter("productID");
+				
+		if(session.getAttribute("cnt") == null){			//최초 1번 실행
+			session.setAttribute("cnt", new int[10]);
+		}
+		int productNum[] = (int[])session.getAttribute("cnt");
+		
+		int lastNum = Integer.parseInt(productID.substring(2, productID.length())) - 1;
+		productNum[lastNum]++;
+		out.print("<h1>선택한 상품 리스트</h1>");
+		out.print("<h1>------------------------------------------</h1>");
+		for(int i = 0; i < productNum.length; i++){
+			if(productNum[i] != 0){
+				out.print("<h1>" + productID + " 상품 "	+ productNum[i] + "개!!</h1>");
+			}
+		}
+		out.print("<a href='/edu/htmlexam/productlog.html'>상품선택화면</a>");
+//		out.print("<a href='/edu/htmlexam/productlog.html' onclick=\""+ session.invalidate()+"\">상품비우기</a>");
+		out.close();
+	}
+}

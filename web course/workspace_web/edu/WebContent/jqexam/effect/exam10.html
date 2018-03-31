@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script>
+function callback() {
+    setTimeout(function() {
+      $( "#effect" ).show();
+    }, 1000 );
+  };  
+$(document).ready(function(){
+   $( "#button" ).click(function(e) {	
+	   e.preventDefault();	
+	   var selectedEffect = $( "#effectTypes" ).val();
+	   $( "#effect" ).effect( selectedEffect, 3000, callback );			  
+   });
+});
+</script>
+</head>
+<body>
+    <div style="width: 430px; margin : 0  auto;">
+	<img id="effect" src="sundie.png" alt="" width="400" height="423"> 
+	</div>
+	<br>
+	<br>
+
+	<select name="effects" id="effectTypes">
+		<option value="blind">Blind</option>
+		<option value="bounce">Bounce</option>
+		<option value="clip">Clip</option>
+		<option value="drop">Drop</option>
+		<option value="explode">Explode</option>
+		<option value="fade">Fade</option>
+		<option value="puff">Puff</option>
+		<option value="pulsate">Pulsate</option>
+		<option value="shake">Shake</option>
+	</select>
+
+	<a href="#" id="button">Run Effect</a>
+</body>
+</html>

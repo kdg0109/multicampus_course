@@ -1,0 +1,38 @@
+package core;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+/*클래스명 : core.BasketServlet1
+URL 매핑명 : /basket1
+요청방식 : GET
+구현기능 : 상품이 선택되면 상품 ID를 서버에 전송하면서 core.BasketServlet1을 GET 방식으로 요청한다.
+          Query 문자열의 이름은 productID 로 상품 ID 를 전달한다.
+          응답 형식은 다음과 같다.
+
+		xxxx 상품 xx 개!!
+		
+		상품선택 화면으로 이동하기
+*/
+@WebServlet("/basket1")
+public class BasketServlet1 extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String userName = request.getParameter("name");
+		String userText = request.getParameter("text");
+		
+		SimpleDateFormat f  = new SimpleDateFormat("yyyy년 MM월 dd일");
+		out.print("<h1>" + userName + " 님이 "	+ f.format(new Date()) + "에 남긴 글입니다.</h1>");
+		out.print("<h1>----------------------------------------</h1>");
+		out.print("<h1>" + userText + "</h1>");
+		out.close();
+	}
+}

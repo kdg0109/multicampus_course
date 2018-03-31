@@ -1,0 +1,30 @@
+<!--  파일명 : uploadexam/multipart.html -->
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>File Upload Sample</title>
+<style>
+	input {
+		margin : 5px;
+	}
+</style>
+</head>
+<body>
+	<form action="/edu/part"  enctype="multipart/form-data" 
+	                           method="post"> 
+		<label>작성자 이름 :  <input type="text" name="myname" /> </label><br>
+		<label>작성자  폰번호 : <input type="text" name="myphone" /> </label><br>
+		<label>첨부 파일 :  <input type="file" name="myfile" multiple/></label><br>
+		<input type="submit"	value="전송" />
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+

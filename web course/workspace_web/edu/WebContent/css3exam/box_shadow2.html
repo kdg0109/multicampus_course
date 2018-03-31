@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>CSS3 : borderd-shadow</title>
+    <style type="text/css">
+        div {
+            font: bold 1em verdana "Malgun Gothic", "맑은 고딕", sans-serif;
+            padding: 20px;
+            margin: 50px;
+            width: 300px;
+        }
+        div.first {
+            /* 우 0.2em, 하 0.2em, blur 0.3em */
+            box-shadow: .2em .2em .3em #888;
+            /*
+             * vender prefix
+             * Chrome: -webkit-
+             * Safari: -webkit-
+             * Firefox: -moz-
+             * Internet Explorer: -ms-
+             * Opera: -o-
+             */
+            -moz-box-shadow: .2em .2em .3em #888;
+            -webkit-box-shadow: .2em .2em .3em #888;
+        }
+        div.second {
+            background: #ccc;
+        }
+        p.second {
+            background: #ccc;
+            padding: 20px;
+            box-shadow: -.1em -.1em .2em #fff, .1em .1em .2em #303739;
+        }
+    </style>
+</head>
+<body>
+<div class="first">CSS3 borderd-shadow CSS3 borderd-shadow CSS3 borderd-shadow CSS3 borderd-shadow CSS3 borderd-shadow CSS3 borderd-shadow CSS3 borderd-shadow CSS3 borderd-shadow CSS3 borderd-shadow</div>
+<div class="second"><p class="second">CSS3 borderd-shadow CSS3 borderd-shadow CSS3 borderd-shadow CSS3 borderd-shadow CSS3 borderd-shadow CSS3 borderd-shadow CSS3 borderd-shadow CSS3 borderd-shadow CSS3 borderd-radius</p></div>
+</body>
+</html>

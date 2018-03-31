@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트 버블링 샘플</title>
+<style>
+	section {
+		border : 1px solid lime;	
+		padding :10%;
+		margin : 0px auto;	
+	}
+	div {
+		border : 1px solid blue;	
+		width : 80%;
+		padding :10%;
+		margin : 0px auto;	
+	}
+	h1 {
+		border : 1px solid red;	
+		width : 80%;
+		padding :10%;
+		margin : 0px auto;		
+	}
+</style>
+<script>
+function clickHandler() {
+	var list = document.getElementsByTagName("h1");
+	list[0].addEventListener("click", displayAlert);	
+}
+function displayAlert(e) {
+	window.alert("h1 태그가 클릭됨!!");
+ 	e.stopPropagation();  	
+ }
+//clickHandler();
+ window.addEventListener("load", clickHandler);
+/*  window.addEventListener("DOMContentLoaded", clickHandler); */
+ </script>
+</head>
+<body onclick="alert('body태그');">
+<section onclick="alert('section태그');">
+	<div onclick="alert('div태그');">
+		<h1>테스트</h1>
+	</div>
+</section>
+
+</body>
+</html>
+
+
+
+

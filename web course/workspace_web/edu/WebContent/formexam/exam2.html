@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<form action="...." method="get">
+<fieldset>
+	<legend>필수 항목</legend>
+	<ul>
+	<li>
+		<label for=head_size>머리 둘레(cm)</label>
+		<input id=head_size name=head_size type=number min=60 max=100 autofocus required>
+	</li>
+	<li>
+		<label for=name>이름</label>
+		<input id=name name=name type=text required maxlength=4>
+	</li>
+	<li>
+		<label for=email>Email</label>
+		<input id=email name=email type=email placeholder="example@xxx.yyy" required>
+	</li>
+	</ul>
+</fieldset>
+<fieldset>
+	<legend>선택 항목</legend>
+	<ul>
+	<li>
+		<label for=phone>연락처</label>
+		<input id=phone name=phone type=tel 
+		        placeholder="00*-000*-0000" 
+		        pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}">
+	</li>
+	<li>
+		<label for=date_of_birth>생일</label>
+		<input id=date_of_birth name=date_of_birth type=date min="1950-01-01" max="2000-01-01">
+	</li>
+	<li>
+		<!--  url type은 유효성 검증은 하지 않음 -->
+		<label for=homepage>홈페이지</label>
+		<input id=homepage name=homepage type=url>
+	</li>
+	<li>
+		<label for=favorite_color>좋아하는 색</label>
+		<input id=favorite_color name=favorite_color type=color>
+	</li>
+	<li>
+		<label for=gender>성별</label>
+		<input id=gender name=gender type=text list=gender_list>
+		<datalist id=gender_list>
+			<option value=male label=남>
+			<option value=female label=여>
+		</datalist>
+	</li>
+	<li>
+		<label for=favorite_star>좋아하는 연예인</label>
+		<input id=favorite_star name=favorite_star type=text list=favorite_star_list search>
+		<datalist id=favorite_star_list>
+			<option value=윤아>
+			<option value=태연>
+			<option value=유리>
+			<option value=제시카>			
+		</datalist>
+	</li>
+	</ul>
+</fieldset>
+<button type="submit">Submit</button>
+</form>
+</body>
+</html>

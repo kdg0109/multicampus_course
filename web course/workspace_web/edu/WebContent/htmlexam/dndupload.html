@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Drag and Drop File Upload</title>
+<link rel="stylesheet" href="ajax.css">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/jejugothic.css">
+    <style>
+      * {
+        font-family: 'Jeju Gothic', serif;
+        font-size: 17px;
+      }
+      h1 {
+       
+        font-size: 25px;
+      }
+    </style>
+<script>
+	var databox;
+	function initiate() {
+		databox = document.getElementById('databox');
+		databox.addEventListener('dragover', function(e) {
+			e.preventDefault();
+		}, false);
+		databox.addEventListener('drop', dropped, false);
+	}
+	function dropped(e) {
+		e.preventDefault();
+		var files = e.dataTransfer.files;
+		var xhr = new XMLHttpRequest();		//ajax
+		var result = "";
+		var data = new FormData();
+		for (var f = 0; f < files.length; f++) {
+				data.append('myuploadfile'+f, files[f]);
+		}
+		//true = 서버에게 요청을 보내면 브라우저는 응답 올 때까지 기다림.(동기 통신)
+		xhr.open("POST", "/edu/upload", false);
+		xhr.send(data);			
+		if(xhr.status == 200){
+			 result = "업로드 성공!!";				
+		} else {
+			result = " 업로드 실패!!";			
+		}	
+		databox.innerHTML += result;				
+	}
+	window.addEventListener('load', initiate, true);
+</script>
+</head>
+<body>
+	<section id="databox">
+		<p> 업로드하려는 파일을 드래그하여 여기 드롭하세요....</p>
+	</section>
+</body>
+</html>

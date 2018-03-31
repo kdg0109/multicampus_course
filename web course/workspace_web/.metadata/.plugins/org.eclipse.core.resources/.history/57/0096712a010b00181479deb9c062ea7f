@@ -1,0 +1,45 @@
+package core;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@WebServlet("/lotto2")
+public class LottoServlet2 extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession();
+		int num = Integer.parseInt(request.getParameter("lottoNum"));
+		int resultNum = (int)(Math.random()*10)+1;
+		System.out.println("전달된 값 : " + num + ", 추출된 값 : " + resultNum);
+		
+		if(session.getAttribute("cnt") == null){			//최초 1번 실행
+			session.setAttribute("cnt", new int[1]);
+		}
+		int session_v[] = (int[])session.getAttribute("cnt");
+		
+		if(session_v[0] < 3 ){
+			if(num == resultNum){
+				out.print("<h1 style=\"color: purple\";>추카추카.. 재응모를 하려면 브라우저를 재기동하세요.</h1>");
+				session_v[0] = 3;
+			}else{
+				out.print("<h1 style=\"color: red\";>다음 기회를…</h1>");
+				out.print("<a href='/edu/htmlexam/lotto.html'>로또 응모</a>");
+			}
+		}else{
+			out.print("<h1 style=\"color: red\";>더 이상 응모할 수 없습니다. 브라우저를 재기동한 후에 응모하세요...</h1>");
+		}
+
+		session_v[0]++;		//세션
+		
+		out.close();
+	}
+}

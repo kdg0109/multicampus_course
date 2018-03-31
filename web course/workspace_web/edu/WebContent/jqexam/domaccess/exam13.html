@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        .high_light_0 { background:Yellow; }
+        .high_light_1 { background:Orange; }
+        .high_light_2 { background:Blue; }
+        .high_light_3 { background:Green; }
+        .high_light_4 { background:Red; }
+    </style>
+    
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('h1').addClass(function (index) {
+                return 'high_light_' + index;
+            });  
+        	/* $('h1').addClass( 'high_light_0');     */       
+        });
+    </script>
+</head>
+<body>
+    <h1>item - 0</h1>
+    <h1>item - 1</h1>
+    <h1>item - 2</h1>
+    <h1>item - 3</h1>
+    <h1>item - 4</h1>
+</body>
+</html>

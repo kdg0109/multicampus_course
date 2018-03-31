@@ -1,0 +1,243 @@
+/* Page layout styles */
+*{
+    margin:0;
+    padding:0;
+}
+body {
+    background-color:#fff;
+    font:14px/1.3 Arial,sans-serif;
+}
+header {
+	background: linear-gradient(-45deg, #b4e391 0%,#61c419 50%,#b4e391 100%);
+	border-radius: 28px;
+	width: 400px;
+	height: 35px;
+	margin: 10px auto;
+	padding: 17px;
+	border: 1px solid #999999;
+	text-align: center;
+    display:block;
+    z-index:100;
+ 	
+}
+header h2 {
+	font-size: 25px;
+}
+
+/* Photo Gallery styles */
+.gallery {
+    margin: 50px auto;
+    width: 840px;
+    text-align:center;
+}
+.gallery a {
+    display: inline-block;
+    height: 135px;
+    margin: 10px;
+    opacity: 1;
+    position: relative;
+    width: 180px;
+
+    -khtml-user-drag: element;
+
+    /* CSS3 Prevent selections */
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+
+    /* CSS3 transition rules */
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.gallery a img {
+    border: 8px solid #fff;
+    border-bottom: 20px solid #fff;
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+
+    /* CSS3 Box sizing property */
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+
+    /* CSS3 transition rules */
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
+    /* CSS3 Box Shadow */
+    -moz-box-shadow: 2px 2px 4px #444;
+    -webkit-box-shadow: 2px 2px 4px #444;
+    -o-box-shadow: 2px 2px 4px #444;
+    box-shadow: 2px 2px 4px #444;
+}
+
+/* Custom CSS3 rotate transformation */
+.gallery a:nth-child(1) img {
+    -moz-transform: rotate(-25deg);
+    -webkit-transform: rotate(-25deg);
+    transform: rotate(-25deg);
+}
+.gallery a:nth-child(2) img {
+    -moz-transform: rotate(-20deg);
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg);
+}
+.gallery a:nth-child(3) img {
+    -moz-transform: rotate(-15deg);
+    -webkit-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+}
+.gallery a:nth-child(4) img {
+    -moz-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+}
+.gallery a:nth-child(5) img {
+    -moz-transform: rotate(-5deg);
+    -webkit-transform: rotate(-5deg);
+    transform: rotate(-5deg);
+}
+.gallery a:nth-child(6) img {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.gallery a:nth-child(7) img {
+    -moz-transform: rotate(5deg);
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
+}
+.gallery a:nth-child(8) img {
+    -moz-transform: rotate(10deg);
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+}
+.gallery a:nth-child(9) img {
+    -moz-transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+}
+.gallery a:nth-child(10) img {
+    -moz-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+}
+.gallery a:nth-child(11) img {
+    -moz-transform: rotate(25deg);
+    -webkit-transform: rotate(25deg);
+    transform: rotate(25deg);
+}
+.gallery a:nth-child(12) img {
+    -moz-transform: rotate(30deg);
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+.gallery a:hover img {
+    z-index: 5;
+
+    /* CSS3 transition rules */
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
+    /* CSS3 transform rules */
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.gallery a.hidden {
+    height: 0;
+    margin: 0;
+    opacity: 0;
+    width: 0;
+}
+.albums {
+    margin: 40px auto;
+    overflow: hidden;
+    width: 840px;
+    text-align: center;
+}
+.album {
+	text-align: left;
+    border: 3px dashed #777700;
+    float: left;
+    margin: 10px;
+    min-height: 100px;
+    padding: 10px;
+    width: 360px;
+   
+    /* CSS3 transition rules */
+    -webkit-transition: all 1.0s ease;
+    -moz-transition: all 1.0s ease;
+    -o-transition: all 1.0s ease;
+    transition: all 1.0s ease;
+}
+.album a {
+    display: inline-block;
+    height: 56px;
+    margin: 15px;
+    opacity: 1;
+    position: relative;
+    width: 75px;
+
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+
+    /* CSS3 Prevent selections */
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+
+    /* CSS3 transition rules */
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.album a img {
+    border: 4px solid #fff;
+    border-bottom: 10px solid #fff;
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+
+    /* CSS3 Box sizing property */
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+
+    /* CSS3 transition rules */
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
+    /* CSS3 Box Shadow */
+    -moz-box-shadow: 2px 2px 4px #444;
+    -webkit-box-shadow: 2px 2px 4px #444;
+    -o-box-shadow: 2px 2px 4px #444;
+    box-shadow: 2px 2px 4px #444;
+}

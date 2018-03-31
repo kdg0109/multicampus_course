@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		var check = true;
+		while(check){
+			var num = window.prompt("1 부터 9사이의 숫자를 한 개 입력해주세요.");
+			if (num > 0 && num < 9) {
+	
+				document.write("<h1>" + num + " 단입니다.</h1>");
+				document.write("-----------------------<br/>");
+				document.write("<ul>");
+				for (var i = 1; i <= 9; i++) {
+					document.write("<li>" + num + " x " + i + " = " + num * i
+							+ "</li>");
+				}
+	
+				document.write("</ul>");
+				check = false;
+			} else {
+				alert("1 부터 9사이의 숫자를 다시 입력해 주세요");
+			}
+		}	
+		
+	</script>
+</body>
+</html>

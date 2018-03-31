@@ -1,0 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="model.vo.MemberVO" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSP 예제</title>
+</head>
+<body>
+	<h2>session scope 객체 공유</h2>
+	<hr>
+<%
+	MemberVO vo = (MemberVO)request.getAttribute("member1");
+%>
+	<h2>추출된 카운트 값 : <%= vo.getNumber() %></h2>
+</body>
+</html>
