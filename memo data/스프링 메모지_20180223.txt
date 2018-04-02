@@ -148,3 +148,47 @@ xml에 있는 <contextLcomponent-scan base-package="패키지명"/>  : src를 기준으로 @
 웹프로젝트가 각각의 context
 직접 쿼리 추출하는 일은 없음.
 Dispath가 다 만들어서 줘.
+
+@PathVariable : 
+Model :
+Session :
+~~
+
+---------5일차---------------
+DispatcherServlet가 요청/응답을 하기 위해선..
+1. 톰캣 서버에 등록된 웹프로젝트마다 각각 context 객체로 만듬
+2. 각각의 context는 web.xml의 내용을 참고하여 만들어지는 것임
+3. 서버가 기동되기 전에 context를 다 생성
+4. 그리고 이내용들을 참고하여 DispatcherServlet이 요청/응답을 관리함
+
+@Controller : 클라이언트로 부터 요청/응답 받는 역할
+	servlet이나 jsp가 속함
+@Service : 이런저런 기능 가장 많이 쓰임
+@Repository : 데이터 생성하여 CRUD를 처리함. 알아서 객체 생성해줌
+	DAO이런거 
+
+- AOP : 회원가입, 방명록, 로그인 서블릿들처럼 핵심 로직이 있는 서블릿을 코어 프로그램이라하는데, 한글처리나 그 밖의 자질 구레한걸 한데 모아 둔것을 AOP라함. 결국 유지보수에 용이함. 공통로직이라 한다.
+
+- web.xml에서 DispatcherServlet을 등록할 때 springmvc라고 이름 설정해서 등록해놨음. 그리고 이 부모다 FrameworkServlet임.
+서버를 시작하면, 미리 초기화해서 준비해둠.
+그래서 @나 bean.xml 정보를 즉각적으로 끌어 올 수 있는 거임
+- 그리고 한번 객체 생성이 다 되있으면, 매개변수에 들어있는 것만 객체 생성한다. 다른 애들은 다 싱글톤임.
+
+
+@RequestParam : 쿼리에서 값 추출한거 사용할 때
+@RequestVariable : 쿼리 문자열 일부 사용할 때
+쿼리 하나도 없을 때, default는 Param이다.
+
+- 브라우저에서 호출할 때 꼭 .do를 호출해야 합니다. 그래야 디스패처서블릿 들어감
+
+- 메서드 앞에 ModelAttrubute가 있으면 이 메서드를 먼저 다 호출을 다하고 나서 핸들링 메서드를 호출 시키는 것이다.
+
+- 클래스에 sessionAttributes를 정하면 session객체를 만듬
+
+- 핸들링 메서드의 리턴값이 void이라면 컨트롤러가 호출될 때 사용된 request name에 매핑시 보내는 값으로 jsp를 호출시키면 됨
+value="count.do"일 때, count.jsp 호출
+
+- COUNTVO자리에 Query로 ?countNum=10 를 넘긴게 되는 이유가 처음 서버 생성될 때, 디스패쳐서블릿이 다 초기화해놓으니까 그 자리에 들어가는거
+@ModelAttribute에서 CountVO객체를 받은 상태니까 vo로 setCountNum을 해주는거
+
+@Controller에 모든 메서드가 @ResponseBody가 다달려있다면, @RestController로 사용해도 가능

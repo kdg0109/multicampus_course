@@ -1,0 +1,264 @@
+리눅스
+
+---------1일차---------------
+- 하둡이 리눅스에서 동작함
+컴퓨터에서 www.naver.com을 딱 쳤을때! 아래 작동
+컴퓨터 -> 허브 -> 게이트웨이 -> DNS(kt, skt) -> 외부 DNS
+허브 : 랜선 다 꽂아져있는거
+게이트웨이 : 외부로 인터넷 연결해주는거
+ip를 통해 나한테 html을 줌
+
+DNS(kt,skt같은) 센터가 외부의 DNS서버에서 정보를 가져옴
+
+DNS가 www.naver.com 의 정보를 사용자에게 알려주면,
+사용자는 그 정보를 받아서 정보(ip)를 통해 html을 가져옴
+
+- 현업에서 vmware를 cloud환경에서 사용함
+- 클라우드 서비스는 계정들이 LG cloud 이런거에 다 있어서 컴터키면 그 정보가 보이는거임
+
+- 윈도우 안에 VMWare라는 가상 머신(세계) 안에 컴퓨터(os 리눅스)를 만든다 그리고 그 안에 게이트웨이, dns가 있고, 거기에 가상의 컴퓨터를 붙이고, 그 안의 게이트웨이를 통해 실제 랜선에 연결할거임 그리고 리눅스 안에 빅데이터 설치할 거임
+
+[시기]
+현존하는 OS 조상 유닉스도 있지만 영향력 큰게 리눅스
+유닉스 -> 리눅스 -> 리눅스기반(애플, 안드로이드), 리눅스를 통해 윈도우 만듬
+유닉스는 국방부, 금융가에서 많이 사용되다가 리눅스로 재탄생 단, 유닉스는 비용이 들었음
+
+- 일반 공짜 프리웨어 개념을 뛰어넘음
+사용, 수정, 재배포, 수정소프트웨어의 이익을 전체가 얻을 수 있게 배포 모두 자유!!!
+
+설치 중간에 서브넷마스크와 디폴트 라우트가 생성이 되는걸 볼 수 있음.
+
+ssd 가 메모리라 더 빠름
+하드가 느림
+
+
+
+[명령어] ls : 현재 디렉토리들
+하나의 아이피로 DNS, GATEWAY를 설정가능
+DHCP : 빈 IP를 할당한다. 유동적이다.
+하지만, 서버같이 아이피가 변경되면 안될 컴터는 DHCP를 none해야함
+
+systemctl restart network : 네트워크 재설정
+gedit /etc/sysconfig/selinux 해서 열리는 파일은 SELINUX=disabled 이렇게 해주면 모든 포트에서 접근가능한 보안 허술한 컴터가 되는 것임
+poweroff 하면 꺼짐
+
+1. server1을 server2로 복사
+	- 복사해서 다른거 바꾸지마. Network Adapter의 Advanced에 맥어드레스 바꾸자
+그리고 실행하고 아이피 바꾸자 gedit /etc/sysconfig/network-scripts/ifcfg-ens33
+	맥어드래스00:50:56:33:FC:2C
+	IPADDR=192.168.111.200
+검색하면서 tap누르면 
+
+
+
+---------2일차---------------
+[명령어] history 작성했던 셀
+[명령어] pwc 현재 위치 알아내기
+[명령어] cat 파일 열기
+[명령어] ls -l 상세 보기
+[명령어] ls -la 상세 보기(강제 종료되어 이상있던 swap된 것도 다보여)
+/root  관리자의 집
+ctrl + L : 화면 클리어
+ctrl + alt + F1 하면 X윈도우 모드
+ctrl + alt + F2 하면 터미널 모드로 됨
+
+vi new.txt new라는 텍스트파일 생성
+글 작성 상태에서 대문자 A는 문단 앞으로 I는 뒤로
+글 작성 상태에서 대문자 o와 O는 앞 뒤 문장 띄기
+그 안에서 ESC + cw : change word 단어를 없애버림
+그 안에서 ESC + S: 문장을 없애버림
+그 안에서 ESC + f : 글 작성은 나가는거
+그 안에서 ESC + w : 저장
+그 안에서 ESC + q : 나가기
+그 안에서 ESC + q! : 저장안해도 강제 나가기
+
+: set bu : 텍스트 앞에 숫자 생김
+
+: %s /size/SIZE  size를 대문자 SIZE로 바꾸는거
+
+루트에서
+.bashrc는 루트에서 원하는 명령어를 커스텀할 수 있음0
+	==	==	p182 에 명령어 다 나와	==		==	
+[명령어] cd ~계정이름  하면 그 계정의 홈 디렉토리로 이동
+	ex) cd ~root, cd ~사용자1
+[명령어] cd - 하면 상위 위치로 이동
+[명령어] cp 복사할것 복사될 위치
+[명령어] cp -r 복사할것 복사될 위치 : 이걸해야 디렉토리도 복사가능
+
+
+
+
+---------3일차---------------
+계정 생성 공부 p186
+사용자의 계정정보는 passwd, shadow, group(안들어갈 수도 있음)에 존재한다.
+- /etc/passwd 사용자의 모든 정보가 들어있음. 비밀번호는 없다.
+- /etc/shadow 에는 비밀번호가 암호화되어 저장되어 있다.
+	비밀번호 변경할 때 임의 비밀번호 줄 때 이 정보를 바꿔버리는 거임
+- /etc/group : 그룹 정보가 들어있음
+- tail 파일의 아래부분보여줌
+- head 파일의 윗 부분 보여줌
+
+- r과 x가 있어야 디렉토리 접근 가능
+
+- root 폴더 자체가 아무나 접근 못하게 되있기 때문에 그안의 파일들은 r-x가 되어도 접근 못함
+
+cd ~centos하면 
+home의 centos로 가는거임
+
+- chmod [소유권을 숫자로] 파일
+	파일 허가권을 수정할 수 있음.
+- chown [주어] [파일이름] : 소유자도 변경
+- chgrp [주어] [파일이름] : 그룹도 변경
+
+./   : 현재 위치
+
+
+/usr/bin 안에는 링크 등의 실행파일들이 존재한다.
+
+ln : 링크 걸기
+바로가기 같은거
+ln [링크 대상 파일] [링크파일] : 하드링크임. 동일한 위치를 가르킴
+ln -s [링크 대상 파일] [링크파일] : 소프트링크임. 소프트링크에는 링크 대상 파일의 베이스 위치를 지칭함
+	path 환경설정하는거처럼 패스잡아줌
+
+RPM : Redhat Package Manager
+
+p204 파일 설치를 위한 명령어
+※ 소프트웨어마다 다르게 배포함
+1. RPM
+	- 직접 하나하나 다 찾아다녀야댐
+	- 의존성 문제가 있음. 하나 설치하려고 해도 관련된거 설치 안되있음 의존성 에러라고 설치 못함
+2. YUM
+	- 하나 설치할 때 필요한 것들도 찾아내줘서 설치
+	- 의존성 문제를 해결함.
+	- 서버에서 필요한거 가지고 와서 설치해줌.
+	io에 있는 정보는 그대로 설치도 함
+3. 묶음을 풀어서 디렉토리 아래 설치
+	- 보통 상업적인 곳에서 이용
+
+p216에 yum 구조 그림으로 나와 있음!
+
+Mysql이 오라클에 팔리고 만든게 MariaDB 임.
+
+- 파일 압축과 파일 묶기는 따로임
+- tar : 파일 묶기
+- xz, bzip2, bunzip2, gzip, gunzip, zip... : 파일 압축
+
+압축 내용을 폴더에 담고, 그걸 tar하고 압축해야함.
+
+
+---------4일차---------------
+1. apache.tomcat.org에서 apache9  core에 tar.gz 설치
+2. tar xvfz 압축해제
+3. cp -r tomcat9 -> /usr/local
+4. tomat9 하위 디렉토리 conf로 cd
+5. vi server.xml의 69번째 port8080 을 80으로 변경
+
+cd 다운로드
+tar xvfz apache-tomcat-9.0.5.tar.gz
+cp -r apache-tomcat-9.0.5.tar.gz /usr/local
+cd /usr/local/
+cd apache-tomcat-9.0.5/
+vi server.xml 들어가서 포트번호(69번쨰줄) 8080->80으로 바꾼다
+
+user/bin에다가
+ln -s /usr/local/apache-tomcat-9.0.5/bin/startup.sh astart
+ln -s /usr/local/apache-tomcat-9.0.5/bin/shutdown.sh astop
+astart :톰캣스타트
+astop:톰켓스탑
+firewall-config 에서 public 에서 http 체크(방화벽설정) 런타임, 영구적 두 부분에서 수정
+
+배포파일
+mc우클릭 > Expert > war 을 리눅스서버1에 복사붙여넣고 astart
+
+/======= 백업하는 것만 하면 됨===================
+mkdir /backup
+vi /etc/crontab 에서 20 11 5 ** root cp -r /home /backup
+(매월 오후 11시 20분에는 root 가 backup디랙토리로 자동 백업해라)
+systemctl status crond (동작확인방법)
+
+vi mybackup <- cp -r /root /backup작성
+vi crontab <-35 * * * * root run-parts /etc/cron.hourly 작성
+
+vi homebackup에 
+#!/bin/sh
+
+set $(date)
+fname="backup.$2$3.tar.xz"
+tar cfJ /backup/$fname /home
+
+/=========================================
+
+---------5일차---------------
+TCP/IP : 컴퓨터끼리 네트워크 상으로 의사소통하는 약속(프로토콜)
+
+/etc/hosts 아래에 도메인은 인터넷상의 퍼블릭 아이피 값이고 DNS가 관리하고 있다.
+호스트는 각각 컴퓨터의 이름이다.
+상대방 아이피, 이름을 넣어두면 상대 컴퓨터로 접근 가능
+win은 그냥 가능하다
+
+DNS보다 /etc/hosts가 우선임
+
+C:\Windows\System32\drivers\etc
+
+
+systemctl status network
+systemctl status crond
+
+
+
+
+
+1. Linux 설치
+2. 환경 설정
+- 네트워크(/etc/sysconfig/network-scripts/ifcfg-ens33)
+- 보안
+3. 기본 명령어
+4. vi
+5. rpm, yum (다운 받는거)
+6. tar (묶기, 압축)
+7. 사용자 계정 관리
+8. 파일 권한
+9. 관리자명령어
+10. 네트워크
+11. 프로세스
+
+12. 웹서버
+13. MariaDB
+- http://ftp.kaist.ac.kr/mariadb/mariadb-10.0.15-FusionIO/yum/centos7-amd64/rpms/ 에서 -client, common, server 다운
+14. Oracle
+15. Disk 관리
+
+
+---------6일차---------------
+일반 PC는 IDE만 있음 총 4개 가능
+서버용은 SCSI도 있음 총 16개 가능
+
+하드 추가 chaper 6
+파티션 : 하드디스크 한장을 특정 블럭으로 영역을 나눔 C, D이런거
+
+sda 물리적인 하드 디스크
+sdb
+- 논리적으로 나눈거 -
+sda1 swap
+sda2 root
+
+mount를 하면 C드라이브가 D드라이브로 옮기는거랑 비슷
+
+[  하드 붙이기 작업!  ]
+1. Partition
+2. Format
+3. Mout
+4. Fstab 등록
+하드 뺄때
+5. Fstab 등록한거 다시 삭제함 dd 로 한 줄 다 삭제 가능
+unmount /dev/sdb1
+rm -rf /mydata 이렇게 해야하함
+
+
+LVM & RAID : 여러개의 하드를 1개 처럼 사용
+
+하드웨어 RAID : 실제 물리적인 제품을 하나로 합치는거 신뢰성, 안정적인거 비싸
+소프트웨어 RAID : 신뢰성, 속도 떨어짐 그런데 싸고 안전
+
+RAID는 포멧할때 한꺼번에 해야함 p351

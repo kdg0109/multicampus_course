@@ -68,7 +68,7 @@ C:\projects\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\work\C
 - JSP는 Servlet으로 변환될때 모든 영역에 대하여 try catch가 자동으로 추가됨
 
 JSP : 서버에서 실행되어 결과를 사용자에게 보여줌
-Javascript : 클라이언트의 웹 브라우저 화면에서 실행되어짐
+Javscript : 클라이언트의 웹 브라우저 화면에서 실행되어짐
 
 get 방식은 쿼리없어도 요청가능. default가 get이야
 

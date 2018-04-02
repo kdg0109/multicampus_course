@@ -1,0 +1,162 @@
+2018.03.27
+1일차 =======================
+- R Data Type
+1. Sacala
+2. Vector : one type
+3. DataFrame : multi type
+통신사별 와이파이 현황수
+
+[R 프로그래밍]
+R은 현재 데이터 분석을 위한 도구로 많은 인기
+
+https://thebook.io/006723/ch01/01/
+
+http://www.r-project.org/
+
+
+R 설치 : 
+https://cran.biodisk.org/
+R Studio 설치 : 
+https://www.rstudio.com/products/rstudio/download/#download
+
+외부 라이브러리 사용 선언:
+library(randomForest);
+
+<<- 전역변수
+<- 지역변수
+
+= 는 값이 할당 안될 수도 있기에 <- 주로 사요 추천
+
+1. Scalar
+- Scalar 데이터 타입 : 1차원적인 값 
+
+	- NA : null은 아니고 그냥 값이 없다라는 뜻
+	- NULL : 아직 아예 초기화가 안되었다라는 뜻 숫자인지 문자인지 몰라
+
+	문자열 : ", ' 둘다 가능
+
+2. Vector
+벡터 : 한 가지 스칼라 데이터 타입의 데이터 저장
+ 1차원 배열
+ 이름을 부여할 수 있음
+ v1 <- c(1,2,3);
+names(v1) <- c('a','b','c')
+하면 1,2,3각 자리의 이름이 a, b, c가 된다.
+
+데이터 접근 : 
+https://thebook.io/006723/ch02/04/02/
+
+
+nrow(v1) 진짜 row의 갯수
+
+c(1:3) %in% cs
+cs 안에 1,2,3 이 존재하는지 각각이 나옴
+
+seq(1, 1000, 5) 
+1부터 1000까지 5씩 증가하라
+
+1
+한 가지 타입만 가능
+Vector : one type
+Matrix : one type
+	열col 기준임(컬럼)
+가지고올 땐 행이 먼저
+	m1[1,2] : 1행 2열
+DataFrame : multi type 
+
+Matrix에서 한줄 끄집어내면 그게 Vector임
+
+
+array
+DataFrame : multi type 여러가지 타입이 들어감
+String, int 형들
+
+colMeans, rowMeans 는 각 열, 행의 평균 값을 나타냄
+
+which(벡터 == 숫자)
+벡터 안의 값 중에 숫자와 일치하는 인덱스 값 추출
+
+rbind 행 추가
+cbind 열 추가
+
+2018.03.28
+2일차 =======================
+R programming
+1. condition, loop
+2. function
+	- R Data Load
+		- exel, csv
+50보다 큰 애들
+df2 <- df[df$weight >= 50,]
+
+&, | 연산자는 한번만 써야함 자바와 다름
+%% 는 두번 써야함
+
+df2$weight
+이런 식으로 x,y 추출하고 값 넘겨서 spring에서 챠트 추출
+
+c2 <- c(1,2,3,NA,5);
+mean(c2,na.rm = T)
+na,rm은 NA를 없애줌
+
+
+함수 안의 함수에서 
+외부와 같은 변수이름을 사용할 경우에,
+<- 만하면 지역변수가 되고
+<<- 하면 전역변수가 된다.
+즉, <<- 하면, 자바의 this. 를 붙이는 것과 같다
+
+- R 패키지
+install.packages('ggplot2')
+
+substr(temp2, 1, 2)
+1번째 자리 포함 2번째 자리까지
+
+
+#문자열의 벡터로 만드는 기법
+temp2 <- as.character(temp)
+
+행이름, 열이름 바꾸기
+http://blog.naver.com/PostView.nhn?blogId=urimee_e&logNo=220684956595
+
+colnames : vector나 dataframe에서 사용
+names : matrix에서 사용
+
+csv에 String 컬럼 값뽑으면 factor 형으로 나옴
+그래서 
+stringsAsFactors = F 라는 옵션 주면 캐릭터형으로 바껴서 나옴
+
+day07/r7 : 파일 읽고 쓰기
+
+2018.03.30
+3일차 =======================
+1. aggregate
+2. apply
+3. sapply
+
+aggregate(그룹을 지을 내용, 데이터, 함수)
+데이터 안에 몇 개가 있는지 모를 때 사용
+ex) aggregate(Sales~Fruit,Fruits,sum)
+Fruit가 기준이고 Sales가 함수 적용될 대상
+: 과일별 세일즈의 합계
+
+apply(df5,2, sum)
+: 열 별 합계 = colSums(df5)와 비슷
+
+colnames는 한번에 모든 열의 이름을 바꿔줘야함.
+rename은 각각 임의 값만 변경 가능 하나 칼럼명만 바꿀 수 있음
+대신 library(dplyr)
+rename(tf, 'xx1'=x)
+x의 부분을 xx1 로 이름 변경
+
+p115
+조건 넣어 주기
+
+★자바로 넘길 때 vector로 넘기는게 좋다.
+as.vector이런거!
+
+p125
+자유자재로 데이터 가공하기
+install.packages('sqldf')
+mysql표준임
+sqldf("sql 쿼리 작성')

@@ -287,7 +287,7 @@ equals와 hashCode가 같이 움직임
 둘 중 하나라도 오버라이딩을 하고자 한다면, 반드시 둘 다 오버라이딩을 해야함
 - HashMap 이나 HashSet, HashTable 과 같은 객체들을 사용하는 경우, 객체의 의미상의 동등성 비교를 위해 hashCode() 를 호출
 -add가 되면 true다
-- a.equals(b) 라면 a.hashCode()와 b.hashCod()의 값이 같다고 가정한다.
+- a.equals(b) 라면 a.hashCode()와 b.hashCode()의 값이 같다고 가정한다.
 - 하지만, hashCode()가 같다고 두 객체가 같다고는 볼 수 없다.
 - Comparable 을 상속받았다는 것은 비교할 수가 있다는 것
 - compareTo(Object o)를 구현하자
@@ -518,3 +518,13 @@ ex) case SPRING: ... case FALL:...
 
 정규식
 p505
+
+- Method Area : 클래스의 정보
+
+- Heap : 객체 인스턴스 생성됨
+
+- Stack : 메소드의 작업에 필요한 메모리 공간을 제공
+
+Oh oh = new Oh();
+oh가 stack영역에 올라간다.
+이것은 heap영역에 있는 new Oh();의 주소값을 참조한다.

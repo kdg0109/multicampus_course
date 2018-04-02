@@ -1,0 +1,470 @@
+= job 이야기 ===================================================
+1. 리눅스에서 하둡 설치하는 것
+2. 데이터를 하이브로 넣어서 분석하는 것
+
+☆ 빅데이터를 어떻게 활용할 것인지?
+
+3. 빅데이터, 하둡, IoT
+
+웹 프로젝트를 메이븐으로 바꾸고 spring 적용하는 과정이 어려움
+
+하둡 환경설정
+Spring 환경설정 해본 경험
+
+비정형데이터에 대한 하둡
+프로그램 언어
+내가 한거 어떻게 비쥬얼라이징했다 어려웠던 점 어디서 어려웠다 완전 분산 
+================================================
+
+1. chart3 : HIVE DATA 분석 CHART
+2. chart4 : Oracle에 데이터를 입력해서 데이터 분석
+1) 데이터 검색(csv)
+2) Oracle에 입력
+- Table 생성
+- Oracle Developer
+3) Spring Component
+- VO 생성
+- mybatis.xml 추가
+- Biz, Dao 생성
+- mapper (= mybatis와 연결)
+- Controller 생성
+
+
+
+Master와 Slave1~3 만들기
+Master 
+00:50:56:21:E5:E0
+
+Slave1
+00:50:56:30:04:F1
+
+Slave2
+00:50:56:22:13:27
+
+Slave3
+00:50:56:37:B4:6D
+
+hostname
+hosts
+
+
+vi /etc/sysconfig/network-scripts/ifcfg-ens33
+vi /etc/hostname
+vi /etc/hosts
+systemctl restart network
+systemctl stop firewalld
+systemctl disable firewalld
+
+
+새로운 클러스터(묶음)를 생성
+namenode, secondname, datanode1, datanode2
+
+1. master -> namenode
+192.168.111.110
+00:50:56:34:00:BE
+2. slave1 -> secondname
+192.168.111.111
+00:50:56:3B:0F:9A
+2. slave2 -> datanode1
+192.168.111.112
+00:50:56:2E:92:26
+2. slave3 -> datanode2
+192.168.111.113
+00:50:56:20:DD:92
+Namenode에 데이터를 저장하면 
+Datanaode들에 저장, 저장, 저장됨
+
+p50 입니당~~
+
+Master에 하둡 소프트웨어 설치! 그 담 각각 컴퓨터에 카피. 그다음 ssh도 카피
+
+하기 전 확인
+hostname
+more /etc/hosts
+
+ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa
+
+id_dsa : primary키
+authrized_keys : 인증키
+
+0. 하둡 다운
+1. ssh설정
+2. /etc/profile 설정
+3. 하둡 환경설정
+==========
+1. 파일 복사
+2. public key
+ssh-copy-id -i id_dsa.pub root@slave3
+3. hadoop dir
+scp -r /usr/local/hadoop-1.2.1 root@slave1:/usr/local
+4. /etc/profile
+scp /etc/profile root@slave1:/etc/profile
+
+hadoop namenode -format
+
+안될때
+/data
+
+/nn_browsedfscontent.jsp
+
+
+
+http://master:50070
+
+
+
+C:\Windows\System32\drivers\etc
+- 호스트 바꾸기
+
+
+
+
+2018.03.16
+1. 오타
+- masters, slaves
+- xml
+2. scp
+3. /etc/profile
+p66 하둡 분산 파일 시스템
+가장 많이 사용되는 저장 방법 : DAS, NAS, SAN
+
+하이브 p564
+맵리듀스를 사용안하고 대신 하이브
+1. 마리아 DB 생성
+	- 루트에 사용자(Hive 계정) 생성
+	- Hive가 사용할 수 있는 디렉토리 설정
+2. Hive 설치
+
+
+2018.03.19
+1. Hadoop
+	- HDFS
+	- MapReduce
+2. Hive
+	- MariaDB : 비정형 데이터를 구조적으로 넣기 위해
+3. DATA 준비
+4. Data Structure Setting
+	- MariaDB에 셋팅
+	- p571
+5. Data Load
+6. 하이브QL(SQL) 문으로 분석 요청
+7. 하이브를 service 형태로 실행해 놔야함
+
+8. 자바에서 하이브를 연동하기 위한 라이브러리 설치
+
+hive_db라는 계정에서
+show tables하면 하이브에 사용될 테이블이 많이 나옴. : 하이브에서 사용될 데이터의 구조임
+
+하이브 서비스 키는 법 : 
+hive --service hiveserver2
+
+select uniquecarrier
+from airline_delay
+limit 500;
+
+
+select A.Year, A.UniqueCarrier,
+B.Code, B.Description          
+from airline_delay A           
+join carrier_code B            
+on (A.UniqueCarrier = B.Code)    
+where A.delayYear = 2006       
+limit 20; 
+
+
+1. 데이터 취합
+2. Table 생성
+3. Data Load
+4. hive 데이터 분석
+5. java Application 데이터를 분석
+
+
+create table RealInfo_Cold_SiGunGu(Date INT, SiGunGuLocalCode INT, Cnt INT)
+row format delimited fields  terminated by '	' lines terminated by '\n' stored as textfile;
+
+
+create table SiGunGu_LocalCode(HighSiDoLocalCode INT, SiGunGuLocalCode INT, SiGunGuName String)
+row format delimited fields  terminated by ',' stored as textfile;
+
+create table SiDo_LocalCode(SiDoLocalCode INT, LocalName String) row format delimited fields  terminated by '	' stored as textfile;
+
+
+load data local inpath '/root/질병/RealInfo_Cold_SiGunGu.txt' overwrite into table RealInfo_Cold_SiGunGu;  
+
+load data local inpath '/root/질병/SiDo_LocalCode.txt' overwrite into table SiDo_LocalCode;    
+
+load data local inpath '/root/질병/SiGunGu_LocalCode.txt' overwrite into table SiGunGu_LocalCode;   
+
+
+load data inpath '/root/airline/carriers.csv'  overwrite into table carrier_code
+
+select Year, Month, count(*)
+from airline_delay
+where delayYear = 2006
+and Month in (1,2,3,4)
+and ArrDelay > 0
+group by Year, Month
+order by Year, Month 
+
+* 여기서 where 앞에 delayYear 은 임의로 정한 파티션 명임!
+
+
+select C.LocalName, sum(A.Cnt) from RealInfo_Cold_SiGunGu A join SiGunGu_LocalCode B on (A.SiGunGuLocalCode = B.SiGunGuLocalCode) join SiDo_LocalCode C on (B.HighSiDoLocalCode  = C.SiDoLocalCode) group by C.LocalName; 
+
+
+
+
+
+2018.03.12
+server1
+맥주소 : 00:50:56:3E:4C:16
+
+
+\\M1403ins\교육자료\FILE
+
+\\70.12.114.130
+
+
+ln -s /usr/local/jdk-9.0.4/bin/java java
+ln -s /usr/local/eclipse/eclipse /usr/bin/eclipse
+
+hosts : hostname과 매핑시키는 곳. 자기 자신도 매핑해야 함
+
+
+2018.03.26
+hadoop-2.9.0 으로 설치할 때!
+1. 삭제
+1) rm -rf .ssh
+2) rm -rf /usr/local/hadoop-1.2.0
+3) rm -rf /usr/local/jdk-9.0.4
+4) rm -rf /usr/bin/java
+
+2. 설치
+jdk 1.8 설치 /usr/local/jdf1.8
+하둡 설치 : /usr/local/hadoop-2.9.0
+hive 설치 : /usr/local/hive
+apache-hadoop 설치
+https://archive.apache.org/dist/hadoop/common/
+
+     52 JAVA_HOME=/usr/local/jdk1.8
+     53 HADOOP_HOME=/usr/local/hadoop-2.9.0
+     54 HIVE_HOME=/usr/local/hive
+     55 CLASSPATH=/usr/local/jdk1.8/lib
+     56 export JAVA_HOME
+     57 export HADOOP_HOME
+     58 export CLASSPATH
+     59 export HIVE_HOME
+     60 PATH=$HADOOP_HOME/sbin:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HIVE_HOME/bin:$PATH
+
+
+3. 
+ssh-keygen -t dsa -P '' -f /root/.ssh/id_dsa
+ssh-copy-id -i /root/.ssh/id_dsa.pub root@slave1
+
+reboot
+
+
+4.
+usr/local/hadoop-2.9.0/etc/hadoop  에 환경설정 xml 있음
+환경 설정 파일 수정 p416
+★hadoop-env.sh 수정  <- start-all.sh를 실행하면 바로 먼저 실행되는 것
+
+     24 export HADOOP_HOME=/usr/local/hadoop-2.9.0
+     25 export HADOOP_PID_DIR=/usr/local/hadoop-2.9.0/pids
+     26 export HADOOP_MAPRED_HOME=$HADOOP_HOME
+     27 export HADOOP_COMMON_HOME=$HADOOP_HOME
+     28 export HADOOP_HDFS_HOME=$HADOOP_HOME
+     29 export YARN_HOME=$HADOOP_HOME
+     30 export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+     31 export YARN_CONF_DIR=$HADOOP_HOME/etc/hadoop
+     32 
+     33 # The java implementation to use.
+     34 export JAVA_HOME=/usr/local/jdk1.8
+     35 
+
+가상분산모드일 때는 하나의 컴터 안에 분산시스템 두는거
+
+★core-site.xml에 추가
+     19 <configuration>
+     20         <property>
+     21                 <name>fs.defaultFS</name>
+     22                 <value>hdfs://slave1:9000</value>
+     23         </property>
+     24         <property>
+     25                 <name>hadoop.tmp.dir</name>
+     26                 <value>/usr/local/hadoop-2.9.0/tmp</value>
+     27         </property>
+     28 </configuration>
+
+★hdfs-site.xml
+<configuration>
+	<property>
+		<name>dfs.replication</name>
+		<value>1</value>
+	</property>
+	<property>
+		<name>dfs.namenode.name.dir</name>
+		<value>/usr/local/hadoop-2.9.0/dfs/namenode</value>
+	</property>
+	<property>
+		<name>dfs.namenode.checkpoint.dir</name>
+		<value>/usr/local/hadoop-2.9.0/dfs/namesecondary</value>
+	</property>
+	<property>
+		<name>dfs.datanode.data.dir</name>
+		<value>/usr/local/hadoop-2.9.0/dfs/datanode</value>
+	</property>
+
+	<property>
+		<name>dfs.http.address</name>
+		<value>slave1:50070</value>
+	</property>
+	<property>
+		<name>dfs.secondary.http.address</name>
+		<value>slave1:50090</value>
+	</property>
+</configuration>
+
+★mapred-site.xml
+<configuration>
+	<property>
+		<name>mapreduce.framework.name</name>
+		<value>yarn</value>
+	</property>
+</configuration>
+
+★yarn-env.sh
+23번째 수정 /usr/local/jdk1.8로
+55
+69
+80
+85
+
+★yarn-site.xml
+<configuration>
+	<property>
+		<name>yarn.nodemanager.aux-services</name>
+		<value>mapreduce_shuffle</value>
+	</property>
+	<property>
+		<name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
+		<value>org.apache.hadoop.mapred.ShuffleHandler</value>
+	</property>
+	<property>
+		<name>yarn.nodemanager.local-dirs</name>
+		<value>/usr/local/hadoop-2.9.0/dfs/yarn/nm-local-dir</value>
+	</property>
+
+	<property>
+		<name>yarn.resourcemanager.fs.state-store.uri</name>
+		<value>/usr/local/hadoop-2.9.0/dfs/yarn/system/rmstore</value>
+	</property>
+	<property>
+		<name>yarn.resourcemanager.hostname</name>
+		<value>slave1</value>
+	</property>
+	<property>
+		<name>yarn.web-proxy.address</name>
+		<value>0.0.0.0:8089</value>
+	</property>
+	
+</configuration>
+
+format
+hdfs namenode -format
+
+rm -rf dfs
+rm -rf tmp
+
+DataNode
+NameNode
+ResourceManager
+SecondaryNameNode
+NodeManager
+
+확인!
+http://slave1:50070
+
+grant all privileges on *.* to 'hive'@'slave1' identified by '111111';
+grant all privileges on hive_db.* to 'hive'@'%' identified by '111111' with grant option;
+grant all privileges on hive_db.* to 'hive'@'slave1 identified by '111111' with grant option;
+
+hive설치하자
+
+★usr/local/hive 안에 hive-site.xml
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+	<property>
+		<name>hive.metastore.warehourse.dir</name>
+		<value>/usr/local/hive/warehouse</value>
+	</property>
+
+
+	<property>
+		<name>javax.jdo.option.ConnectionURL</name>
+		<value>jdbc:derby:;databaseName=/usr/local/hive/meta_db;create=true</value>
+		<description></description>
+	</property>
+
+</configuration>
+
+
+schematool -initSchema -dbType derby
+
+hive 실행!
+
+
+
+
+
+
+
+
+
+jpox-core-1.2.2.jar
+jpox-rdbms-1.2.2.jar
+
+
+#     hadoop-core*.jar
+
+
+
+
+
+
+
+
+
+
+
+
+grant all privileges on *.* to 'hive'@'server2' identified by '111111';
+grant all privileges on hive_db.* to 'hive'@'%' identified by '111111' with grant option;
+grant all privileges on hive_db.* to 'hive'@'server2' identified by '111111' with grant option;
+
+
+
+
+
+
+
+
+create database hive_db;
+grant all privileges on hive_db.* to 'hive'@'%' identified by '111111' with grant option;
+grant all privileges on hive_db.* to 'hive'@' localhost ' identified by '111111' with grant option;
+flush privileges;
+commit;
+
+LOAD DATA LOCAL INPATH '/root/airline/2006.csv'
+OVERWRITE INTO TABLE airline_delay
+PARTITION (delayYear='2006');
+\
+LOAD DATA LOCAL INPATH '/root/airline/2007.csv'
+OVERWRITE INTO TABLE airline_delay
+PARTITION (delayYear='2007');
+
+LOAD DATA LOCAL INPATH '/root/airline/2008.csv'
+OVERWRITE INTO TABLE airline_delay
+PARTITION (delayYear='2008');

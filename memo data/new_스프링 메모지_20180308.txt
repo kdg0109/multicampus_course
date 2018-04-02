@@ -1,0 +1,102 @@
+형상관리 기술
+git추가
+import에서 git
+Existing local repositoy는 내 컴터에서 가져온다는거임
+
+우선 서버도 가지고 오셈
+
+Local Destination에서 저장 위치 정해야함
+
+team-> synchronized 해서 소스가져오셈
+
+소스를 git에 올리기
+team-> share project해
+
+현재 disconnect 상태
+team에 add index하면 서버에 올릴 것들만 *로 모양 생김
+
+그담 commit하면 밑에 git Staging이 생기는데 commit Message
+
+
+https://github.com/josekim91/hosehaha
+
+web Project Settings의 Context root는 웹어플리케이션을 부를 때 url의 이름
+
+jspl
+
+다이나믹을 스프링으로
+스프링을  메이븐으로
+그담 pom.xml 수정하고
+에러나면 메이븐 업데이트 프로젝트
+
+
+
+
+2018.03.05
+Spring MVC Project (스프링 복습과 목표)
+01. Dynamic Web Project 생성
+02. Spring Nature, Maven
+03. web.xml
+- dispatcher
+- URL Mapping ( ~.do 연결하는거)
+- Encoding
+- spring.xml 연결 시킴
+- spring-view.xml 연결 시킴
+- log4j 설정
+
+04. spring.xml
+- 다국어 처리
+- View Resolver
+- File Upload
+- Database 연동(Mybatis)
+
+JSTL
+jsp한거를 jstl로 바꿔서 사용하자
+c:forEach var ="하나 끄집었을 때 이름" items="집합체(attribute한거"
+03. Spring Component
+04. HTML(Jsp)
+
+05. BootStrap
+
+06. Mybatis (Oracle)
+
+07. Log
+
+08. Chart
+
+
+2018.03.05
+다국어 처리를 하면 브라우저의 국가마다 다르게 나올 수 있음
+
+
+로그는 수익과 연관성 없기 때문에 디비에 따로 저장하지 않음
+
+  [  Log4j를 이용하여 로그찍기  ]
+1. web.xml에 Log4j Propertis 설정
+2. Spring.xml/Spring-view.xml
+<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	- aspectJ는 로그 뿐만 아니라 다른 동일한 행동을 빼놓을 때도 사용함
+	- 트렌젝션이라는 개념이 있는데 비슷
+
+3. log4j.properties 파일 생성
+- log 생성에 대한 환경 설정
+4. Logger.java : Log를 찍는 행위 컴포넌트 작성
+
+[  테이블만들 때  ]
+- thead와 tbody를 넣어줘라 웹 표준임.
+- 안넣어주면 css 안 먹힐 때도 있음
+
+jquery에서 .attr( { } )이렇게 넣어주는건 객체로 전달해주는 거임. json처럼
+
+2018.03.06
+Spring Workshop
+mv2
+1. web.xml
+2. spring-web.xml, spring.xml
+3. logger.java(Log4j)
+4. MainController.java
+- Menu 설정 및 화면 개발
+
+5. UserController.java 및 화면 개발
+6. ProductController
+
