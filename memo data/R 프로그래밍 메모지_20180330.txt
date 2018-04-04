@@ -160,3 +160,70 @@ p125
 install.packages('sqldf')
 mysql표준임
 sqldf("sql 쿼리 작성')
+
+
+2018.04.03
+4~5일차 =======================
+R 이미지화 방법
+jpeg(filename = "mychart.jpg", width = 680, height = 680, quality = 100)
+ggplot(data = midwest, aes(x=poptotal, y=popasian)) + geom_point() + xlim(0, 500000) + ylim(0, 10000)
+dev.off()
+
+실행하기 전에 오른쪽에 Source를 눌러서 function을 메모리에 올려놔야 함
+
+print() 이것은 plots에 뿌리는 것을 배체한다
+
+==========★★★★★★★★============
+텍스트마이닝
+install.packages('rJava')
+install.packages('memoise')
+install.packages('KoNLP')
+install.packages('stringr') #특수문자 제거
+rJava는 R이라는 환경에서 자바를 사용할 수 있게 해주는 것이기 때문에 java 폴더 경로를 설정해야 함
+JAVA_HOME
+C:\Program Files\Java\jdk1.8.0_151
+
+1. wc 함수를 만든다
+2. 1을 Argument로 입력 하면
+wordcloud 실행
+ 2를 Argument로 입력 하면
+ p276 페이지 그래프 실행
+3. 모두 이미지로 저장
+ wc.jpg
+ wcbar.jpg
+
+2018.04.04
+6일차지만 7일차 폴더에 있음 =======================
+p289
+install.packages('htmlwidgets')
+
+하둡과 R의 연동
+
+하둡2는 1보다 강점
+- yarn이라는 것이 추가되면서 보다 더 분석, 시스템 관리가 향상
+- 더 안정성
+
+
+### 연동
+R과 windows의 jdk를 연결하여 java를 이용하여 오라클과 하이브에 접근한다.
+- 따라서 오라클, 하이브 드라이버가 필요
+
+C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib
+
+C:\java_hive_lib 에 ojdbc6도 추가해서 넣어야댐
+
+
+오라클 workspace 생성
+http://127.0.0.1:8080/apex/f?p=4950:1:3214928786123709
+
+Application Express(Click) -> system/111111
+
+사용자 정보 생성한다
+ruser 생성한다
+
+# DB 접근 과정(Java도 똑같음)
+# 1. Driver Loading
+# 2. Connection
+# 3. Statement
+# 4. ResultSet  
+# 5. Close
