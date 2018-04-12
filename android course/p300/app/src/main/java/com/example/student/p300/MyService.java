@@ -63,6 +63,8 @@ public class MyService extends Service {
                 }
             }
         };
+
+        new Thread(run).start();
     }
 
     @Override

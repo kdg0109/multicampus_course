@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     EditText editText;
@@ -27,13 +26,11 @@ public class MainActivity extends AppCompatActivity {
         if(intent != null){
             String command = intent.getStringExtra("command");
             int cnt = intent.getIntExtra("cnt", 0);
-            Toast.makeText(this, ""+command + " " + cnt, Toast.LENGTH_SHORT).show();
         }
     }
 
     public void clickBt(View v) {
         String name = editText.getText().toString();
-        Toast.makeText(this, name + "", Toast.LENGTH_SHORT).show();
         intent = new Intent(this, MyService.class);
         intent.putExtra("command", "start");
         intent.putExtra("name", name);
