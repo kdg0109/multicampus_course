@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 SharedPreferences.Editor editor = sp.edit();
+//                editor.remove("cnt");
                 editor.clear();
                 editor.commit();
                 finish();
