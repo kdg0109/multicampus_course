@@ -11,8 +11,7 @@ public class MyService extends Service {
     private static final String TAG = "MyService ========";
 
     public MyService() {
-
-
+        Log.d(TAG, "Service MyService .....");
     }
 
     @Override
@@ -38,14 +37,32 @@ public class MyService extends Service {
         Log.d(TAG, "Service processCommand ....." +
                 command +
                 name);
-        for(int i = 0; i < 10; i++){
-            Log.d(TAG, "Process: " + i);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+
+
+        final Intent sintent = new Intent(getApplicationContext(), MainActivity.class);
+
+        //FLAG_ACTIVITY_SINGLE_TOP과 FLAG_ACTIVITY_CLEAR_TOP를 사용해야 이미 떠있는 MainActivity 사용
+        sintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                    Intent.FLAG_ACTIVITY_SINGLE_TOP |
+                    Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+
+        Runnable run = new Runnable() {
+            @Override
+            public void run() {
+                for(int i = 0; i < 10; i++){
+                    Log.d(TAG, "Process: " + i);
+                    sintent.putExtra("command", "cmd");
+                    sintent.putExtra("cnt", i);
+                    startActivity(sintent);
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
-        }
+        };
     }
 
     @Override

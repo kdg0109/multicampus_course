@@ -17,6 +17,20 @@ public class MainActivity extends AppCompatActivity {
         editText = findViewById(R.id.editText);
     }
 
+    //Service로 부터 intent받는다
+    @Override
+    protected void onNewIntent(Intent intent) {
+        processIntent(intent);
+    }
+
+    private void processIntent(Intent intent) {
+        if(intent != null){
+            String command = intent.getStringExtra("command");
+            int cnt = intent.getIntExtra("cnt", 0);
+            Toast.makeText(this, ""+command + " " + cnt, Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public void clickBt(View v) {
         String name = editText.getText().toString();
         Toast.makeText(this, name + "", Toast.LENGTH_SHORT).show();
